@@ -11,7 +11,8 @@
     "transpile": "tsc",
     "pretest": "npm run lint",
     "lint": "standard --verbose --fix *.js src cypress/integration",
-    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post"
+    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post",
+    "coverage-report": "istanbul report --verbose html"
   },
   "files": [
     "dist",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^1.1.2",
     "@types/node": "^8.5.2",
+    "babel-6-istanbul-instrumenter-loader": "^1.0.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -36,6 +38,7 @@
     "babel-preset-react": "^6.24.1",
     "cypress": "^1.4.1",
     "github-post-release": "^1.13.1",
+    "istanbul": "^0.4.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "semantic-action": "^1.1.0",

@@ -2,3 +2,5 @@ public/
 node_modules/
 dist
 cypress/videos
+coverage.json
+coverage
