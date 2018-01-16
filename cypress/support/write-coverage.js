@@ -5,5 +5,14 @@ after(function writeCoverage () {
   cy.log('saving coverage.json')
   cy.writeFile('coverage.json', s + '\n\n')
   cy.log('generate coverage report')
-  cy.exec('./node_modules/.bin/istanbul report --verbose html')
+  cy
+    .exec('./node_modules/.bin/istanbul report --verbose html', {
+      failOnNonZeroExit: false
+    })
+    .then(result => {
+      cy.log(result.stdout)
+      cy.log(result.stderr)
+    })
+  cy.wait(1000)
+  cy.screenshot('write-coverage')
 })

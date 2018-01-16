@@ -4,3 +4,4 @@ dist
 cypress/videos
 coverage.json
 coverage
+cypress/screenshots
