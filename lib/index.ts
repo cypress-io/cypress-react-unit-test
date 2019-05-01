@@ -31,10 +31,16 @@ Cypress.Commands.add('injectReactDOM', () => {
     // otherwise the component will NOT be able to dispatch any events
     // when it runs the second time
     // https://github.com/bahmutov/cypress-react-unit-test/issues/3
-    var html = `<body>
-          <div id="cypress-jsdom"></div>
-          ${scripts}
-        </body>`
+
+    var html = `
+    <head>
+      <meta charset="utf-8">
+    </head>
+    <body>
+      <div id="cypress-jsdom"></div>
+      ${scripts}
+    </body>`
+
     const document = cy.state('document')
     document.write(html)
     document.close()
@@ -166,19 +172,6 @@ Cypress.Commands.overwrite('get', (originalFn, selector, options) => {
   }
 })
 
-const moduleNames = [
-  {
-    name: 'react',
-    type: 'file',
-    location: 'node_modules/react/umd/react.development.js'
-  },
-  {
-    name: 'react-dom',
-    type: 'file',
-    location: 'node_modules/react-dom/umd/react-dom.development.js'
-  }
-]
-
 /*
 Before All
 - Load and cache UMD modules specified in fixtures/modules.json
@@ -187,6 +180,21 @@ Before All
   Format: [{name, type, location}, ...]
 */
 before(() => {
+  const settings = Cypress.env('cypress-react-unit-test') || {}
+
+  const moduleNames = [
+    {
+      name: 'react',
+      type: 'file',
+      location: settings.react || 'node_modules/react/umd/react.development.js'
+    },
+    {
+      name: 'react-dom',
+      type: 'file',
+      location: settings['react-dom'] || 'node_modules/react-dom/umd/react-dom.development.js'
+    }
+  ]
+
   Cypress.modules = []
   cy.log('Initializing UMD module cache').then(() => {
     for (const module of moduleNames) {

@@ -1,4 +1,4 @@
-# cypress-react-unit-test [![Build Status](https://travis-ci.org/bahmutov/cypress-react-unit-test.svg?branch=master)](https://travis-ci.org/bahmutov/cypress-react-unit-test) [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/z9dxah) [![renovate-app badge][renovate-badge]][renovate-app]
+# cypress-react-unit-test [![Build Status](https://travis-ci.org/bahmutov/cypress-react-unit-test.svg?branch=master)](https://travis-ci.org/bahmutov/cypress-react-unit-test) [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/z9dxah) [![renovate-app badge][renovate-badge]][renovate-app] [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/bahmutov/cypress-react-unit-test)
 
 > A little helper to unit test React components in the open source [Cypress.io](https://www.cypress.io/) E2E test runner **ALPHA**
 
@@ -62,6 +62,21 @@ describe('HelloState component', () => {
 ```
 
 ![Unit testing React components](images/demo.png)
+
+## Configuration
+
+If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:
+
+```json
+{
+  "env": {
+    "cypress-react-unit-test": {
+      "react": "node_modules/react/umd/react.development.js",
+      "react-dom": "node_modules/react-dom/umd/react-dom.development.js"
+    }
+  }
+}
+```
 
 ## Transpilation
 
@@ -137,6 +152,16 @@ All components are in [src](src) folder. All tests are in [cypress/integration](
 ## Large examples
 
 * [bahmutov/calculator](https://github.com/bahmutov/calculator) tests multiple components: calculator App, Button, Display.
+
+## Development
+
+- run TypeScript compiler in watch mode with `npx tsc -w`
+- run Cypress with `npx cypress open` and select the spec you want to work with
+- edit `lib/index.ts` where all the magic happens
+
+### Visual testing
+
+Uses [Percy.io](https://percy.io) visual diffing service as a GitHub pull request check.
 
 ## Related tools
 

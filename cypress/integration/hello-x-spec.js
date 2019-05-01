@@ -9,6 +9,13 @@ describe('HelloX component', () => {
     cy.mount(<HelloX name='SuperMan' />)
     cy.contains('Hello SuperMan!')
   })
+
+  it('renders Unicode', () => {
+    cy.mount(<HelloX name='🌎' />)
+    cy.contains('Hello 🌎!')
+    cy.percySnapshot('Hello globe')
+    cy.wait(1000)
+  })
 })
 
 describe('HelloState component', () => {
