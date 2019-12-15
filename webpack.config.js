@@ -9,6 +9,10 @@ const config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
+  externals: {
+    react: 'react',
+    'react-dom': 'react-dom'
+  },
   module: {
     rules: [
       {
