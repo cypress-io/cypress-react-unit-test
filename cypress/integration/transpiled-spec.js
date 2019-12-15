@@ -2,11 +2,13 @@
 /// <reference types="../../lib" />
 import { Transpiled } from '../../src/transpiled.jsx'
 import React from 'react'
+import ReactDom from "react-dom";
+import { mount } from "cypress-react-unit-tests";
 
 /* eslint-env mocha */
 describe('Transpiled', () => {
   it('counts clicks', () => {
-    cy.mount(<Transpiled />)
+    mount(<Transpiled />)
     cy.contains('count: 0')
       .click()
       .contains('count: 1')
@@ -15,7 +17,7 @@ describe('Transpiled', () => {
   })
 
   it('counts clicks 2', () => {
-    cy.mount(<Transpiled />)
+    mount(<Transpiled />)
     cy.contains('count: 0')
       .click()
       .contains('count: 1')
@@ -24,9 +26,9 @@ describe('Transpiled', () => {
   })
 })
 
-describe('Counter cy.mounted before each test', () => {
+describe('Counter mounted before each test', () => {
   beforeEach(() => {
-    cy.mount(<Transpiled />)
+    mount(<Transpiled />)
   })
 
   it('goes to 3', () => {

@@ -2,13 +2,15 @@
 /// <reference types="../../lib" />
 import HelloWorld from '../../src/stateless-alert.jsx'
 import React from 'react'
+import ReactDom from 'react-dom'
+import { mount } from "cypress-react-unit-tests";
 
 /* eslint-env mocha */
 describe('Stateless alert', () => {
   beforeEach(() => {
     const spy = cy.spy().as('alert')
     cy.on('window:alert', spy)
-    cy.mount(<HelloWorld name='Alert' />)
+    mount(<HelloWorld name='Alert' />, { ReactDom })
   })
 
   it('shows link', () => {

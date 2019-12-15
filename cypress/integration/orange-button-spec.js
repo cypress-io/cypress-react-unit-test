@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 import React from 'react'
+import ReactDom from "react-dom";
+import { mount } from "cypress-react-unit-tests";
 import './Button.css'
 
 class Button extends React.Component {
@@ -24,7 +26,7 @@ class Button extends React.Component {
 
 describe('Button', () => {
   it('can be orange', () => {
-    cy.mount(<Button name='Orange' orange />)
+    mount(<Button name='Orange' orange />)
     cy.get('.component-button')
       .should('have.class', 'orange')
       .find('button')

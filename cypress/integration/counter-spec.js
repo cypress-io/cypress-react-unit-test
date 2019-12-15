@@ -1,12 +1,13 @@
 /// <reference types="cypress" />
 /// <reference types="../../lib" />
-import { Counter } from '../../src/counter.jsx'
 import React from 'react'
+import { mount } from "cypress-react-unit-tests";
+import { Counter } from '../../src/counter.jsx'
 
 /* eslint-env mocha */
 describe('Counter', () => {
   it('counts clicks', () => {
-    cy.mount(<Counter />)
+    mount(<Counter />)
     cy.contains('count: 0')
       .click()
       .contains('count: 1')
@@ -15,7 +16,7 @@ describe('Counter', () => {
   })
 
   it('counts clicks 2', () => {
-    cy.mount(<Counter />)
+    mount(<Counter />)
     cy.contains('count: 0')
       .click()
       .contains('count: 1')
@@ -24,9 +25,9 @@ describe('Counter', () => {
   })
 })
 
-describe('Counter cy.mounted before each test', () => {
+describe('Counter mounted before each test', () => {
   beforeEach(() => {
-    cy.mount(<Counter />)
+    mount(<Counter />)
   })
 
   it('goes to 3', () => {

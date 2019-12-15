@@ -13,7 +13,7 @@ describe('Error Boundary', () => {
   }
 
   it('renders normal children', () => {
-    cy.mount(
+    mount(
       <ErrorBoundary>
         <ChildWithoutError />
       </ErrorBoundary>
@@ -25,7 +25,7 @@ describe('Error Boundary', () => {
   })
 
   it('on error, display fallback UI', () => {
-    cy.mount(
+    mount(
       <ErrorBoundary>
         <ChildWithError />
       </ErrorBoundary>

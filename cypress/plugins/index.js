@@ -1,4 +1,6 @@
 const webpack = require('@cypress/webpack-preprocessor')
+const babelConfig = require('../../babel.config.js')
+
 const webpackOptions = {
   // https://webpack.js.org/configuration/node/
   // avoid winston logger problem
@@ -11,10 +13,7 @@ const webpackOptions = {
       {
         test: /\.(js|jsx|mjs)$/,
         loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-proposal-class-properties']
-        }
+        options: babelConfig
       },
       {
         test: /\.css$/,

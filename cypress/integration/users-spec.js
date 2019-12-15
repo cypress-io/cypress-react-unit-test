@@ -2,12 +2,14 @@
 /// <reference types="../../lib" />
 import { Users } from '../../src/users.jsx'
 import React from 'react'
+import ReactDom from "react-dom";
+import { mount } from "cypress-react-unit-tests";
 
 /* eslint-env mocha */
 context('Users', () => {
   describe('Component', () => {
     it('fetches 3 users from remote API', () => {
-      cy.mount(<Users />)
+      mount(<Users />)
       // fetching users can take a while
       cy.get('li', { timeout: 20000 }).should('have.length', 3)
     })
@@ -16,13 +18,13 @@ context('Users', () => {
   describe('Network State', () => {
     beforeEach(() => {
       cy.server()
-      // cy.mount the component after defining routes in tests
+      // mount the component after defining routes in tests
       // preventing race conditions where you wait on untouched routes
     })
 
     it('can inspect real data in XHR', () => {
       cy.route('/users?_limit=3').as('users')
-      cy.mount(<Users />)
+      mount(<Users />)
       cy.wait('@users')
         .its('response.body')
         .should('have.length', 3)
@@ -31,7 +33,7 @@ context('Users', () => {
     it('can display mock XHR response', () => {
       const users = [{ id: 1, name: 'foo' }]
       cy.route('GET', '/users?_limit=3', users).as('users')
-      cy.mount(<Users />)
+      mount(<Users />)
       cy.get('li')
         .should('have.length', 1)
         .first()
@@ -41,7 +43,7 @@ context('Users', () => {
     it('can inspect mocked XHR', () => {
       const users = [{ id: 1, name: 'foo' }]
       cy.route('GET', '/users?_limit=3', users).as('users')
-      cy.mount(<Users />)
+      mount(<Users />)
       cy.wait('@users')
         .its('response.body')
         .should('deep.equal', users)
@@ -55,7 +57,7 @@ context('Users', () => {
         response: users,
         delay: 1000
       }).as('users')
-      cy.mount(<Users />)
+      mount(<Users />)
       cy.get('li').should('have.length', 0)
       cy.wait('@users')
       cy.get('li').should('have.length', 1)

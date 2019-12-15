@@ -10,7 +10,7 @@ export default function CounterWithHooks({ initialCount = 0 }) {
   return (
     <>
       <div className="counter">{count}</div>
-      <button onClick={handleCountIncrement}>+</button>
+      <button id="increment" onClick={handleCountIncrement}>+</button>
     </>
   );
 }
