@@ -68,5 +68,8 @@
   "release": {
     "analyzeCommits": "simple-commit-message",
     "generateNotes": "github-post-release"
+  },
+  "dependencies": {
+    "@emotion/core": "10.0.22"
   }
 }

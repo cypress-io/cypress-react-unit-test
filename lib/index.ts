@@ -59,21 +59,18 @@ interface MountOptions {
  cy.mount(<Hello />, 'Hello')
  // using default alias
  cy.get('@Component')
- // using specified alias
- cy.get('@Hello').its('state').should(...)
  // using original component
  cy.get(Hello)
  ```
  **/
 export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
-  checkMountModeEnabled();
+  // checkMountModeEnabled();
 
   // Get the display name property via the component constructor
   // @ts-ignore FIXME
   const displayname = getDisplayName(jsx.type, options.alias);
 
-  renderTestingPlatform()
-    .window({ log: false })
+  cy.window({ log: false })
     .then(() => {
       Cypress.log({
         name: "mount",
@@ -106,5 +103,9 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
       );
     });
 };
+
+before(() => {
+  renderTestingPlatform();
+});
 
 export default mount;
