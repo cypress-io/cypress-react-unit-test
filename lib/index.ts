@@ -18,8 +18,10 @@ const setAlert = w => {
 
 /** Initialize an empty document with root element */
 function renderTestingPlatform() {
-  return cy.log("Prepearing to ReactDOM rendering").then(() => {
-    var html = `
+  cy.log("Prepearing to ReactDOM rendering");
+
+  const document = cy.state("document");
+  document.write`
   <head>
     <meta charset="utf-8">
   </head>
@@ -27,10 +29,7 @@ function renderTestingPlatform() {
     <div id="cypress-jsdom"></div>
   </body>`;
 
-    const document = cy.state("document");
-    document.write(html);
-    document.close();
-  });
+  return cy.get("#cypress-jsdom", { log: false });
 }
 
 function checkMountModeEnabled() {
@@ -89,46 +88,23 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
     .then(setXMLHttpRequest)
     .then(setAlert)
     .then(() => {
+      const document = cy.state("document");
       const reactDomToUse = options.ReactDom || ReactDOM;
 
-      const document = cy.state("document");
-      const component = reactDomToUse.render(
-        jsx,
+      const props = {
+        // @ts-ignore provide unique key to the the wrapped component to make sure we are rerendering between tests
+        key: Cypress?.mocha?.getRunner()?.test?.title || Math.random()
+      };
+
+      const CypressTestComponent = reactDomToUse.render(
+        React.createElement(React.Fragment, props, jsx),
         document.getElementById("cypress-jsdom")
       );
 
-      cy.wrap(component, { log: false }).as(options.alias || displayname);
+      cy.wrap(CypressTestComponent, { log: false }).as(
+        options.alias || displayname
+      );
     });
 };
-
-/** Get one or more DOM elements by selector or alias.
-    Features extended support for JSX and React.Component
-    @function   cy.get
-    @param      {string|object|function}  selector
-    @param      {object}                  options
-    @example    cy.get('@Component')
-    @example    cy.get(<Component />)
-    @example    cy.get(Component)
-**/
-Cypress.Commands.overwrite("get", (originalFn, selector, options) => {
-  switch (typeof selector) {
-    case "object":
-      // If attempting to use JSX as a selector, reference the displayname
-      if (
-        selector.$$typeof &&
-        selector.$$typeof.toString().startsWith("Symbol(react")
-      ) {
-        const displayname = selector.type.prototype.constructor.name;
-        return originalFn(`@${displayname}`, options);
-      }
-    case "function":
-      // If attempting to use the component name without JSX (testing in .js/.ts files)
-      // const displayname = selector.prototype.constructor.name
-      const displayname = getDisplayName(selector);
-      return originalFn(`@${displayname}`, options);
-    default:
-      return originalFn(selector, options);
-  }
-});
 
 export default mount;

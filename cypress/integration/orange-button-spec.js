@@ -1,36 +1,17 @@
 /// <reference types="cypress" />
-import React from 'react'
-import ReactDom from "react-dom";
+import React from "react";
 import { mount } from "cypress-react-unit-tests";
-import './Button.css'
+import { Button } from "../../src/Button.jsx";
 
-class Button extends React.Component {
-  handleClick () {
-    this.props.clickHandler(this.props.name)
-  }
+describe("Button", () => {
+  it("can be orange", () => {
+    mount(<Button name="Orange" orange />);
 
-  render () {
-    const className = [
-      'component-button',
-      this.props.orange ? 'orange' : '',
-      this.props.wide ? 'wide' : ''
-    ]
+    cy.get(".component-button")
+      .should("have.class", "orange")
+      .find("button")
+      .should("have.css", "background-color", "rgb(245, 146, 62)");
 
-    return (
-      <div className={className.join(' ').trim()}>
-        <button onClick={this.handleClick.bind(this)}>{this.props.name}</button>
-      </div>
-    )
-  }
-}
-
-describe('Button', () => {
-  it('can be orange', () => {
-    mount(<Button name='Orange' orange />)
-    cy.get('.component-button')
-      .should('have.class', 'orange')
-      .find('button')
-      .should('have.css', 'background-color', 'rgb(245, 146, 62)')
-    cy.percySnapshot()
-  })
-})
+    cy.percySnapshot();
+  });
+});

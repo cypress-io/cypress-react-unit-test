@@ -38,14 +38,4 @@ describe('Counter mounted before each test', () => {
       .click()
       .contains('count: 3')
   })
-
-  it('has count in state', () => {
-    cy.contains('count: 0')
-      .click()
-      .click()
-      .click()
-    cy.get(Transpiled)
-      .its('state')
-      .should('deep.equal', { count: 3 })
-  })
 })

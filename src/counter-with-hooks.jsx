@@ -14,3 +14,4 @@ export default function CounterWithHooks({ initialCount = 0 }) {
     </>
   );
 }
+
