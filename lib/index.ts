@@ -20,14 +20,11 @@ const setAlert = w => {
 function renderTestingPlatform() {
   cy.log("Prepearing to ReactDOM rendering");
 
-  const document = cy.state("document");
-  document.write`
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <div id="cypress-jsdom"></div>
-  </body>`;
+  const document = cy.state('document')
+
+  const rootNode = document.createElement("div");
+  rootNode.setAttribute("id", "cypress-jsdom");
+  document.getElementsByTagName("body")[0].prepend(rootNode);
 
   return cy.get("#cypress-jsdom", { log: false });
 }
@@ -64,7 +61,7 @@ interface MountOptions {
  ```
  **/
 export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
-  // checkMountModeEnabled();
+  checkMountModeEnabled();
 
   // Get the display name property via the component constructor
   // @ts-ignore FIXME
