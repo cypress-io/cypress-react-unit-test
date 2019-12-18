@@ -8,12 +8,12 @@ import CounterWithHooks from "../../src/counter-with-hooks.jsx";
 
 describe("CounterWithHooks component", function() {
   it("works", function() {
-    mount(<CounterWithHooks /* key="1" */ initialCount={3} />, { ReactDom });
+    mount(<CounterWithHooks initialCount={3} />, { React, ReactDom });
     cy.contains("3");
   });
 
   it("counts clicks 2", () => {
-    mount(<CounterWithHooks /* key="2" */ initialCount={0} />, { ReactDom });
+    mount(<CounterWithHooks initialCount={0} />, { React, ReactDom });
     cy.contains("0");
     cy.get("#increment").click();
     cy.contains("1");

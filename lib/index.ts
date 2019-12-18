@@ -2,33 +2,6 @@ import * as React from "react";
 import ReactDOM from "react-dom";
 import getDisplayName from "./getDisplayName";
 
-const setXMLHttpRequest = w => {
-  // by grabbing the XMLHttpRequest from app's iframe
-  // and putting it here - in the test iframe
-  // we suddenly get spying and stubbing 😁
-  // @ts-ignore
-  window.XMLHttpRequest = w.XMLHttpRequest;
-  return w;
-};
-
-const setAlert = w => {
-  window.alert = w.alert;
-  return w;
-};
-
-/** Initialize an empty document with root element */
-function renderTestingPlatform() {
-  cy.log("Prepearing to ReactDOM rendering");
-
-  const document = cy.state('document')
-
-  const rootNode = document.createElement("div");
-  rootNode.setAttribute("id", "cypress-jsdom");
-  document.getElementsByTagName("body")[0].prepend(rootNode);
-
-  return cy.get("#cypress-jsdom", { log: false });
-}
-
 function checkMountModeEnabled() {
   // @ts-ignore
   if (!Cypress.config("mountMode")) {
@@ -79,11 +52,11 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
         }
       });
     })
-    .then(setXMLHttpRequest)
-    .then(setAlert)
     .then(() => {
       const document = cy.state("document");
       const reactDomToUse = options.ReactDom || ReactDOM;
+      window.ReactDOM = reactDomToUse;
+      window.React = options.React || React;
 
       const props = {
         // @ts-ignore provide unique key to the the wrapped component to make sure we are rerendering between tests
@@ -100,9 +73,5 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
       );
     });
 };
-
-before(() => {
-  renderTestingPlatform();
-});
 
 export default mount;

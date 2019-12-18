@@ -6,7 +6,7 @@ module.exports = {
       'module-resolver',
       {
         alias: {
-          'cypress-react-unit-tests': './dist/index.js'
+          'cypress-react-unit-tests': './dist'
         }
       }
     ]

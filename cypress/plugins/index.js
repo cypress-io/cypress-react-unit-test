@@ -1,3 +1,4 @@
+const path = require("path");
 const webpack = require("@cypress/webpack-preprocessor");
 const babelConfig = require("../../babel.config.js");
 
@@ -7,6 +8,11 @@ const webpackOptions = {
   // https://github.com/percy/percy-cypress/issues/58
   node: {
     fs: "empty"
+  },
+  resolve: {
+    alias: {
+      react: path.resolve("./node_modules/react")
+    }
   },
   module: {
     rules: [
