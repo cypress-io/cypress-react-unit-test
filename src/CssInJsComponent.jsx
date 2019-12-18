@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 
-export const Emotion = props => {
+export const Emotion = () => {
   return (
     <div
       css={{
         color: "hotpink"
       }}
     >
-      The Next Generation of CSS-in-JS
+      Emotion 😈
     </div>
   );
 };
