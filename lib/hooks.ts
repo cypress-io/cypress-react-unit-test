@@ -11,10 +11,10 @@ function renderTestingPlatform() {
   rootNode.setAttribute("id", "cypress-jsdom");
   document.getElementsByTagName("body")[0].prepend(rootNode);
 
-  cy.wait(1000);
   return cy.get("#cypress-jsdom", { log: false });
 }
 
 before(() => {
   renderTestingPlatform();
 });
+

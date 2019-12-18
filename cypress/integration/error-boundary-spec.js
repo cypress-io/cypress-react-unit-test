@@ -4,6 +4,10 @@ import { ErrorBoundary } from '../../src/error-boundary.jsx'
 import React from 'react'
 import { mount } from "cypress-react-unit-tests";
 
+Cypress.on("uncaught:exception", (err, runnable) => {
+  return false;
+});
+
 /* eslint-env mocha */
 describe('Error Boundary', () => {
   const errorMessage = 'I crashed!'
@@ -26,11 +30,16 @@ describe('Error Boundary', () => {
   })
 
   it('on error, display fallback UI', () => {
-    mount(
-      <ErrorBoundary>
-        <ChildWithError />
-      </ErrorBoundary>
-    )
+    try {
+      mount(
+        <ErrorBoundary>
+          <ChildWithError />
+        </ErrorBoundary>
+      )
+    } catch (e) {
+      // do nothing
+    }
+   
     cy.get('header h1').should('contain', 'Something went wrong.')
     cy.get('header h3').should('contain', 'failed to load')
   })

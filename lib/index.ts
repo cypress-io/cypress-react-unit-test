@@ -55,8 +55,6 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
     .then(() => {
       const document = cy.state("document");
       const reactDomToUse = options.ReactDom || ReactDOM;
-      window.ReactDOM = reactDomToUse;
-      window.React = options.React || React;
 
       const props = {
         // @ts-ignore provide unique key to the the wrapped component to make sure we are rerendering between tests
