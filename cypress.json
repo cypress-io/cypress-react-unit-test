@@ -4,7 +4,7 @@
   "video": false,
   "projectId": "z9dxah",
   "mountMode": true,
-  "ignoreTestFiles": "*.css",
+  "testFiles": "**/*spec.js",
   "env": {
     "cypress-react-unit-test": {
       "react": "node_modules/react/umd/react.development.js",
