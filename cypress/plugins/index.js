@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("@cypress/webpack-preprocessor");
 const babelConfig = require("../../babel.config.js");
 
+// should we just reuse root webpack config?
 const webpackOptions = {
   // https://webpack.js.org/configuration/node/
   // avoid winston logger problem
@@ -25,6 +26,11 @@ const webpackOptions = {
         test: /\.css$/,
         exclude: [/node_modules/],
         use: ["style-loader", "css-loader"]
+      },
+      {
+        // some of our examples import SVG
+        test: /\.svg$/,
+        loader: 'svg-url-loader'
       }
     ]
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
+import logo from './logo.svg';
 import LoadingIndicator from './LoadingIndicator';
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <pre>isLoading: {String(this.state.isLoading)}</pre>
