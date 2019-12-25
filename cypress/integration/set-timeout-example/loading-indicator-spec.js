@@ -1,4 +1,5 @@
 import React from "react";
+import { unmountComponentAtNode } from "react-dom"
 import { mount } from "cypress-react-unit-tests";
 import LoadingIndicator from './LoadingIndicator'
 
@@ -68,8 +69,16 @@ describe('LoadingIndicator', () => {
         </LoadingIndicator>
       );
       cy.tick(2010)
-      // TODO how to force component unmount?
-      // TODO confirm @clearTimeout was called
+      cy.get('#cypress-jsdom').then($el => {
+        unmountComponentAtNode($el[0])
+      })
+      cy.get('@clearTimeout').should('have.been.calledOnce')
     });
   });
+
+  afterEach(() => {
+    cy.get('#cypress-jsdom').then($el => {
+      unmountComponentAtNode($el[0])
+    })
+  })
 });
