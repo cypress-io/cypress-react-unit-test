@@ -1,7 +1,27 @@
 import React from "react";
 
+// import { LoadScript, GoogleMap } from "react-google-maps";
+import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
+
+const GMap = withScriptjs(withGoogleMap(props =>
+  <GoogleMap id="example-map" center={props.center} />
+))
+
 export default function Map(props) {
   return (
-    <div>Real map component at {props.center.lat}:{props.center.long}</div>
-  );
+    <GMap
+      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+      loadingElement={<div style={{ height: `100%` }} />}
+      containerElement={<div style={{ height: `400px` }} />}
+      mapElement={<div style={{ height: `100%` }} />}
+    />
+  )
 }
+
+// export default function Map(props) {
+//   return (
+//     // <LoadScript id="script-loader" googleMapsApiKey="YOUR_API_KEY">
+//       // <GoogleMap id="example-map" center={props.center} />
+//     // </LoadScript>
+//   );
+// }
