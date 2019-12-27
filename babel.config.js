@@ -2,6 +2,11 @@ module.exports = {
   presets: ['@babel/preset-env', '@babel/preset-react'],
   plugins: [
     '@babel/plugin-proposal-class-properties',
+    // https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs
+    // loose ES6 modules allow us to dynamically mock imports during tests
+    ['@babel/plugin-transform-modules-commonjs', {
+      loose: true
+    }],
     [
       'module-resolver',
       {
