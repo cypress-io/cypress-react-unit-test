@@ -1,12 +1,12 @@
 // example from https://reactjs.org/docs/hooks-overview.html
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
 export default function Counter2WithHooks() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  });
+    document.title = `You clicked ${count} times`
+  })
 
   return (
     <div>
@@ -15,5 +15,5 @@ export default function Counter2WithHooks() {
         Click me
       </button>
     </div>
-  );
+  )
 }

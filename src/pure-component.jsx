@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Button = ({ children, ...rest }) => {
-    return <button {...rest}>{children}</button>;
-};
+  return <button {...rest}>{children}</button>
+}
 
-export default React.memo(Button);
+export default React.memo(Button)

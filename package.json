@@ -13,7 +13,8 @@
     "watch": "tsc -w",
     "pretest": "npm run lint && npm run transpile",
     "lint": "standard --verbose --fix *.js src cypress/integration",
-    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post"
+    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post",
+    "format": "prettier --write 'src/*.jsx' 'integration/**/*.js(x)'"
   },
   "files": [
     "dist",

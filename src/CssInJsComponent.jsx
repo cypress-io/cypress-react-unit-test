@@ -1,6 +1,6 @@
 // https://emotion.sh/docs/introduction
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import { css, jsx } from '@emotion/core'
 
 // several Emotion examples
 
@@ -8,13 +8,13 @@ export const Emotion = () => {
   return (
     <div
       css={{
-        color: "hotpink"
+        color: 'hotpink',
       }}
     >
       Emotion 😈
     </div>
-  );
-};
+  )
+}
 
 export const Emotion2 = () => {
   return (

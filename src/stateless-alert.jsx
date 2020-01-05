@@ -4,7 +4,7 @@ import React from 'react'
 // https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc
 
 /* global alert */
-const HelloWorld = ({name, click}) => {
+const HelloWorld = ({ name, click }) => {
   const sayHi = () => {
     console.log('about to alert')
     alert(`Hi ${name}`)
@@ -12,8 +12,9 @@ const HelloWorld = ({name, click}) => {
 
   return (
     <div>
-      <a href='#'
-        onClick={sayHi}>Say Hi</a>
+      <a href="#" onClick={sayHi}>
+        Say Hi
+      </a>
     </div>
   )
 }
