@@ -16,6 +16,14 @@
     "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post",
     "format": "prettier --write 'src/*.jsx' 'cypress/**/*.js' 'cypress/**/*.jsx' 'lib/*.ts'"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": ["prettier --write", "git add"]
+  },
   "files": [
     "dist",
     "lib"
@@ -50,6 +58,8 @@
     "css-loader": "2.1.1",
     "cypress": "3.4.1",
     "github-post-release": "1.13.1",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
     "prettier": "1.19.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
