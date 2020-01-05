@@ -31,7 +31,7 @@ declare namespace Cypress {
   // NOTE: By default, avoiding React.Component/Element typings
   // for many cases, we don't want to import @types/react
   interface Chainable<Subject> {
-    state: (key) => any,
+    state: (key) => any
     // injectReactDOM: () => Chainable<void>
     // copyCompon { ReactDom }entStyles: (component: Symbol) => Chainable<void>
     /**
@@ -54,6 +54,9 @@ declare namespace Cypress {
     ```
     **/
     // mount: (component: Symbol, alias?: string) => Chainable<void>
-    get<S = any>(alias: string | symbol | Function, options?: Partial<Loggable & Timeoutable>): Chainable<any>
+    get<S = any>(
+      alias: string | symbol | Function,
+      options?: Partial<Loggable & Timeoutable>,
+    ): Chainable<any>
   }
 }
