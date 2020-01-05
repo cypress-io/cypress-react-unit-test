@@ -5,7 +5,6 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-tests'
 
-/* eslint-env mocha */
 describe('Stateless alert', () => {
   beforeEach(() => {
     const spy = cy.spy().as('alert')

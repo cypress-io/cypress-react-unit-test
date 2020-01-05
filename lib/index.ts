@@ -4,9 +4,9 @@ import getDisplayName from './getDisplayName'
 
 function checkMountModeEnabled() {
   // @ts-ignore
-  if (!Cypress.config('mountMode')) {
+  if (Cypress.spec.specType !== 'component') {
     throw new Error(
-      `In order to use mount function please specify { "mountMode": true } in your cypress.json`,
+      `In order to use mount function please place the spec in component folder`,
     )
   }
 }
