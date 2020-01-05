@@ -1,4 +1,6 @@
 {
   "git.ignoreLimitWarning": true,
-  "eslint.enable": false
+  "eslint.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
