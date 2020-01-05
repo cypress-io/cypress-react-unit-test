@@ -1,19 +1,21 @@
 // example from https://reactjs.org/docs/testing-recipes.html#data-fetching
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
 export default function User(props) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null)
 
   function fetchUserData(id) {
-    fetch("/" + id).then(response => response.json()).then(setUser)
+    fetch('/' + id)
+      .then(response => response.json())
+      .then(setUser)
   }
 
   useEffect(() => {
-    fetchUserData(props.id);
-  }, [props.id]);
+    fetchUserData(props.id)
+  }, [props.id])
 
   if (!user) {
-    return "loading...";
+    return 'loading...'
   }
 
   return (
@@ -23,5 +25,5 @@ export default function User(props) {
       <br />
       lives in {user.address}
     </details>
-  );
+  )
 }

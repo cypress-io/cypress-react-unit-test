@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 // import { LoadScript, GoogleMap } from "react-google-maps";
-import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
+import { GoogleMap, withGoogleMap, withScriptjs } from 'react-google-maps'
 
-const GMap = withScriptjs(withGoogleMap(props =>
-  <GoogleMap id="example-map" center={props.center} />
-))
+const GMap = withScriptjs(
+  withGoogleMap(props => <GoogleMap id="example-map" center={props.center} />),
+)
 
 export default function Map(props) {
   return (

@@ -2,7 +2,7 @@
 // the code taken from https://codepen.io/gaearon/pen/LyyXgK
 /// <reference types="cypress" />
 import React from 'react'
-import { mount } from "cypress-react-unit-tests";
+import { mount } from 'cypress-react-unit-tests'
 
 // TODO add styles somehow
 
@@ -16,14 +16,14 @@ function calculateWinner(squares) {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
-  ];
+  ]
   for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+    const [a, b, c] = lines[i]
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return squares[a]
     }
   }
-  return null;
+  return null
 }
 
 function Square(props) {
@@ -31,28 +31,28 @@ function Square(props) {
     <button className="square" onClick={props.onClick}>
       {props.value}
     </button>
-  );
+  )
 }
 
 class Board extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       squares: Array(9).fill(null),
       xIsNext: true,
-    };
+    }
   }
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
+    const squares = this.state.squares.slice()
     if (calculateWinner(squares) || squares[i]) {
-      return;
+      return
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.xIsNext ? 'X' : 'O'
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
-    });
+    })
   }
 
   renderSquare(i) {
@@ -61,16 +61,16 @@ class Board extends React.Component {
         value={this.state.squares[i]}
         onClick={() => this.handleClick(i)}
       />
-    );
+    )
   }
 
   render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
+    const winner = calculateWinner(this.state.squares)
+    let status
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'Winner: ' + winner
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     }
 
     return (
@@ -92,7 +92,7 @@ class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -108,7 +108,7 @@ class Game extends React.Component {
           <ol>{/* TODO */}</ol>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -118,8 +118,7 @@ describe('Tic Tac Toe', () => {
    * @param {number} row 0 based
    * @param {number} column 0 based
    */
-  const clickSquare = (row, column) =>
-    cy.get('.square').eq(row * 3 + column)
+  const clickSquare = (row, column) => cy.get('.square').eq(row * 3 + column)
 
   beforeEach(() => {
     cy.viewport(200, 200)

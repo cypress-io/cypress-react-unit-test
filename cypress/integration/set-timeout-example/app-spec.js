@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
-import React from "react";
-import { mount } from "cypress-react-unit-tests";
+import React from 'react'
+import { mount } from 'cypress-react-unit-tests'
 import App from './App'
 
 // compare to test in
@@ -14,7 +14,7 @@ it('renders without crashing', () => {
   cy.contains('isLoading: true').should('be.visible')
   cy.contains('isLoading: false').should('be.visible')
   cy.contains('ahoy!').should('be.visible')
-});
+})
 
 it('loads really quickly', () => {
   cy.clock()
@@ -27,4 +27,4 @@ it('loads really quickly', () => {
   cy.tick(2010)
   cy.contains('isLoading: false').should('be.visible')
   cy.contains('ahoy!').should('be.visible')
-});
+})

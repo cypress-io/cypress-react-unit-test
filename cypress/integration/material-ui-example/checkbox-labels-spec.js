@@ -1,5 +1,5 @@
-import React from 'react';
-import { mount } from "cypress-react-unit-tests";
+import React from 'react'
+import { mount } from 'cypress-react-unit-tests'
 import CheckboxLabels from './checkbox-labels'
 
 it('renders checkboxes', () => {

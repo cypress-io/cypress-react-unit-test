@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
-import React from "react";
-import { mount } from "cypress-react-unit-tests";
+import React from 'react'
+import { mount } from 'cypress-react-unit-tests'
 import Component from './component'
 import * as GreetingModule from './greeting'
 

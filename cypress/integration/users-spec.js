@@ -2,8 +2,8 @@
 /// <reference types="../../lib" />
 import { Users } from '../../src/users.jsx'
 import React from 'react'
-import ReactDom from "react-dom";
-import { mount } from "cypress-react-unit-tests";
+import ReactDom from 'react-dom'
+import { mount } from 'cypress-react-unit-tests'
 
 /* eslint-env mocha */
 context('Users', () => {
@@ -55,7 +55,7 @@ context('Users', () => {
         method: 'GET',
         url: '/users?_limit=3',
         response: users,
-        delay: 1000
+        delay: 1000,
       }).as('users')
       mount(<Users />)
       cy.get('li').should('have.length', 0)

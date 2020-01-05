@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default class ShoppingList extends React.Component {
   render() {
@@ -11,6 +11,6 @@ export default class ShoppingList extends React.Component {
           <li>Oculus</li>
         </ul>
       </div>
-    );
+    )
   }
 }

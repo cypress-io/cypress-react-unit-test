@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
-import './App.css';
-import logo from './logo.svg';
-import LoadingIndicator from './LoadingIndicator';
+import React, { Component } from 'react'
+import './App.css'
+import logo from './logo.svg'
+import LoadingIndicator from './LoadingIndicator'
 
 class App extends Component {
   state = {
     isLoading: true,
-  };
+  }
 
   componentDidMount() {
-    this._timer = setTimeout(
-      () => this.setState({isLoading: false}),
-      2000
-    );
+    this._timer = setTimeout(() => this.setState({ isLoading: false }), 2000)
   }
 
   componentWillUnmount() {
-    clearTimeout(this._timer);
+    clearTimeout(this._timer)
   }
 
   render() {
@@ -31,9 +28,8 @@ class App extends Component {
           <div>ahoy!</div>
         </LoadingIndicator>
       </div>
-    );
+    )
   }
 }
 
-export default App;
-
+export default App

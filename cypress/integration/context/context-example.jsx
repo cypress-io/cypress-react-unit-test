@@ -3,7 +3,7 @@ import React from 'react'
 // Context lets us pass a value deep into the component tree
 // without explicitly threading it through every component.
 // Create a context for the current theme (with "light" as the default).
-const ThemeContext = React.createContext('light');
+const ThemeContext = React.createContext('light')
 
 export default class App extends React.Component {
   render() {
@@ -14,7 +14,7 @@ export default class App extends React.Component {
       <ThemeContext.Provider value="dark">
         <Toolbar />
       </ThemeContext.Provider>
-    );
+    )
   }
 }
 
@@ -25,21 +25,19 @@ function Toolbar(props) {
     <div>
       <ThemedButton />
     </div>
-  );
+  )
 }
 
 function Button(props) {
-  return (
-    <button>{props.theme}</button>
-  );
+  return <button>{props.theme}</button>
 }
 
 class ThemedButton extends React.Component {
   // Assign a contextType to read the current theme context.
   // React will find the closest theme Provider above and use its value.
   // In this example, the current theme is "dark".
-  static contextType = ThemeContext;
+  static contextType = ThemeContext
   render() {
-    return <Button theme={this.context} />;
+    return <Button theme={this.context} />
   }
 }

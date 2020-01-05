@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from "cypress-react-unit-tests";
+import { mount } from 'cypress-react-unit-tests'
 import App from './context-example.jsx'
 
 describe('Context example', () => {
