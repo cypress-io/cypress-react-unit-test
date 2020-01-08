@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
-import { Button } from '../../src/Button.jsx'
+import { Button } from './Button.jsx'
 
 describe('Button', () => {
   it('can be orange', () => {

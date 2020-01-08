@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 /// <reference types="../../lib" />
-import { Transpiled } from '../../src/transpiled.jsx'
+import { Transpiled } from './transpiled.jsx'
 import React from 'react'
 import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-tests'

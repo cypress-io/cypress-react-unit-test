@@ -2,7 +2,7 @@
 /// <reference types="../../lib" />
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
-import { Counter } from '../../src/counter.jsx'
+import { Counter } from './counter.jsx'
 
 /* eslint-env mocha */
 describe('Counter', () => {

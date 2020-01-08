@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 /// <reference types="../../lib" />
-import { ErrorBoundary } from '../../src/error-boundary.jsx'
+import { ErrorBoundary } from './error-boundary.jsx'
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
 
@@ -32,7 +32,7 @@ describe('Error Boundary', () => {
   it('on error, display fallback UI', () => {
     try {
       mount(
-        <ErrorBoundary>
+        <ErrorBoundary name="ChildWithError">
           <ChildWithError />
         </ErrorBoundary>,
       )
@@ -41,6 +41,6 @@ describe('Error Boundary', () => {
     }
 
     cy.get('header h1').should('contain', 'Something went wrong.')
-    cy.get('header h3').should('contain', 'failed to load')
+    cy.get('header h3').should('contain', 'ChildWithError failed to load')
   })
 })

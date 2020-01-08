@@ -3,7 +3,6 @@ import React from 'react'
 import Map from './map'
 
 export default function Contact(props) {
-  debugger
   return (
     <div>
       <address>

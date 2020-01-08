@@ -4,7 +4,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-tests'
-import Button from '../../src/forward-ref.jsx'
+import Button from './forward-ref.jsx'
 
 /* eslint-env mocha */
 describe('Button component', function() {

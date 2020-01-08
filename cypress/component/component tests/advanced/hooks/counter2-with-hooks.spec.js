@@ -3,7 +3,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-tests'
-import Counter2WithHooks from '../../src/counter2-with-hooks.jsx'
+import Counter2WithHooks from './counter2-with-hooks.jsx'
 
 describe('Counter2WithHooks', function() {
   it('changes document title', function() {

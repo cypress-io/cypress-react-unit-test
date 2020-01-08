@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 /// <reference types="../../lib" />
-import HelloWorld from '../../src/stateless.jsx'
+import HelloWorld from './stateless.jsx'
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
 

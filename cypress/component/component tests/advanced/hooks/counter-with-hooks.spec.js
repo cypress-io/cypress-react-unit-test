@@ -4,7 +4,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-tests'
-import CounterWithHooks from '../../src/counter-with-hooks.jsx'
+import CounterWithHooks from './counter-with-hooks.jsx'
 
 describe('CounterWithHooks component', function() {
   it('works', function() {

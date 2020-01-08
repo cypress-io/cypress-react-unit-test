@@ -2,7 +2,7 @@
 /// <reference types="../../lib" />
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
-import { HelloWorld } from '../../src/hello-world.jsx'
+import { HelloWorld } from './hello-world.jsx'
 
 /* eslint-env mocha */
 describe('HelloWorld component', () => {
