@@ -2,6 +2,7 @@
 import Square from './square4.jsx'
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
+import './tic-tac-toe.css'
 
 it('renders', () => {
   const onClick = cy.stub()
