@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import Game, { Board } from './game.jsx'
+import Game, { Board, calculateWinner } from './game.jsx'
 import React from 'react'
 import { mount } from 'cypress-react-unit-tests'
 import './tic-tac-toe.css'
@@ -87,4 +87,58 @@ it('plays the game', () => {
     .first()
     .should('have.text', 'Go to game start')
     .click()
+})
+
+context('calculateWinner', () => {
+  // we can unit test our winner calculation function!
+  it('returns null for empty board', () => {
+    const squares = Array(9).fill(null)
+    const winner = calculateWinner(squares)
+    expect(winner).to.be.null
+  })
+
+  it('returns X for first row of X', () => {
+    const squares = ['X', 'X', 'X']
+    const winner = calculateWinner(squares)
+    expect(winner).to.equal('X')
+  })
+
+  it('returns O for second row of O', () => {
+    // preserve our Tic-Tac-Toe board formatting
+    // prettier-ignore
+    const squares = [
+      'X', 'X', null,
+      'O', 'O', 'O',
+      null, null, 'X'
+    ]
+    const winner = calculateWinner(squares)
+    expect(winner).to.equal('O')
+  })
+
+  it('returns O for second row of O', () => {
+    // preserve our Tic-Tac-Toe board formatting
+    // prettier-ignore
+    const squares = [
+      'X', 'X', null,
+      'O', 'O', 'O',
+      null, null, 'X'
+    ]
+    const winner = calculateWinner(squares)
+    expect(winner).to.equal('O')
+  })
+
+  it('returns X for diagonal', () => {
+    const _ = null
+    const O = 'O'
+    const X = 'X'
+    // preserve our Tic-Tac-Toe board formatting
+    // prettier-ignore
+    const squares = [
+      _, _, X,
+      O, X, O,
+      X, _, O
+    ]
+    const winner = calculateWinner(squares)
+    expect(winner).to.equal(X)
+  })
 })
