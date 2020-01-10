@@ -1,12 +1,12 @@
 import * as React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM, { unmountComponentAtNode } from 'react-dom'
 import getDisplayName from './getDisplayName'
 
 function checkMountModeEnabled() {
   // @ts-ignore
   if (Cypress.spec.specType !== 'component') {
     throw new Error(
-      `In order to use mount function please place the spec in component folder`,
+      `In order to use mount or unmount functions please place the spec in component folder`,
     )
   }
 }
@@ -70,6 +70,18 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
         options.alias || displayname,
       )
     })
+}
+
+/**
+ * Removes any mounted component
+ */
+export const unmount = () => {
+  checkMountModeEnabled()
+
+  cy.log('unmounting...')
+  cy.get('#cypress-jsdom', { log: false }).then($el => {
+    unmountComponentAtNode($el[0])
+  })
 }
 
 export default mount
