@@ -40,7 +40,8 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
   // @ts-ignore FIXME
   const displayname = getDisplayName(jsx.type, options.alias)
 
-  cy.window({ log: false })
+  return cy
+    .window({ log: false })
     .then(() => {
       Cypress.log({
         name: 'mount',
@@ -79,7 +80,7 @@ export const unmount = () => {
   checkMountModeEnabled()
 
   cy.log('unmounting...')
-  cy.get('#cypress-jsdom', { log: false }).then($el => {
+  return cy.get('#cypress-jsdom', { log: false }).then($el => {
     unmountComponentAtNode($el[0])
   })
 }
