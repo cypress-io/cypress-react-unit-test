@@ -14,6 +14,8 @@ function checkMountModeEnabled() {
 interface MountOptions {
   alias?: string
   ReactDom?: typeof ReactDOM
+  stylesheets?: string | string[]
+  style?: string
 }
 
 /**
@@ -57,6 +59,29 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
       const document = cy.state('document')
       const reactDomToUse = options.ReactDom || ReactDOM
 
+      const el = document.getElementById('cypress-jsdom')
+
+      // insert any custom global styles before the component
+      if (typeof options.stylesheets === 'string') {
+        options.stylesheets = [options.stylesheets]
+      }
+      if (Array.isArray(options.stylesheets)) {
+        console.log('adding stylesheets')
+        options.stylesheets.forEach(href => {
+          const link = document.createElement('link')
+          link.type = 'text/css'
+          link.rel = 'stylesheet'
+          link.href = href
+          document.body.insertBefore(link, el)
+        })
+      }
+
+      if (options.style) {
+        const style = document.createElement('style')
+        style.appendChild(document.createTextNode(options.style))
+        document.body.insertBefore(style, el)
+      }
+
       const props = {
         // @ts-ignore provide unique key to the the wrapped component to make sure we are rerendering between tests
         key: Cypress?.mocha?.getRunner()?.test?.title || Math.random(),
@@ -64,7 +89,7 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
 
       const CypressTestComponent = reactDomToUse.render(
         React.createElement(React.Fragment, props, jsx),
-        document.getElementById('cypress-jsdom'),
+        el,
       )
 
       cy.wrap(CypressTestComponent, { log: false }).as(
