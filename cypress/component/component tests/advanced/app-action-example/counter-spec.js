@@ -5,14 +5,6 @@ import { Counter } from './counter.jsx'
 
 /* eslint-env mocha */
 describe('Counter with access', () => {
-  it.only('has the same window from the component as from test', () => {
-    cy.window()
-      .its('location')
-      .should('have.property', 'pathname', 'blank')
-
-    mount(<Counter />)
-  })
-
   it('works', () => {
     mount(<Counter />)
     cy.contains('count: 0')
