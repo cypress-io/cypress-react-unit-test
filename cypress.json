@@ -3,7 +3,6 @@
   "viewportHeight": 100,
   "video": false,
   "projectId": "z9dxah",
-  "mountMode": false,
   "testFiles": "**/*spec.js",
   "env": {
     "cypress-react-unit-test": {
@@ -14,5 +13,6 @@
   "ignoreTestFiles": [
     "**/__snapshots__/*",
     "**/__image_snapshots__/*"
-  ]
+  ],
+  "experimentalComponentTesting": true
 }
