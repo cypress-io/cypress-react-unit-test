@@ -108,7 +108,8 @@ Cypress.Commands.add('copyComponentStyles', component => {
  **/
 export const mount = (jsx: JSXElement, alias?: string) => {
   // Get the display name property via the component constructor
-  const displayname = getDisplayName(jsx.type, alias)
+  const jsxType = typeof jsx.type === 'string' ? jsx as unknown as JSX : jsx.type
+  const displayname = getDisplayName(jsxType, alias)
 
   let cmd: Cypress.Log;
 
