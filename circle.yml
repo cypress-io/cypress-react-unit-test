@@ -22,3 +22,13 @@ workflows:
           install-command: echo 'Nothing to install in this job'
           no-workspace: true
           record: false
+
+      - cypress/run:
+          name: NPM release 🚀
+          requires:
+            - Install 📦
+            - Test 🧪
+          install-command: echo 'Nothing to install in this job'
+          no-workspace: true
+          # instead of "cypress run" do NPM release 😁
+          command: npm run semantic-release
