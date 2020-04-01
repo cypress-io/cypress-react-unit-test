@@ -6,7 +6,7 @@ import getDisplayName from './getDisplayName';
 // and "losing" styles when the next test starts
 const stylesCache = new Map()
 
-const setXMLHttpRequest = w => {
+const setXMLHttpRequest = (w: Window) => {
   // by grabbing the XMLHttpRequest from app's iframe
   // and putting it here - in the test iframe
   // we suddenly get spying and stubbing 😁
@@ -15,7 +15,7 @@ const setXMLHttpRequest = w => {
   return w
 }
 
-const setAlert = w => {
+const setAlert = (w: Window) => {
   window.alert = w.alert
   return w
 }
@@ -61,12 +61,12 @@ Cypress.Commands.add('copyComponentStyles', component => {
   // like component name
   const parentDocument = window.parent.document
   // @ts-ignore
-  const specDocument = parentDocument.querySelector('iframe.spec-iframe').contentDocument
+  const specDocument: Element = parentDocument.querySelector('iframe.spec-iframe').contentDocument
   // @ts-ignore
-  const appDocument = parentDocument.querySelector('iframe.aut-iframe').contentDocument
+  const appDocument: Element = parentDocument.querySelector('iframe.aut-iframe').contentDocument
 
   const hash = component.type.name
-  let styles = specDocument.querySelectorAll('head style')
+  let styles: NodeListOf<Element> | null = specDocument.querySelectorAll('head style')
   if (styles.length) {
     cy.log(`injected ${styles.length} style(s)`)
     Cypress.stylesCache.set(hash, styles)
@@ -81,7 +81,7 @@ Cypress.Commands.add('copyComponentStyles', component => {
   if (!styles) {
     return
   }
-  const head = appDocument.querySelector('head')
+  const head = appDocument.querySelector('head')!
   styles.forEach(function (style) {
     head.appendChild(style)
   })
@@ -92,7 +92,7 @@ Cypress.Commands.add('copyComponentStyles', component => {
  * To access: use an alias or original component reference
  *  @function   cy.mount
  *  @param      {Object}  jsx - component to mount
- *  @param      {string}  [Component] - alias to use later
+ *  @param      {string}  alias [Component] - alias to use later
  *  @example
  ```
  import Hello from './hello.jsx'
@@ -106,11 +106,11 @@ Cypress.Commands.add('copyComponentStyles', component => {
  cy.get(Hello)
  ```
  **/
-export const mount = (jsx, alias) => {
+export const mount = (jsx: JSXElement, alias?: string) => {
   // Get the display name property via the component constructor
   const displayname = getDisplayName(jsx.type, alias)
 
-  let cmd
+  let cmd: Cypress.Log;
 
   cy.injectReactDOM()
     .window({ log: false })
@@ -129,7 +129,7 @@ export const mount = (jsx, alias) => {
     .then(setXMLHttpRequest)
     .then(setAlert)
     .then(win => {
-      const { ReactDOM } = win
+      const { ReactDOM } = win as Window & {ReactDOM: any}
       const document = cy.state('document')
       const component = ReactDOM.render(
         jsx,

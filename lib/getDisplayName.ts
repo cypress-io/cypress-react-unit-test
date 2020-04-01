@@ -15,7 +15,7 @@ export default function getDisplayName(type: JSX, fallbackName: string = 'Unknow
     return nameFromCache
   }
 
-  let displayName: string
+  let displayName: string | null = null;
 
   // The displayName property is not guaranteed to be a string.
   // It's only safe to use for our purposes if it's a string.
