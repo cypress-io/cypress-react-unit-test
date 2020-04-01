@@ -16,7 +16,7 @@
 
 ## Install
 
-Requires [Node](https://nodejs.org/en/) version 6 or above.
+Requires [Node](https://nodejs.org/en/) version 8 or above.
 
 ```sh
 npm install --save-dev cypress cypress-react-unit-test
@@ -80,61 +80,7 @@ If your React and React DOM libraries are installed in non-standard paths (think
 
 ## Transpilation
 
-How can we use features that require transpilation? Using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme). You can use [cypress/plugins/index.js](cypress/plugins/index.js) to configure any transpilation plugins you need.
-
-For example, to enable class properties:
-
-```js
-// cypress/plugins/index.js
-const webpack = require('@cypress/webpack-preprocessor')
-const webpackOptions = {
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx|mjs)$/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-proposal-class-properties'],
-        },
-      }
-    ]
-  }
-}
-
-const options = {
-  // send in the options from your webpack.config.js, so it works the same
-  // as your app's code
-  webpackOptions,
-  watchOptions: {}
-}
-
-module.exports = on => {
-  on('file:preprocessor', webpack(options))
-}
-```
-
-Install dev dependencies
-
-```shell
-npm i -D @cypress/webpack-preprocessor \
-  babel-loader @babel/preset-env @babel/preset-react \
-  @babel/plugin-proposal-class-properties
-```
-
-And write a component using class properties
-
-```js
-import React from 'react'
-
-export class Transpiled extends React.Component {
-  state = {
-    count: 0
-  }
-
-  // ...
-}
-```
+How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js)
 
 ## Examples
 
