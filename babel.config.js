@@ -4,16 +4,19 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     // https://babeljs.io/docs/en/babel-plugin-transform-modules-commonjs
     // loose ES6 modules allow us to dynamically mock imports during tests
-    ['@babel/plugin-transform-modules-commonjs', {
-      loose: true
-    }],
+    [
+      '@babel/plugin-transform-modules-commonjs',
+      {
+        loose: true,
+      },
+    ],
     [
       'module-resolver',
       {
         alias: {
-          'cypress-react-unit-tests': './dist'
-        }
-      }
-    ]
-  ]
+          'cypress-react-unit-test': './dist',
+        },
+      },
+    ],
+  ],
 }

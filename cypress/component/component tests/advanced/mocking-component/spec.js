@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 import Contact from './contact'
 import Map from './map'
 

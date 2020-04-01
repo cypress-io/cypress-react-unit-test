@@ -2,7 +2,7 @@
 // the code taken from https://codepen.io/gaearon/pen/LyyXgK
 /// <reference types="cypress" />
 import React from 'react'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 
 // TODO add styles somehow
 

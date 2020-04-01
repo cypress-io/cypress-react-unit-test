@@ -1,7 +1,7 @@
 // example comes from https://github.com/ReactTraining/react-router/blob/dev/docs/guides/getting-started.md
 /// <reference types="cypress" />
 import React from 'react'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 import { App } from './app.jsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 

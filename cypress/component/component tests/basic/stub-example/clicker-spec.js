@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 import Clicker from './clicker.jsx'
 
 it('passes stub to the component', () => {

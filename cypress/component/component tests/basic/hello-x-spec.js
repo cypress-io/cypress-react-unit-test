@@ -3,7 +3,7 @@
 import { HelloX, HelloState } from './hello-x.jsx'
 import React from 'react'
 import ReactDom from 'react-dom'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 
 /* eslint-env mocha */
 describe('HelloX component', () => {

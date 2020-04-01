@@ -3,7 +3,7 @@
 import { Users } from './users.jsx'
 import React from 'react'
 import ReactDom from 'react-dom'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 
 /* eslint-env mocha */
 context('Users', () => {

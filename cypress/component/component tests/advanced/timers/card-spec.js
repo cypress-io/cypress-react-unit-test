@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import Card from './card.jsx'
 import React from 'react'
-import { mount } from 'cypress-react-unit-tests'
+import { mount } from 'cypress-react-unit-test'
 
 // NOTE: seems our clock control does not work with effect hooks
 it.skip('should select null after timing out', () => {
