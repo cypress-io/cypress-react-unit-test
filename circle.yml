@@ -25,6 +25,8 @@ workflows:
 
       - cypress/run:
           name: NPM release 🚀
+          # we need newer Node for semantic release
+          executor: cypress/base-12-6-0
           requires:
             - Install 📦
             - Test 🧪
