@@ -12,8 +12,7 @@
     "transpile": "tsc",
     "watch": "tsc -w",
     "pretest": "npm run lint && npm run transpile",
-    "lint": "standard --verbose --fix *.js src cypress/integration",
-    "semantic-release": "semantic-action pre && npm run transpile && npm publish && semantic-action post"
+    "lint": "standard --verbose --fix *.js src cypress/integration"
   },
   "files": [
     "dist",
@@ -41,10 +40,8 @@
     "babel-loader": "8.0.6",
     "css-loader": "2.1.1",
     "cypress": "4.3.0",
-    "github-post-release": "1.13.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "semantic-action": "1.1.6",
     "standard": "12.0.1",
     "style-loader": "0.23.1",
     "typescript": "3.5.1",
@@ -61,9 +58,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/cypress-react-unit-test.git"
-  },
-  "release": {
-    "analyzeCommits": "simple-commit-message",
-    "generateNotes": "github-post-release"
   }
 }
