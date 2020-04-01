@@ -12,7 +12,8 @@
     "transpile": "tsc",
     "watch": "tsc -w",
     "pretest": "npm run lint && npm run transpile",
-    "lint": "standard --verbose --fix *.js src cypress/integration"
+    "lint": "standard --verbose --fix *.js src cypress/integration",
+    "semantic-release": "semantic-release"
   },
   "files": [
     "dist",
@@ -46,7 +47,8 @@
     "style-loader": "0.23.1",
     "typescript": "3.5.1",
     "webpack": "4.33.0",
-    "webpack-cli": "3.3.9"
+    "webpack-cli": "3.3.9",
+    "semantic-release": "^17.0.4"
   },
   "standard": {
     "globals": [
