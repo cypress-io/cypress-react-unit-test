@@ -44,4 +44,11 @@ workflows:
           install-command: echo 'Nothing to install in this job'
           no-workspace: true
           # instead of "cypress run" do NPM release 😁
-          command: npm run semantic-release
+          # clear environment variables to trick semantic-release
+          # into thinking this is NOT a pull request.
+          # (under the hood the module env-ci is used to check if this is a PR)
+          command: |
+            CIRCLE_PR_NUMBER= \
+            CIRCLE_PULL_REQUEST= \
+            CI_PULL_REQUEST= \
+            npm run semantic-release -- --dry
