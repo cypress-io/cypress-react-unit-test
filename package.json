@@ -12,12 +12,13 @@
     "transpile": "tsc",
     "watch": "tsc -w",
     "pretest": "npm run lint && npm run transpile",
-    "lint": "standard --verbose --fix *.js src cypress/integration",
+    "lint": "standard --verbose --fix *.js src cypress/integration plugins",
     "semantic-release": "semantic-release"
   },
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "plugins"
   ],
   "types": "lib",
   "keywords": [
@@ -34,7 +35,6 @@
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
-    "@cypress/webpack-preprocessor": "1.1.3",
     "@percy/cypress": "1.0.9",
     "@types/node": "9.6.49",
     "axios": "0.18.1",
@@ -60,5 +60,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/cypress-react-unit-test.git"
+  },
+  "dependencies": {
+    "@cypress/webpack-preprocessor": "1.1.3",
+    "debug": "4.1.1",
+    "find-yarn-workspace-root": "1.2.1"
   }
 }
