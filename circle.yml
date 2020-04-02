@@ -51,4 +51,4 @@ workflows:
             CIRCLE_PR_NUMBER= \
             CIRCLE_PULL_REQUEST= \
             CI_PULL_REQUEST= \
-            npm run semantic-release -- --dry
+            npm run semantic-release
