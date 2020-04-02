@@ -94,5 +94,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/cypress-react-unit-test.git"
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "feature/cypress-mount-mode",
+        "prerelease": true
+      }
+    ]
   }
 }

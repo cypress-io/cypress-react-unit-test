@@ -3,7 +3,7 @@
 import React from 'react'
 
 /* eslint-env mocha */
-describe('Empty div jsx', () => {
+describe.skip('Empty div jsx', () => {
   it('works with El', () => {
     const El = () => <div>foo</div>
     cy.mount(<El></El>)
