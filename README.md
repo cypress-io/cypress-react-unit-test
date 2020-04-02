@@ -1,4 +1,4 @@
-# cypress-react-unit-test [![Build Status](https://travis-ci.org/bahmutov/cypress-react-unit-test.svg?branch=master)](https://travis-ci.org/bahmutov/cypress-react-unit-test) [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/z9dxah) [![renovate-app badge][renovate-badge]][renovate-app] [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/bahmutov/cypress-react-unit-test)
+# cypress-react-unit-test [![CircleCI](https://circleci.com/gh/bahmutov/cypress-react-unit-test/tree/master.svg?style=svg)](https://circleci.com/gh/bahmutov/cypress-react-unit-test/tree/master) [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/z9dxah) [![renovate-app badge][renovate-badge]][renovate-app] [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/bahmutov/cypress-react-unit-test)
 
 > A little helper to unit test React components in the open source [Cypress.io](https://www.cypress.io/) E2E test runner **ALPHA**
 
@@ -16,7 +16,7 @@
 
 ## Install
 
-Requires [Node](https://nodejs.org/en/) version 6 or above.
+Requires [Node](https://nodejs.org/en/) version 8 or above.
 
 ```sh
 npm install --save-dev cypress cypress-react-unit-test
@@ -63,6 +63,56 @@ describe('HelloState component', () => {
 
 ![Unit testing React components](images/demo.png)
 
+### styles
+
+You can add individual style to the mounted component by passing its text as an option
+
+```js
+it('can be passed as an option', () => {
+  const style = `
+    .component-button {
+      display: inline-flex;
+      width: 25%;
+      flex: 1 0 auto;
+    }
+
+    .component-button.orange button {
+      background-color: #F5923E;
+      color: white;
+    }
+  `
+  cy.mount(<Button name='Orange' orange />, null, { style })
+  cy.get('.orange button')
+    .should('have.css', 'background-color', 'rgb(245, 146, 62)')
+})
+```
+
+Often your component rely on global CSS style imported from the root `index.js` or `app.js` file
+
+```js
+// index.js
+import './styles.css'
+// bootstrap application
+```
+
+You can read the CSS file and pass it as `style` option yourself
+
+```js
+cy.readFile('cypress/integration/Button.css')
+  .then(style => {
+    cy.mount(<Button name='Orange' orange />, null, { style })
+  })
+```
+
+You can even let Cypress read the file and inject the style
+
+```js
+const cssFile = 'cypress/integration/Button.css'
+cy.mount(<Button name='Orange' orange />, null, { cssFile })
+```
+
+See [cypress/integration/inject-style-spec.js](cypress/integration/inject-style-spec.js) for more examples.
+
 ## Configuration
 
 If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:
@@ -80,61 +130,7 @@ If your React and React DOM libraries are installed in non-standard paths (think
 
 ## Transpilation
 
-How can we use features that require transpilation? Using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme). You can use [cypress/plugins/index.js](cypress/plugins/index.js) to configure any transpilation plugins you need.
-
-For example, to enable class properties:
-
-```js
-// cypress/plugins/index.js
-const webpack = require('@cypress/webpack-preprocessor')
-const webpackOptions = {
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx|mjs)$/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-proposal-class-properties'],
-        },
-      }
-    ]
-  }
-}
-
-const options = {
-  // send in the options from your webpack.config.js, so it works the same
-  // as your app's code
-  webpackOptions,
-  watchOptions: {}
-}
-
-module.exports = on => {
-  on('file:preprocessor', webpack(options))
-}
-```
-
-Install dev dependencies
-
-```shell
-npm i -D @cypress/webpack-preprocessor \
-  babel-loader @babel/preset-env @babel/preset-react \
-  @babel/plugin-proposal-class-properties
-```
-
-And write a component using class properties
-
-```js
-import React from 'react'
-
-export class Transpiled extends React.Component {
-  state = {
-    count: 0
-  }
-
-  // ...
-}
-```
+How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js)
 
 ## Examples
 

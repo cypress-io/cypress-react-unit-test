@@ -5,12 +5,6 @@ const { initPlugin } = require('cypress-plugin-snapshots/plugin')
 
 // should we just reuse root webpack config?
 const webpackOptions = {
-  // https://webpack.js.org/configuration/node/
-  // avoid winston logger problem
-  // https://github.com/percy/percy-cypress/issues/58
-  node: {
-    fs: 'empty',
-  },
   resolve: {
     alias: {
       react: path.resolve('./node_modules/react'),
