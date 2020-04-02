@@ -99,7 +99,8 @@
     "branches": [
       "master",
       {
-        "name": "cypress-mount-mode",
+        "name": "feature/cypress-mount-mode",
+        "channel": "cypress-mount-mode",
         "prerelease": true
       }
     ]
