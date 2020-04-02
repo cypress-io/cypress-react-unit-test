@@ -4,6 +4,9 @@ orbs:
 workflows:
   build:
     jobs:
+      # install and cache dependencies in this job
+      # AND build the library once
+      # then the workspace will be passed to other jobs
       - cypress/install:
           name: Install 📦
           build: npm run transpile
@@ -15,14 +18,22 @@ workflows:
                 name: Linting code 🧹
                 command: npm run lint
 
+      # the test job automatically attaches the workspace
+      # created by the install job, so it is ready to test
       - cypress/run:
           name: Test 🧪
           requires:
             - Install 📦
+          # notice a trick to avoid re-installing dependencies
+          # in this job - a do-nothing "install-command" parameter
           install-command: echo 'Nothing to install in this job'
+          # we are not going to use results from this job anywhere else
           no-workspace: true
           record: false
 
+      # this job attaches the workspace left by the install job
+      # so it is ready to run Cypress tests
+      # only we will run semantic release script instead
       - cypress/run:
           name: NPM release 🚀
           # we need newer Node for semantic release
