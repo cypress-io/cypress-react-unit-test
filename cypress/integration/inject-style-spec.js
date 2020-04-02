@@ -1,4 +1,5 @@
-/// <reference types="cypress" />
+// <reference types="cypress" />
+/// <reference types="../../lib" />
 import React from 'react'
 
 class Button extends React.Component {
@@ -49,6 +50,13 @@ describe('Injecting style', () => {
     cy.get('.component-button')
       .should('have.class', 'orange')
       .find('button')
+      .should('have.css', 'background-color', 'rgb(245, 146, 62)')
+  })
+
+  it('can be read automatically', () => {
+    const cssFile = 'cypress/integration/Button.css'
+    cy.mount(<Button name='Orange' orange />, null, { cssFile })
+    cy.get('.orange button')
       .should('have.css', 'background-color', 'rgb(245, 146, 62)')
   })
 

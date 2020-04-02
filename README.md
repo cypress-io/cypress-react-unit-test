@@ -104,6 +104,15 @@ cy.readFile('cypress/integration/Button.css')
   })
 ```
 
+You can even let Cypress read the file and inject the style
+
+```js
+const cssFile = 'cypress/integration/Button.css'
+cy.mount(<Button name='Orange' orange />, null, { cssFile })
+```
+
+See [cypress/integration/inject-style-spec.js](cypress/integration/inject-style-spec.js) for more examples.
+
 ## Configuration
 
 If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:

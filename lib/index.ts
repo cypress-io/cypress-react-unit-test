@@ -88,11 +88,25 @@ Cypress.Commands.add('copyComponentStyles', component => {
 })
 
 const injectStyle = (options?: Partial<MountOptions>) => (w: Window) => {
-  if (options && options.style) {
+  // IMPORTANT: return window reference for other callbacks to inject
+  // more things
+  if (!options) {
+    return w
+  }
+  if (options.style) {
     const style = w.document.createElement('style')
     style.appendChild(document.createTextNode(options.style))
     w.document.body.appendChild(style)
+  }
+  if (options.cssFile) {
+    return cy.readFile(options.cssFile).then(css => {
+      const style = w.document.createElement('style')
+      style.appendChild(document.createTextNode(css))
+      w.document.body.appendChild(style)
+      return w
+    })
  }
+ return w
 }
 
 /**

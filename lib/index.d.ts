@@ -24,8 +24,20 @@ interface JSXElement {
   props: object
 }
 
+type filepath = string
+
 interface MountOptions {
+  /**
+   * CSS string to inject as a style element
+   * before mounting the component.
+   */
   style: string
+  /**
+   * Read CSS file from the given path
+   * and inject it as a style tag
+   * before mounting the component
+   */
+  cssFile: filepath
 }
 
 declare namespace Cypress {
