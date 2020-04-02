@@ -63,6 +63,47 @@ describe('HelloState component', () => {
 
 ![Unit testing React components](images/demo.png)
 
+### styles
+
+You can add individual style to the mounted component by passing its text as an option
+
+```js
+it('can be passed as an option', () => {
+  const style = `
+    .component-button {
+      display: inline-flex;
+      width: 25%;
+      flex: 1 0 auto;
+    }
+
+    .component-button.orange button {
+      background-color: #F5923E;
+      color: white;
+    }
+  `
+  cy.mount(<Button name='Orange' orange />, null, { style })
+  cy.get('.orange button')
+    .should('have.css', 'background-color', 'rgb(245, 146, 62)')
+})
+```
+
+Often your component rely on global CSS style imported from the root `index.js` or `app.js` file
+
+```js
+// index.js
+import './styles.css'
+// bootstrap application
+```
+
+You can read the CSS file and pass it as `style` option yourself
+
+```js
+cy.readFile('cypress/integration/Button.css')
+  .then(style => {
+    cy.mount(<Button name='Orange' orange />, null, { style })
+  })
+```
+
 ## Configuration
 
 If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:

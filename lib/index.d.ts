@@ -24,6 +24,10 @@ interface JSXElement {
   props: object
 }
 
+interface MountOptions {
+  style: string
+}
+
 declare namespace Cypress {
   interface Cypress {
     stylesCache: any
@@ -58,7 +62,7 @@ declare namespace Cypress {
     cy.get(Hello)
     ```
     **/
-    mount: (component: JSXElement, alias?: string) => Chainable<void>
+    mount: (component: JSXElement, alias?: string, options?: Partial<MountOptions>) => Chainable<void>
     get<S = any>(alias: string | symbol | Function, options?: Partial<Loggable & Timeoutable>): Chainable<any>
   }
 }

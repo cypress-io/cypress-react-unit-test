@@ -87,6 +87,14 @@ Cypress.Commands.add('copyComponentStyles', component => {
   })
 })
 
+const injectStyle = (options?: Partial<MountOptions>) => (w: Window) => {
+  if (options && options.style) {
+    const style = w.document.createElement('style')
+    style.appendChild(document.createTextNode(options.style))
+    w.document.body.appendChild(style)
+ }
+}
+
 /**
  * Mount a React component in a blank document; register it as an alias
  * To access: use an alias or original component reference
@@ -106,7 +114,7 @@ Cypress.Commands.add('copyComponentStyles', component => {
  cy.get(Hello)
  ```
  **/
-export const mount = (jsx: JSXElement, alias?: string) => {
+export const mount = (jsx: JSXElement, alias?: string, options?: Partial<MountOptions>) => {
   // Get the display name property via the component constructor
   const jsxType = typeof jsx.type === 'string' ? jsx as unknown as JSX : jsx.type
   const displayname = getDisplayName(jsxType, alias)
@@ -127,6 +135,7 @@ export const mount = (jsx: JSXElement, alias?: string) => {
         }
       })
     })
+    .then(injectStyle(options))
     .then(setXMLHttpRequest)
     .then(setAlert)
     .then(win => {
