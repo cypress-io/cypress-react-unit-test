@@ -65,5 +65,14 @@
     "@cypress/webpack-preprocessor": "4.1.3",
     "debug": "4.1.1",
     "find-yarn-workspace-root": "1.2.1"
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "use-bundler-from-cra",
+        "prerelease": "use-bundler-from-cra"
+      }
+    ]
   }
 }
