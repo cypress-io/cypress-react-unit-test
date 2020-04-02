@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Unit test React components using Cypress",
   "main": "dist",
-  "module": "lib",
+  "no-module-for-now": "lib",
   "scripts": {
     "test": "cypress run",
     "percy:test": "percy exec -- cypress run",
@@ -12,12 +12,13 @@
     "transpile": "tsc",
     "watch": "tsc -w",
     "pretest": "npm run lint && npm run transpile",
-    "lint": "standard --verbose --fix *.js src cypress/integration",
+    "lint": "standard --verbose --fix *.js src cypress/integration plugins",
     "semantic-release": "semantic-release"
   },
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "plugins"
   ],
   "types": "lib",
   "keywords": [
@@ -34,7 +35,6 @@
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
-    "@cypress/webpack-preprocessor": "1.1.3",
     "@percy/cypress": "1.0.9",
     "@types/node": "9.6.49",
     "axios": "0.18.1",
@@ -44,7 +44,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "semantic-release": "^17.0.4",
-    "standard": "12.0.1",
+    "standard": "14.3.3",
     "style-loader": "0.23.1",
     "typescript": "3.5.1",
     "webpack": "4.33.0",
@@ -60,5 +60,19 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/cypress-react-unit-test.git"
+  },
+  "dependencies": {
+    "@cypress/webpack-preprocessor": "4.1.3",
+    "debug": "4.1.1",
+    "find-yarn-workspace-root": "1.2.1"
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "use-bundler-from-cra",
+        "prerelease": "use-bundler-from-cra"
+      }
+    ]
   }
 }

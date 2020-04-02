@@ -132,6 +132,26 @@ If your React and React DOM libraries are installed in non-standard paths (think
 
 How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js)
 
+### Create React App users
+
+If you are using Create-React-App v3, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
+
+```json
+{
+  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3"
+}
+```
+
+If you already have a plugins file, you can use a file preprocessor that points at CRA's webpack
+
+```js
+// your project's Cypress plugin file
+const craFilePreprocessor = require('cypress-react-unit-test/plugins/cra-v3/file-preprocessor')
+module.exports = on => {
+  on('file:preprocessor', craFilePreprocessor())
+}
+```
+
 ## Examples
 
 All components are in [src](src) folder. All tests are in [cypress/integration](cypress/integration) folder.

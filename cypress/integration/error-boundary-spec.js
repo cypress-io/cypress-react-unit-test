@@ -24,7 +24,8 @@ describe('Error Boundary', () => {
       .should('not.exist')
   })
 
-  it('on error, display fallback UI', () => {
+  it.skip('on error, display fallback UI', () => {
+    cy.viewport(500, 500)
     cy.mount(
       <ErrorBoundary>
         <ChildWithError />
