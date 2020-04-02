@@ -142,6 +142,8 @@ If you are using Create-React-App v3, and want to reuse the built in webpack bef
 }
 ```
 
+See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test)
+
 If you already have a plugins file, you can use a file preprocessor that points at CRA's webpack
 
 ```js
