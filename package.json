@@ -99,7 +99,7 @@
     "branches": [
       "master",
       {
-        "name": "feature/cypress-mount-mode",
+        "name": "cypress-mount-mode",
         "prerelease": true
       }
     ]
