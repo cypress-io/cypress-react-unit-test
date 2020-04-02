@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Unit test React components using Cypress",
   "main": "dist",
-  "module": "lib",
+  "no-module-for-now": "lib",
   "scripts": {
     "test": "cypress run",
     "percy:test": "percy exec -- cypress run",
