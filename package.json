@@ -100,8 +100,7 @@
       "master",
       {
         "name": "feature/cypress-mount-mode",
-        "channel": "cypress-mount-mode",
-        "prerelease": true
+        "prerelease": "cypress-mount-mode"
       }
     ]
   }
