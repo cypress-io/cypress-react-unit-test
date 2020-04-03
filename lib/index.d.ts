@@ -76,5 +76,10 @@ declare namespace Cypress {
     **/
     mount: (component: JSXElement, alias?: string, options?: Partial<MountOptions>) => Chainable<void>
     get<S = any>(alias: string | symbol | Function, options?: Partial<Loggable & Timeoutable>): Chainable<any>
+    /**
+     * Utility method to re-render a new / updated component
+     * Should only be called AFTER `cy.mount`
+     */
+    render: (jsx: JSXElement) => void
   }
 }

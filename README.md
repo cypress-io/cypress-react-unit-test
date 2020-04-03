@@ -113,6 +113,20 @@ cy.mount(<Button name='Orange' orange />, null, { cssFile })
 
 See [cypress/integration/inject-style-spec.js](cypress/integration/inject-style-spec.js) for more examples.
 
+### re-render
+
+Sometimes you need to re-render the component, for example when a Redux store changes. After `cy.mount` completes (asynchronously), you can call `cy.render(JSXElement)` method.
+
+```js
+cy.mount(<El text='first' />)
+cy.contains('first')
+  .then(() => {
+    cy.render(<El text='second' />)
+  })
+```
+
+See [bahmutov/redux-counter-example](https://github.com/bahmutov/redux-counter-example) example spec file [src/App.cy-spec.js](https://github.com/bahmutov/redux-counter-example/blob/master/src/App.cy-spec.js).
+
 ## Configuration
 
 If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:

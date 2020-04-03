@@ -155,10 +155,14 @@ export const mount = (jsx: JSXElement, alias?: string, options?: Partial<MountOp
     .then(win => {
       const { ReactDOM } = win as Window & {ReactDOM: any}
       const document = cy.state('document')
-      const component = ReactDOM.render(
-        jsx,
-        document.getElementById('cypress-jsdom')
-      )
+      const target: Element = document.getElementById('cypress-jsdom')
+
+      const render = (currentJsx: JSXElement) => ReactDOM.render(currentJsx, target)
+      // expose utility to re-render a component from tests
+      cy.render = (jsx: JSXElement) => {
+        render(jsx)
+      }
+      const component = render(jsx);
       cy.wrap(component, { log: false }).as(alias || displayname)
     })
   cy.copyComponentStyles(jsx)
