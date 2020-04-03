@@ -4,9 +4,9 @@
 
 ## TLDR
 
-* What is this? This package allows you to use [Cypress](https://www.cypress.io/) test runner to unit test your React components with zero effort.
+- What is this? This package allows you to use [Cypress](https://www.cypress.io/) test runner to unit test your React components with zero effort.
 
-* How is this different from [Enzyme](https://github.com/airbnb/enzyme)? It is similar in functionality BUT runs the component in the real browser with full power of Cypress E2E test runner: [live GUI, full API, screen recording, CI support, cross-platform](https://www.cypress.io/features/).
+- How is this different from [Enzyme](https://github.com/airbnb/enzyme)? It is similar in functionality BUT runs the component in the real browser with full power of Cypress E2E test runner: [live GUI, full API, screen recording, CI support, cross-platform](https://www.cypress.io/features/).
 
 ## Known problems
 
@@ -50,8 +50,7 @@ describe('HelloState component', () => {
     cy.contains('Hello Spider-man!')
     // mounted component can be selected via its name, function, or JSX
     // e.g. '@HelloState', HelloState, or <HelloState />
-    cy.get(HelloState)
-      .invoke('setState', { name: 'React' })
+    cy.get(HelloState).invoke('setState', { name: 'React' })
     cy.get(HelloState)
       .its('state')
       .should('deep.equal', { name: 'React' })
@@ -81,9 +80,12 @@ it('can be passed as an option', () => {
       color: white;
     }
   `
-  cy.mount(<Button name='Orange' orange />, null, { style })
-  cy.get('.orange button')
-    .should('have.css', 'background-color', 'rgb(245, 146, 62)')
+  cy.mount(<Button name="Orange" orange />, { style })
+  cy.get('.orange button').should(
+    'have.css',
+    'background-color',
+    'rgb(245, 146, 62)',
+  )
 })
 ```
 
@@ -98,17 +100,16 @@ import './styles.css'
 You can read the CSS file and pass it as `style` option yourself
 
 ```js
-cy.readFile('cypress/integration/Button.css')
-  .then(style => {
-    cy.mount(<Button name='Orange' orange />, null, { style })
-  })
+cy.readFile('cypress/integration/Button.css').then(style => {
+  cy.mount(<Button name="Orange" orange />, { style })
+})
 ```
 
 You can even let Cypress read the file and inject the style
 
 ```js
 const cssFile = 'cypress/integration/Button.css'
-cy.mount(<Button name='Orange' orange />, null, { cssFile })
+cy.mount(<Button name="Orange" orange />, { cssFile })
 ```
 
 See [cypress/integration/inject-style-spec.js](cypress/integration/inject-style-spec.js) for more examples.
@@ -136,18 +137,18 @@ How can we use features that require transpilation? By using [@cypress/webpack-p
 
 All components are in [src](src) folder. All tests are in [cypress/integration](cypress/integration) folder.
 
-* [hello-world-spec.js](cypress/integration/hello-world-spec.js) - testing the simplest React component from [hello-world.jsx](src/hello-world.jsx)
-* [hello-x-spec.js](cypress/integration/hello-x-spec.js) - testing React component with props and state [hello-x.jsx](src/hello-x.jsx)
-* [counter-spec.js](cypress/integration/counter-spec.js) clicks on the component and confirms the result
-* [stateless-spec.js](cypress/integration/stateless-spec.js) shows testing a stateless component from [stateless.jsx](src/stateless.jsx)
-* [transpiled-spec.js](cypress/integration/stateless-spec.js) shows testing a component with class properties syntax from [transpiled.jsx](src/stateless.jsx)
-* [error-boundary-spec.js](cypress/integration/error-boundary-spec.js) shows testing a component acting as an error boundary from [error-boundary.jsx](src/error-boundary.jsx)
-* [users-spec.js](cypress/integration/users-spec.js) shows how to observe XHR requests, mock server responses for component [users.jsx](src/users.jsx)
-* [alert-spec.js](cypress/integration/alert-spec.js) shows how to spy on `window.alert` calls from your component [stateless-alert.jsx](src/stateless-alert.jsx)
+- [hello-world-spec.js](cypress/integration/hello-world-spec.js) - testing the simplest React component from [hello-world.jsx](src/hello-world.jsx)
+- [hello-x-spec.js](cypress/integration/hello-x-spec.js) - testing React component with props and state [hello-x.jsx](src/hello-x.jsx)
+- [counter-spec.js](cypress/integration/counter-spec.js) clicks on the component and confirms the result
+- [stateless-spec.js](cypress/integration/stateless-spec.js) shows testing a stateless component from [stateless.jsx](src/stateless.jsx)
+- [transpiled-spec.js](cypress/integration/stateless-spec.js) shows testing a component with class properties syntax from [transpiled.jsx](src/stateless.jsx)
+- [error-boundary-spec.js](cypress/integration/error-boundary-spec.js) shows testing a component acting as an error boundary from [error-boundary.jsx](src/error-boundary.jsx)
+- [users-spec.js](cypress/integration/users-spec.js) shows how to observe XHR requests, mock server responses for component [users.jsx](src/users.jsx)
+- [alert-spec.js](cypress/integration/alert-spec.js) shows how to spy on `window.alert` calls from your component [stateless-alert.jsx](src/stateless-alert.jsx)
 
 ## Large examples
 
-* [bahmutov/calculator](https://github.com/bahmutov/calculator) tests multiple components: calculator App, Button, Display.
+- [bahmutov/calculator](https://github.com/bahmutov/calculator) tests multiple components: calculator App, Button, Display.
 
 ## Development
 
@@ -171,12 +172,12 @@ Uses [Percy.io](https://percy.io) visual diffing service as a GitHub pull reques
 
 Same feature for unit testing components from other frameworks using Cypress
 
-* [cypress-vue-unit-test](https://github.com/bahmutov/cypress-vue-unit-test)
-* [cypress-cycle-unit-test](https://github.com/bahmutov/cypress-cycle-unit-test)
-* [cypress-svelte-unit-test](https://github.com/bahmutov/cypress-svelte-unit-test)
-* [cypress-angular-unit-test](https://github.com/bahmutov/cypress-angular-unit-test)
-* [cypress-hyperapp-unit-test](https://github.com/bahmutov/cypress-hyperapp-unit-test)
-* [cypress-angularjs-unit-test](https://github.com/bahmutov/cypress-angularjs-unit-test)
+- [cypress-vue-unit-test](https://github.com/bahmutov/cypress-vue-unit-test)
+- [cypress-cycle-unit-test](https://github.com/bahmutov/cypress-cycle-unit-test)
+- [cypress-svelte-unit-test](https://github.com/bahmutov/cypress-svelte-unit-test)
+- [cypress-angular-unit-test](https://github.com/bahmutov/cypress-angular-unit-test)
+- [cypress-hyperapp-unit-test](https://github.com/bahmutov/cypress-hyperapp-unit-test)
+- [cypress-angularjs-unit-test](https://github.com/bahmutov/cypress-angularjs-unit-test)
 
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [renovate-app]: https://renovateapp.com/
