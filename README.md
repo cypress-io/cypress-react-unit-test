@@ -148,7 +148,7 @@ How can we use features that require transpilation? By using [@cypress/webpack-p
 
 ### Create React App users
 
-If you are using Create-React-App v3, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
+If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
 
 ```json
 {
@@ -168,6 +168,8 @@ module.exports = on => {
   on('file:preprocessor', craFilePreprocessor())
 }
 ```
+
+**Bonus:** re-using the config means if you create your application using `create-react-app --typescript`, then TypeScript transpile just works out of the box. See [bahmutov/try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript).
 
 ## Examples
 
