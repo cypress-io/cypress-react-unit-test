@@ -81,7 +81,7 @@ it('can be passed as an option', () => {
       color: white;
     }
   `
-  cy.mount(<Button name='Orange' orange />, null, { style })
+  cy.mount(<Button name='Orange' orange />, { style })
   cy.get('.orange button')
     .should('have.css', 'background-color', 'rgb(245, 146, 62)')
 })
@@ -100,7 +100,7 @@ You can read the CSS file and pass it as `style` option yourself
 ```js
 cy.readFile('cypress/integration/Button.css')
   .then(style => {
-    cy.mount(<Button name='Orange' orange />, null, { style })
+    cy.mount(<Button name='Orange' orange />, { style })
   })
 ```
 
@@ -108,7 +108,7 @@ You can even let Cypress read the file and inject the style
 
 ```js
 const cssFile = 'cypress/integration/Button.css'
-cy.mount(<Button name='Orange' orange />, null, { cssFile })
+cy.mount(<Button name='Orange' orange />, { cssFile })
 ```
 
 See [cypress/integration/inject-style-spec.js](cypress/integration/inject-style-spec.js) for more examples.
@@ -125,7 +125,7 @@ cy.contains('first')
   })
 ```
 
-See [bahmutov/redux-counter-example](https://github.com/bahmutov/redux-counter-example) example spec file [src/App.cy-spec.js](https://github.com/bahmutov/redux-counter-example/blob/master/src/App.cy-spec.js).
+See [bahmutov/redux-counter-example](https://github.com/bahmutov/redux-counter-example) example spec file [App.cy-spec.js](https://github.com/bahmutov/redux-counter-example).
 
 ## Configuration
 
