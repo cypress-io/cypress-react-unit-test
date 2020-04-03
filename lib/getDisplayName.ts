@@ -8,7 +8,7 @@ const cachedDisplayNames: WeakMap<JSX, string> = new WeakMap();
  * @param fallbackName {string} The alias, or fallback name to use when the name cannot be derived.
  * @link https://github.com/facebook/react-devtools/blob/master/backend/getDisplayName.js
  */
-export default function getDisplayName(type: JSX, fallbackName: string = 'Unknown'): string {
+export function getDisplayName(type: JSX, fallbackName: string = 'Unknown'): string {
   if (type === undefined) {
     // something is terrible wrong with this JSX element
     throw new Error(`Something is wrong with this element "${type}" with fallback "${fallbackName}"`)

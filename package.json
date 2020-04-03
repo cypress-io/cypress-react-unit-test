@@ -7,7 +7,7 @@
   "scripts": {
     "test": "cypress run",
     "percy:test": "percy exec -- cypress run",
-    "build": "webpack -d",
+    "build": "webpack -d && npm run transpile",
     "cy:open": "cypress open",
     "transpile": "tsc",
     "watch": "tsc -w",

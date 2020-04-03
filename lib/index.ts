@@ -1,6 +1,6 @@
 /// <reference path="./index.d.ts" />
 
-import getDisplayName from './getDisplayName';
+import {getDisplayName} from './getDisplayName';
 
 // having weak reference to styles prevents garbage collection
 // and "losing" styles when the next test starts
