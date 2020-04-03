@@ -30,7 +30,9 @@
   },
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "support",
+    "plugins"
   ],
   "keywords": [
     "react",
