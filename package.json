@@ -106,8 +106,6 @@
         "name": "feature/cypress-mount-mode",
         "prerelease": "cypress-mount-mode"
       }
-    ],
-    "analyzeCommits": "simple-commit-message",
-    "generateNotes": "github-post-release"
+    ]
   }
 }
