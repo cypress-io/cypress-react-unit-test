@@ -128,10 +128,10 @@ const injectStyle = (options?: Partial<MountOptions>) => (w: Window) => {
  cy.get(Hello)
  ```
  **/
-export const mount = (jsx: JSXElement, alias?: string, options?: Partial<MountOptions>) => {
+export const mount = (jsx: JSXElement, options: Partial<MountOptions> = {}) => {
   // Get the display name property via the component constructor
   const jsxType = typeof jsx.type === 'string' ? jsx as unknown as JSX : jsx.type
-  const displayname = getDisplayName(jsxType, alias)
+  const displayname = getDisplayName(jsxType, options.alias)
 
   let cmd: Cypress.Log;
 
@@ -163,7 +163,7 @@ export const mount = (jsx: JSXElement, alias?: string, options?: Partial<MountOp
         render(jsx)
       }
       const component = render(jsx);
-      cy.wrap(component, { log: false }).as(alias || displayname)
+      cy.wrap(component, { log: false }).as(options.alias || displayname)
     })
   cy.copyComponentStyles(jsx)
     .then(() => {

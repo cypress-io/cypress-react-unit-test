@@ -36,7 +36,7 @@ describe('Injecting style', () => {
         color: white;
       }
     `
-    cy.mount(<Button name='Orange' orange />, null, { style })
+    cy.mount(<Button name='Orange' orange />, { style })
     cy.get('.orange button')
       .should('have.css', 'background-color', 'rgb(245, 146, 62)')
   })
@@ -44,7 +44,7 @@ describe('Injecting style', () => {
   it('read CSS file and pass as style', () => {
     cy.readFile('cypress/integration/Button.css')
     .then(style => {
-      cy.mount(<Button name='Orange' orange />, null, { style })
+      cy.mount(<Button name='Orange' orange />, { style })
     })
 
     cy.get('.component-button')
@@ -55,7 +55,7 @@ describe('Injecting style', () => {
 
   it('can be read automatically', () => {
     const cssFile = 'cypress/integration/Button.css'
-    cy.mount(<Button name='Orange' orange />, null, { cssFile })
+    cy.mount(<Button name='Orange' orange />, { cssFile })
     cy.get('.orange button')
       .should('have.css', 'background-color', 'rgb(245, 146, 62)')
   })
@@ -70,14 +70,14 @@ describe('Injecting style', () => {
     it('is orange', function () {
       // notice we use "function () {}" callback
       // to get the test context "this" to be able to use "this.style"
-      cy.mount(<Button name='Orange' orange />, null, { style: this.style })
+      cy.mount(<Button name='Orange' orange />, { style: this.style })
 
       cy.get('.orange button')
       .should('have.css', 'background-color', 'rgb(245, 146, 62)')
     })
 
     it('is orange again', function () {
-      cy.mount(<Button name='Orange' orange />, null, { style: this.style })
+      cy.mount(<Button name='Orange' orange />, { style: this.style })
 
       cy.get('.orange button')
       .should('have.css', 'background-color', 'rgb(245, 146, 62)')

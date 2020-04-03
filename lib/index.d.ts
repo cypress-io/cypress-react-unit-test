@@ -28,6 +28,11 @@ type filepath = string
 
 interface MountOptions {
   /**
+   * How to refer to this component later on.
+   * Usually automatic.
+   */
+  alias: string,
+  /**
    * CSS string to inject as a style element
    * before mounting the component.
    */
@@ -65,7 +70,7 @@ declare namespace Cypress {
     ```
     import Hello from './hello.jsx'
     // mount and access by alias
-    cy.mount(<Hello />, 'Hello')
+    cy.mount(<Hello />, {alias: 'Hello'})
     // using default alias
     cy.get('@Component')
     // using specified alias
@@ -74,7 +79,7 @@ declare namespace Cypress {
     cy.get(Hello)
     ```
     **/
-    mount: (component: JSXElement, alias?: string, options?: Partial<MountOptions>) => Chainable<void>
+    mount: (component: JSXElement, options?: Partial<MountOptions>) => Chainable<void>
     get<S = any>(alias: string | symbol | Function, options?: Partial<Loggable & Timeoutable>): Chainable<any>
     /**
      * Utility method to re-render a new / updated component

@@ -9,6 +9,11 @@ const cachedDisplayNames: WeakMap<JSX, string> = new WeakMap();
  * @link https://github.com/facebook/react-devtools/blob/master/backend/getDisplayName.js
  */
 export default function getDisplayName(type: JSX, fallbackName: string = 'Unknown'): string {
+  if (type === undefined) {
+    // something is terrible wrong with this JSX element
+    throw new Error(`Something is wrong with this element "${type}" with fallback "${fallbackName}"`)
+  }
+
   const nameFromCache = cachedDisplayNames.get(type)
 
   if (nameFromCache != null) {
