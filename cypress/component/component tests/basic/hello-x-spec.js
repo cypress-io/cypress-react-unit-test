@@ -15,7 +15,9 @@ describe('HelloX component', () => {
   it('renders Unicode', () => {
     mount(<HelloX name="🌎" />)
     cy.contains('Hello 🌎!')
-    cy.percySnapshot('Hello globe')
+    // for now disabled Percy in support commands
+    // to make the bundles smaller and faster
+    // cy.percySnapshot('Hello globe')
     cy.wait(1000)
   })
 })

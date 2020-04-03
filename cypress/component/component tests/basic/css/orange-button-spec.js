@@ -12,6 +12,8 @@ describe('Button', () => {
       .find('button')
       .should('have.css', 'background-color', 'rgb(245, 146, 62)')
 
-    cy.percySnapshot()
+    // for now disabled Percy in support commands
+    // to make the bundles smaller and faster
+    // cy.percySnapshot()
   })
 })

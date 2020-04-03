@@ -16,6 +16,8 @@ it('Todo - should create snapshot', () => {
     />,
   )
   cy.get('[data-testid=item]').should('have.length', 2)
+  // disabled snapshot commands for now
+  // to speed up bundling
   // let tree = component.toJSON();
   // expect(tree).toMatchSnapshot();
 

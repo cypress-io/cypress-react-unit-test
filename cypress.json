@@ -1,6 +1,6 @@
 {
-  "viewportWidth": 300,
-  "viewportHeight": 100,
+  "viewportWidth": 400,
+  "viewportHeight": 400,
   "video": false,
   "projectId": "z9dxah",
   "testFiles": "**/*spec.js",
