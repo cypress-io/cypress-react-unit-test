@@ -152,7 +152,8 @@ If you are using Create-React-App v3, and want to reuse the built in webpack bef
 
 ```json
 {
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3"
+  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
+  "supportFile": "node_modules/cypress-react-unit-test/support"
 }
 ```
 

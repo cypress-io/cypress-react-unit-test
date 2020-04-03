@@ -18,7 +18,8 @@
   "files": [
     "dist",
     "lib",
-    "plugins"
+    "plugins",
+    "support"
   ],
   "types": "lib",
   "keywords": [
