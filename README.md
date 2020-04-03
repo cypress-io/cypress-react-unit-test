@@ -186,6 +186,7 @@ All components are in [src](src) folder. All tests are in [cypress/integration](
 
 ## Large examples
 
+* [bahmutov/test-redux-examples](https://github.com/bahmutov/test-redux-examples) has bunch of official Redux app examples with equivalent Cypress unit tests
 * [bahmutov/calculator](https://github.com/bahmutov/calculator) tests multiple components: calculator App, Button, Display.
 
 ## Development
