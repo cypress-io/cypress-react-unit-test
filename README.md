@@ -148,7 +148,7 @@ How can we use features that require transpilation? By using [@cypress/webpack-p
 
 ## Code coverage
 
-If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the fly using `babel-plugin-istanbul`. If you want to disable the instrumentation, use `--env coverage=false` or `CYPRESS_coverage=false` or set in your `cypress.json` file
+If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the fly using `babel-plugin-istanbul` and generates report using dependency [cypress-io/code-coverage](https://github.com/cypress-io/code-coverage) (included). If you want to disable code coverage instrumentation and reporting, use `--env coverage=false` or `CYPRESS_coverage=false` or set in your `cypress.json` file
 
 ```json
 {
@@ -157,8 +157,6 @@ If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the
   }
 }
 ```
-
-Works really well with coverage reporting done by plugin [cypress-io/code-coverage](https://github.com/cypress-io/code-coverage).
 
 ### Create React App users
 

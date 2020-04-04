@@ -2,3 +2,4 @@
 // "supportFile": "node_modules/cypress-react-unit-test/support"
 // adds commands from cypress-react-unit-test
 require('cypress-react-unit-test')
+require('@cypress/code-coverage/support')
