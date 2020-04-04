@@ -146,6 +146,20 @@ If your React and React DOM libraries are installed in non-standard paths (think
 
 How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js)
 
+## Code coverage
+
+If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the fly using `babel-plugin-istanbul`. If you want to disable the instrumentation, use `--env coverage=false` or `CYPRESS_coverage=false` or set in your `cypress.json` file
+
+```json
+{
+  "env": {
+    "coverage": false
+  }
+}
+```
+
+Works really well with coverage reporting done by plugin [cypress-io/code-coverage](https://github.com/cypress-io/code-coverage).
+
 ### Create React App users
 
 If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
