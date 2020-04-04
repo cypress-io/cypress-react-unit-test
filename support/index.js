@@ -1,3 +1,5 @@
 // should be loaded from cypress.json as a support file
 // "supportFile": "node_modules/cypress-react-unit-test/support"
-import 'cypress-react-unit-test/dist/hooks'
+// adds commands from cypress-react-unit-test
+require('cypress-react-unit-test')
+require('@cypress/code-coverage/support')
