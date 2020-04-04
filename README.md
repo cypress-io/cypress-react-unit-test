@@ -133,6 +133,45 @@ If your React and React DOM libraries are installed in non-standard paths (think
 
 How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js)
 
+## Code coverage
+
+If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the fly using `babel-plugin-istanbul`. If you want to disable the instrumentation, use `--env coverage=false` or `CYPRESS_coverage=false` or set in your `cypress.json` file
+
+```json
+{
+  "env": {
+    "coverage": false
+  }
+}
+```
+
+Works really well with coverage reporting done by plugin [cypress-io/code-coverage](https://github.com/cypress-io/code-coverage).
+
+### Create React App users
+
+If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
+
+```json
+{
+  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
+  "supportFile": "node_modules/cypress-react-unit-test/support"
+}
+```
+
+See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test)
+
+If you already have a plugins file, you can use a file preprocessor that points at CRA's webpack
+
+```js
+// your project's Cypress plugin file
+const craFilePreprocessor = require('cypress-react-unit-test/plugins/cra-v3/file-preprocessor')
+module.exports = on => {
+  on('file:preprocessor', craFilePreprocessor())
+}
+```
+
+**Bonus:** re-using the config means if you create your application using `create-react-app --typescript`, then TypeScript transpile just works out of the box. See [bahmutov/try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript).
+
 ## Examples
 
 All components are in [src](src) folder. All tests are in [cypress/integration](cypress/integration) folder.
