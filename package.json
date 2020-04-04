@@ -37,7 +37,7 @@
     "@babel/preset-env": "7.9.0",
     "@babel/preset-react": "7.9.4",
     "@percy/cypress": "1.0.9",
-    "@types/node": "9.6.49",
+    "@types/node": "9.6.55",
     "axios": "0.18.1",
     "babel-loader": "8.1.0",
     "css-loader": "2.1.1",
