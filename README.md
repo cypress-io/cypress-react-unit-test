@@ -51,9 +51,7 @@ describe('HelloState component', () => {
     // mounted component can be selected via its name, function, or JSX
     // e.g. '@HelloState', HelloState, or <HelloState />
     cy.get(HelloState).invoke('setState', { name: 'React' })
-    cy.get(HelloState)
-      .its('state')
-      .should('deep.equal', { name: 'React' })
+    cy.get(HelloState).its('state').should('deep.equal', { name: 'React' })
     // check if GUI has rerendered
     cy.contains('Hello React!')
   })
@@ -100,7 +98,7 @@ import './styles.css'
 You can read the CSS file and pass it as `style` option yourself
 
 ```js
-cy.readFile('cypress/integration/Button.css').then(style => {
+cy.readFile('cypress/integration/Button.css').then((style) => {
   cy.mount(<Button name="Orange" orange />, { style })
 })
 ```
@@ -156,14 +154,25 @@ If you are using Create-React-App v3 or `react-scripts`, and want to reuse the b
 }
 ```
 
-See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test)
+See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test), typical full config with specs and source files in `src` folder (before [ejecting the app](https://github.com/bahmutov/cypress-react-unit-test/issues/134)):
+
+```json
+{
+  "fixturesFolder": false,
+  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
+  "supportFile": "node_modules/cypress-react-unit-test/support",
+  "testFiles": "**/*.spec.js",
+  "experimentalComponentTesting": true,
+  "componentFolder": "src"
+}
+```
 
 If you already have a plugins file, you can use a file preprocessor that points at CRA's webpack
 
 ```js
 // your project's Cypress plugin file
 const craFilePreprocessor = require('cypress-react-unit-test/plugins/cra-v3/file-preprocessor')
-module.exports = on => {
+module.exports = (on) => {
   on('file:preprocessor', craFilePreprocessor())
 }
 ```
@@ -186,6 +195,8 @@ All components are in [src](src) folder. All tests are in [cypress/integration](
 ## Large examples
 
 - [bahmutov/calculator](https://github.com/bahmutov/calculator) tests multiple components: calculator App, Button, Display.
+- [bahmutov/react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) branch `added-tests`
+- [bahmutov/test-redux-examples](https://github.com/bahmutov/test-redux-examples) branch `mount2`
 
 ## Development
 
