@@ -181,6 +181,19 @@ module.exports = on => {
 
 **Bonus:** re-using the config means if you create your application using `create-react-app --typescript`, then TypeScript transpile just works out of the box. See [bahmutov/try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript).
 
+## Your webpack config
+
+If you have your own webpack config, you can use included plugins file to load it. Here is the configuration using the included plugins file and passing the name of the config file via `env` variable in the `cypress.json` file
+
+```json
+{
+  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/load-webpack",
+  "env": {
+    "webpackFilename": "demo/config/webpack.dev.js"
+  }
+}
+```
+
 ## Examples
 
 All components are in [src](src) folder. All tests are in [cypress/integration](cypress/integration) folder.
