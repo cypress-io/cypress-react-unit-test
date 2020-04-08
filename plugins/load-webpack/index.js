@@ -1,7 +1,7 @@
 // @ts-check
 const path = require('path')
 const debug = require('debug')('cypress-react-unit-test')
-const webpack = require('@cypress/webpack-preprocessor')
+const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const findWebpack = require('find-webpack')
 
 module.exports = (on, config) => {
@@ -10,8 +10,7 @@ module.exports = (on, config) => {
   const webpackFilename = config.env && config.env.webpackFilename
   if (!webpackFilename) {
     throw new Error(
-      'Could not find "webpackFilename" option in Cypress env variables %o',
-      config.env,
+      'Could not find "webpackFilename" option in Cypress env variables',
     )
   }
   debug('got webpack config filename %s', webpackFilename)
@@ -26,6 +25,7 @@ module.exports = (on, config) => {
   debug('coverage is disabled? %o', { coverageIsDisabled })
 
   const opts = {
+    reactScripts: true,
     coverage: !coverageIsDisabled,
   }
 
@@ -37,7 +37,7 @@ module.exports = (on, config) => {
     watchOptions: {},
   }
 
-  on('file:preprocessor', webpack(options))
+  on('file:preprocessor', webpackPreprocessor(options))
 
   // IMPORTANT to return the config object
   // with the any changed environment variables

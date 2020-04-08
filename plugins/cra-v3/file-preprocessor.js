@@ -1,6 +1,7 @@
+// @ts-check
 const debug = require('debug')('cypress-react-unit-test')
 const findWebpack = require('find-webpack')
-const webpack = require('@cypress/webpack-preprocessor')
+const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 
 const getWebpackOptions = opts => {
   debug('top level opts %o', opts)
@@ -9,7 +10,7 @@ const getWebpackOptions = opts => {
   if (!webpackOptions) {
     console.error('⚠️ Could not find Webpack options, using defaults')
     return {
-      webpackOptions: webpack.defaultOptions,
+      webpackOptions: webpackPreprocessor.defaultOptions,
       watchOptions: {},
     }
   }
@@ -33,8 +34,9 @@ module.exports = config => {
   debug('coverage is disabled? %o', { coverageIsDisabled })
 
   const opts = {
+    reactScripts: true,
     coverage: !coverageIsDisabled,
   }
   const options = getWebpackOptions(opts)
-  return webpack(options)
+  return webpackPreprocessor(options)
 }
