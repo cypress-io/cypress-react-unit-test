@@ -17,7 +17,7 @@ interface ReactModule {
 interface StyleOptions {
   stylesheets: string | string[]
   style: string
-  cssFile: string
+  cssFiles: string | string[]
 }
 
 interface MountReactComponentOptions {
