@@ -10,6 +10,24 @@ interface ReactModule {
 }
 
 /**
+ * Additional styles to inject into the document.
+ * A component might need 3rd party libraries from CDN,
+ * local CSS files and custom styles.
+ */
+interface StyleOptions {
+  stylesheets: string | string[]
+  style: string
+  cssFile: string
+}
+
+interface MountReactComponentOptions {
+  alias: string
+  ReactDom: typeof ReactDOM
+}
+
+type MountOptions = Partial<StyleOptions & MountReactComponentOptions>
+
+/**
  * The `type` property from the transpiled JSX object.
  * @example
  * const { type } = React.createElement('div', null, 'Hello')
