@@ -10,10 +10,6 @@
 
 ## Known problems
 
-- [ ] some DOM events are not working when running all tests at once [#4](https://github.com/bahmutov/cypress-react-unit-test/issues/4)
-- [x] cannot mock server XHR for injected components [#5](https://github.com/bahmutov/cypress-react-unit-test/issues/5)
-- [x] cannot spy on `window.alert` [#6](https://github.com/bahmutov/cypress-react-unit-test/issues/6)
-
 ## Install
 
 Requires [Node](https://nodejs.org/en/) version 8 or above.
@@ -22,45 +18,37 @@ Requires [Node](https://nodejs.org/en/) version 8 or above.
 npm install --save-dev cypress cypress-react-unit-test
 ```
 
-If you need help configuring bundler, see [preprocessors info](https://gitpitch.com/cypress-io/testing-workshop-cypress?p=slides/16-preprocessors)
-
 ## Use
 
-Include this plugin from `cypress/support/index.js`
+Include this plugin from your project's `cypress/support/index.js`
 
 ```js
-import 'cypress-react-unit-test'
+require('cypress-react-unit-test/dist/hooks')
 ```
 
-This adds a new command `cy.mount` that can mount a React component. It also overloads `cy.get` to accept in addition to selectors React component, returning it. See examples below.
+Then turn the experimental component support on in your `cypress.json`. You can also specify where component spec files are located. For exampled to have them located in `src` folder use:
+
+```json
+{
+  "experimentalComponentTesting": true,
+  "componentFolder": "src"
+}
+```
 
 ## Example
 
 ```js
-// load Cypress TypeScript definitions for IntelliSense
-/// <reference types="cypress" />
-// import the component you want to test
-import { HelloState } from '../../src/hello-x.jsx'
 import React from 'react'
-describe('HelloState component', () => {
+import { mount } from 'cypress-react-unit-test'
+import { HelloWorld } from './hello-world.jsx'
+describe('HelloWorld component', () => {
   it('works', () => {
-    // mount the component under test
-    cy.mount(<HelloState />)
-    // start testing!
-    cy.contains('Hello Spider-man!')
-    // mounted component can be selected via its name, function, or JSX
-    // e.g. '@HelloState', HelloState, or <HelloState />
-    cy.get(HelloState).invoke('setState', { name: 'React' })
-    cy.get(HelloState)
-      .its('state')
-      .should('deep.equal', { name: 'React' })
-    // check if GUI has rerendered
-    cy.contains('Hello React!')
+    mount(<HelloWorld />)
+    // now use standard Cypress commands
+    cy.contains('Hello World!').should('be.visible')
   })
 })
 ```
-
-![Unit testing React components](images/demo.png)
 
 ### styles
 
@@ -208,10 +196,21 @@ Look at the examples in [cypress/component](cypress/component) folder.
 
 ## Large examples
 
-- [bahmutov/calculator](https://github.com/bahmutov/calculator) tests multiple components: calculator App, Button, Display.
-- [bahmutov/react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) branch `added-tests`
-- [bahmutov/test-redux-examples](https://github.com/bahmutov/test-redux-examples) branch `mount2`
-- [bahmutov/test-react-hooks-animations](https://github.com/bahmutov/test-react-hooks-animations) react hooks with spring animations test
+<!-- prettier-ignore-start -->
+Repo | description
+--- | ---
+[try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) | Hello world initialized with CRAv3
+[try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript) | Hello world initialized with CRAv3 `--typescript`
+[react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) | Modern web application using hooks
+[test-redux-examples](https://github.com/bahmutov/test-redux-examples) | Example apps copies from official Redux repo and tested as components
+[test-react-hooks-animations](https://github.com/bahmutov/test-react-hooks-animations) | Testing React springs fun blob animation
+[test-mdx-example](https://github.com/bahmutov/test-mdx-example) | Example testing MDX components using Cypress
+[test-apollo](https://github.com/bahmutov/test-apollo) | Component testing an application that uses Apollo GraphQL library
+[test-xstate-react](https://github.com/bahmutov/test-xstate-react) | XState component testing using Cypress
+[test-react-router-v5](https://github.com/bahmutov/test-react-router-v5) | A few tests of React Router v5
+[test-material-ui](https://github.com/bahmutov/test-material-ui) | Testing Material UI components: date pickers, lists, autocomplete
+[test-d3-react-gauge](https://github.com/bahmutov/test-d3-react-gauge) | Testing React D3 gauges
+<!-- prettier-ignore-end -->
 
 To find more examples, see GitHub topic [cypress-react-unit-test-example](https://github.com/topics/cypress-react-unit-test-example)
 
