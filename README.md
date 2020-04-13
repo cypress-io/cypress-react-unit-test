@@ -153,7 +153,7 @@ If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the
 }
 ```
 
-### Create React App users
+### React Scripts App users
 
 If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
 
@@ -204,16 +204,7 @@ If you have your own webpack config, you can use included plugins file to load i
 
 ## Examples
 
-All components are in [src](src) folder. All tests are in [cypress/integration](cypress/integration) folder.
-
-- [hello-world-spec.js](cypress/integration/hello-world-spec.js) - testing the simplest React component from [hello-world.jsx](src/hello-world.jsx)
-- [hello-x-spec.js](cypress/integration/hello-x-spec.js) - testing React component with props and state [hello-x.jsx](src/hello-x.jsx)
-- [counter-spec.js](cypress/integration/counter-spec.js) clicks on the component and confirms the result
-- [stateless-spec.js](cypress/integration/stateless-spec.js) shows testing a stateless component from [stateless.jsx](src/stateless.jsx)
-- [transpiled-spec.js](cypress/integration/stateless-spec.js) shows testing a component with class properties syntax from [transpiled.jsx](src/stateless.jsx)
-- [error-boundary-spec.js](cypress/integration/error-boundary-spec.js) shows testing a component acting as an error boundary from [error-boundary.jsx](src/error-boundary.jsx)
-- [users-spec.js](cypress/integration/users-spec.js) shows how to observe XHR requests, mock server responses for component [users.jsx](src/users.jsx)
-- [alert-spec.js](cypress/integration/alert-spec.js) shows how to spy on `window.alert` calls from your component [stateless-alert.jsx](src/stateless-alert.jsx)
+Look at the examples in [cypress/component](cypress/component) folder.
 
 ## Large examples
 
