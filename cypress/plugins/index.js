@@ -13,7 +13,7 @@ const webpackOptions = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx|mjs|ts|tsx)$/,
         loader: 'babel-loader',
         options: babelConfig,
       },

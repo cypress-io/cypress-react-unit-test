@@ -1,5 +1,9 @@
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-react'],
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react',
+    '@babel/preset-typescript',
+  ],
   plugins: [
     // allow lazy loaded components with dynamic "import(...)"
     // https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/

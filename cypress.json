@@ -3,7 +3,7 @@
   "viewportHeight": 400,
   "video": false,
   "projectId": "z9dxah",
-  "testFiles": "**/*spec.js",
+  "testFiles": "**/*spec.{js,jsx,ts,tsx}",
   "env": {
     "cypress-react-unit-test": {
       "react": "node_modules/react/umd/react.development.js",
