@@ -10,7 +10,7 @@
 
 ## Known problems
 
-- On the fly resources (like SVG resources) are not served, see [try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) for example
+See issues labeled [v2](https://github.com/bahmutov/cypress-react-unit-test/labels/v2)
 
 ## Install
 
