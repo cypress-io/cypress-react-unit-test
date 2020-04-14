@@ -16,7 +16,14 @@ module.exports = (on, config) => {
   debug('got webpack config filename %s', webpackFilename)
   const resolved = path.resolve(webpackFilename)
   debug('resolved webpack at %s', webpackFilename)
-  const webpackOptions = require(resolved)
+
+  let webpackOptions = require(resolved)
+  debug('loaded webpack options: %o', webpackOptions)
+  if (webpackOptions.default) {
+    // we probably loaded TS file
+    debug('loaded webpack options has .default - taking that as the config')
+    webpackOptions = webpackOptions.default
+  }
 
   debug('webpack options: %o', webpackOptions)
 
