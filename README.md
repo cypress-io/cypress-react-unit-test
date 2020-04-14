@@ -10,6 +10,8 @@
 
 ## Known problems
 
+- On the fly resources (like SVG resources) are not served, see [try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) for example
+
 ## Install
 
 Requires [Node](https://nodejs.org/en/) version 8 or above.
