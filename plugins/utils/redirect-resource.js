@@ -1,6 +1,7 @@
 const debug = require('debug')('cypress-react-unit-test')
 const path = require('path')
 const mime = require('mime-types')
+const fs = require('fs')
 
 /**
  * User code:
@@ -10,7 +11,7 @@ const mime = require('mime-types')
  *   image is "/__root/path/to/image.png"
  *   <img src={image} />
  */
-function staticResourceLoader(content) {
+function staticResourceLoader() {
   debug('loading static resource %s', this.resourcePath)
   debug('cwd', process.cwd())
   const relativeResourcePath = path.relative(process.cwd(), this.resourcePath)
@@ -20,7 +21,8 @@ function staticResourceLoader(content) {
     debug('resource is outside of the current working directory')
     debug('inlining it instead (performance hit!)')
     const mimetype = mime.lookup(this.resourcePath)
-    const encoded = content.toString('base64')
+    const content = fs.readFileSync(this.resourcePath)
+    const encoded = new Buffer(content).toString('base64')
     return `module.exports = "data:${mimetype};base64,${encoded}"`
   }
 
