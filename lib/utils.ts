@@ -18,10 +18,12 @@ function insertStylesheets(
 /**
  * Inserts a single stylesheet element
  */
-function insertStyles(style: string, document: Document, el: HTMLElement) {
-  const styleElement = document.createElement('style')
-  styleElement.appendChild(document.createTextNode(style))
-  document.body.insertBefore(styleElement, el)
+function insertStyles(styles: string[], document: Document, el: HTMLElement) {
+  styles.forEach(style => {
+    const styleElement = document.createElement('style')
+    styleElement.appendChild(document.createTextNode(style))
+    document.body.insertBefore(styleElement, el)
+  })
 }
 
 function insertSingleCssFile(
@@ -59,26 +61,43 @@ export const injectStylesBeforeElement = (
   document: Document,
   el: HTMLElement,
 ) => {
-  // insert any custom global styles before the component
+  // first insert all stylesheets as Link elements
+  const stylesheets = options.stylesheet ? [options.stylesheet] : []
+
   if (typeof options.stylesheets === 'string') {
     options.stylesheets = [options.stylesheets]
   }
-  if (Array.isArray(options.stylesheets)) {
-    insertStylesheets(options.stylesheets, document, el)
+  if (options.stylesheets) {
+    stylesheets.concat(options.stylesheets)
   }
 
-  if (options.style) {
-    insertStyles(options.style, document, el)
+  insertStylesheets(stylesheets, document, el)
+
+  // insert any styles as <style>...</style> elements
+  const styles = []
+  if (typeof options.style === 'string') {
+    styles.push(options.style)
+  }
+  if (typeof options.styles === 'string') {
+    styles.push(options.styles)
+  } else if (Array.isArray(options.styles)) {
+    styles.concat(options.styles)
   }
 
-  if (Array.isArray(options.cssFiles)) {
-    return insertLocalCssFiles(options.cssFiles, document, el)
+  insertStyles(styles, document, el)
+
+  // now load any css files by path and add their content
+  // as <style>...</style> elements
+  const cssFiles = []
+
+  if (typeof options.cssFile === 'string') {
+    cssFiles.push(options.cssFile)
   }
 
   if (typeof options.cssFiles === 'string') {
-    return insertSingleCssFile(options.cssFiles, document, el)
+    cssFiles.push(options.cssFiles)
+  } else if (Array.isArray(options.cssFiles)) {
+    cssFiles.concat(options.cssFiles)
   }
-
-  // force this function to have a return value from all branches
-  return cy.wrap(null)
+  return insertLocalCssFiles(cssFiles, document, el)
 }

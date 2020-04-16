@@ -15,14 +15,41 @@ interface ReactModule {
  * local CSS files and custom styles.
  */
 interface StyleOptions {
+  /**
+   * Creates <link href="..." /> element for each stylesheet
+   */
   stylesheets: string | string[]
+  /**
+   * Single CSS stylesheet URL
+   */
+  stylesheet: string
+  /**
+   * Creates <style>...</style> element and inserts given CSS
+   */
   style: string
+  /**
+   * Creates <style>...</style> element for each given CSS text
+   */
+  styles: string | string[]
+  /**
+   * Loads each file and creates a <style>...</style> element
+   * with the loaded CSS
+   */
   cssFiles: string | string[]
+  /**
+   * Single CSS file to load into a <style></style> element
+   */
+  cssFile: string
 }
 
 interface MountReactComponentOptions {
   alias: string
   ReactDom: typeof ReactDOM
+  /**
+   * Log the mounting command into Cypress Command Log,
+   * true by default.
+   */
+  log: boolean
 }
 
 type MountOptions = Partial<StyleOptions & MountReactComponentOptions>
