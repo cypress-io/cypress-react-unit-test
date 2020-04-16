@@ -78,4 +78,7 @@ export const injectStylesBeforeElement = (
   if (typeof options.cssFiles === 'string') {
     return insertSingleCssFile(options.cssFiles, document, el)
   }
+
+  // force this function to have a return value from all branches
+  return cy.wrap(null)
 }
