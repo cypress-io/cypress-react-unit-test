@@ -2,6 +2,7 @@
 const debug = require('debug')('cypress-react-unit-test')
 const findWebpack = require('find-webpack')
 const webpackPreprocessor = require('@cypress/webpack-preprocessor')
+const { addImageRedirect } = require('../utils/add-image-redirect')
 
 const getWebpackOptions = opts => {
   debug('top level opts %o', opts)
@@ -18,22 +19,7 @@ const getWebpackOptions = opts => {
   findWebpack.cleanForCypress(opts, webpackOptions)
   debug('claned webpack options: %o', webpackOptions)
 
-  // we need to handle static images and redirect them to
-  // the existing files. Cypress has fallthrough static server
-  // for anything like "/_root/<path>" which is perfect - because
-  // importing a static image gives us that <path>!
-  // insert our loader first before any built-in loaders kick in
-  const loaderRules = webpackOptions.module.rules.find(rule =>
-    Array.isArray(rule.oneOf),
-  )
-  if (loaderRules) {
-    debug('found oneOf rule %o', loaderRules.oneOf)
-    debug('adding our static image loader')
-    loaderRules.oneOf.unshift({
-      test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
-      loader: require.resolve('./redirect-resource'),
-    })
-  }
+  addImageRedirect(webpackOptions)
 
   const options = {
     webpackOptions,

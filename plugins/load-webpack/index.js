@@ -3,6 +3,7 @@ const path = require('path')
 const debug = require('debug')('cypress-react-unit-test')
 const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const findWebpack = require('find-webpack')
+const { addImageRedirect } = require('../utils/add-image-redirect')
 
 module.exports = (on, config) => {
   require('@cypress/code-coverage/task')(on, config)
@@ -38,6 +39,8 @@ module.exports = (on, config) => {
 
   findWebpack.cleanForCypress(opts, webpackOptions)
   debug('claned webpack options: %o', webpackOptions)
+
+  addImageRedirect(webpackOptions)
 
   const options = {
     webpackOptions,
