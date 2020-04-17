@@ -6,7 +6,18 @@ describe('cssFile', () => {
   it('is loaded', () => {
     const Component = () => <button className="green">Green button</button>
     mount(<Component />, {
-      cssFiles: 'cypress/component/component tests/basic/css-file/index.css',
+      cssFiles: 'cypress/component/basic/css-file/index.css',
+    })
+
+    cy.get('button')
+      .should('have.class', 'green')
+      .and('have.css', 'background-color', 'rgb(0, 255, 0)')
+  })
+
+  it('cssFile is for loading a single file', () => {
+    const Component = () => <button className="green">Green button</button>
+    mount(<Component />, {
+      cssFile: 'cypress/component/basic/css-file/index.css',
     })
 
     cy.get('button')
@@ -20,8 +31,8 @@ describe('cssFile', () => {
     )
     mount(<Component />, {
       cssFiles: [
-        'cypress/component/component tests/basic/css-file/base.css',
-        'cypress/component/component tests/basic/css-file/index.css',
+        'cypress/component/basic/css-file/base.css',
+        'cypress/component/basic/css-file/index.css',
       ],
     })
 
@@ -36,5 +47,20 @@ describe('cssFile', () => {
 
     // and should have style from the second css file
     cy.get('button').and('have.css', 'background-color', 'rgb(0, 255, 0)')
+  })
+
+  it('resets the style', () => {
+    const Component = () => (
+      <button className="green">Large green button</button>
+    )
+    mount(<Component />)
+    // the component should NOT have CSS styles
+
+    cy.get('button')
+      .should('have.class', 'green')
+      .invoke('css', 'height')
+      .should(value => {
+        expect(parseFloat(value), 'height is < 20px').to.be.lessThan(20)
+      })
   })
 })

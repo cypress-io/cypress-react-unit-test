@@ -17,3 +17,18 @@ function renderTestingPlatform() {
 before(() => {
   renderTestingPlatform()
 })
+
+/**
+ * Remove any style or extra link elements from the iframe placeholder
+ * left from any previous test
+ *
+ */
+function cleanupStyles() {
+  const document = cy.state('document') as Document
+  const styles = document.body.querySelectorAll('style')
+  styles.forEach(styleElement => {
+    document.body.removeChild(styleElement)
+  })
+}
+
+beforeEach(cleanupStyles)

@@ -62,33 +62,33 @@ export const injectStylesBeforeElement = (
   el: HTMLElement,
 ) => {
   // first insert all stylesheets as Link elements
-  const stylesheets = options.stylesheet ? [options.stylesheet] : []
+  let stylesheets = options.stylesheet ? [options.stylesheet] : []
 
   if (typeof options.stylesheets === 'string') {
     options.stylesheets = [options.stylesheets]
   }
   if (options.stylesheets) {
-    stylesheets.concat(options.stylesheets)
+    stylesheets = stylesheets.concat(options.stylesheets)
   }
 
   insertStylesheets(stylesheets, document, el)
 
   // insert any styles as <style>...</style> elements
-  const styles = []
+  let styles = []
   if (typeof options.style === 'string') {
     styles.push(options.style)
   }
   if (typeof options.styles === 'string') {
     styles.push(options.styles)
   } else if (Array.isArray(options.styles)) {
-    styles.concat(options.styles)
+    styles = styles.concat(options.styles)
   }
 
   insertStyles(styles, document, el)
 
   // now load any css files by path and add their content
   // as <style>...</style> elements
-  const cssFiles = []
+  let cssFiles = []
 
   if (typeof options.cssFile === 'string') {
     cssFiles.push(options.cssFile)
@@ -97,7 +97,8 @@ export const injectStylesBeforeElement = (
   if (typeof options.cssFiles === 'string') {
     cssFiles.push(options.cssFiles)
   } else if (Array.isArray(options.cssFiles)) {
-    cssFiles.concat(options.cssFiles)
+    cssFiles = cssFiles.concat(options.cssFiles)
   }
+
   return insertLocalCssFiles(cssFiles, document, el)
 }
