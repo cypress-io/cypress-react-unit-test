@@ -25,9 +25,15 @@ before(() => {
  */
 function cleanupStyles() {
   const document = cy.state('document') as Document
+
   const styles = document.body.querySelectorAll('style')
   styles.forEach(styleElement => {
     document.body.removeChild(styleElement)
+  })
+
+  const links = document.body.querySelectorAll('link[rel=stylesheet]')
+  links.forEach(link => {
+    document.body.removeChild(link)
   })
 }
 

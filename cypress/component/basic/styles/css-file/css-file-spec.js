@@ -6,7 +6,7 @@ describe('cssFile', () => {
   it('is loaded', () => {
     const Component = () => <button className="green">Green button</button>
     mount(<Component />, {
-      cssFiles: 'cypress/component/basic/css-file/index.css',
+      cssFiles: 'cypress/component/basic/styles/css-file/index.css',
     })
 
     cy.get('button')
@@ -17,7 +17,7 @@ describe('cssFile', () => {
   it('cssFile is for loading a single file', () => {
     const Component = () => <button className="green">Green button</button>
     mount(<Component />, {
-      cssFile: 'cypress/component/basic/css-file/index.css',
+      cssFile: 'cypress/component/basic/styles/css-file/index.css',
     })
 
     cy.get('button')
@@ -31,8 +31,8 @@ describe('cssFile', () => {
     )
     mount(<Component />, {
       cssFiles: [
-        'cypress/component/basic/css-file/base.css',
-        'cypress/component/basic/css-file/index.css',
+        'cypress/component/basic/styles/css-file/base.css',
+        'cypress/component/basic/styles/css-file/index.css',
       ],
     })
 
