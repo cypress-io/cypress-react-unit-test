@@ -34,6 +34,7 @@ describe('cssFile', () => {
         'cypress/component/basic/styles/css-file/base.css',
         'cypress/component/basic/styles/css-file/index.css',
       ],
+      log: false,
     })
 
     // check the style from the first css file

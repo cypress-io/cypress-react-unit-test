@@ -48,6 +48,7 @@ describe('style', () => {
       const Component = () => <button className="green">Green button</button>
       mount(<Component />, {
         styles: indexStyle,
+        log: false,
       })
 
       cy.get('button')

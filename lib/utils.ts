@@ -30,8 +30,9 @@ function insertSingleCssFile(
   cssFilename: string,
   document: Document,
   el: HTMLElement,
+  log?: boolean,
 ) {
-  return cy.readFile(cssFilename).then(css => {
+  return cy.readFile(cssFilename, { log }).then(css => {
     const style = document.createElement('style')
     style.appendChild(document.createTextNode(css))
     document.body.insertBefore(style, el)
@@ -46,9 +47,10 @@ function insertLocalCssFiles(
   cssFilenames: string[],
   document: Document,
   el: HTMLElement,
+  log?: boolean,
 ) {
   return Cypress.Promise.mapSeries(cssFilenames, cssFilename =>
-    insertSingleCssFile(cssFilename, document, el),
+    insertSingleCssFile(cssFilename, document, el, log),
   )
 }
 
@@ -57,7 +59,7 @@ function insertLocalCssFiles(
  * into the given document.
  */
 export const injectStylesBeforeElement = (
-  options: Partial<StyleOptions>,
+  options: Partial<StyleOptions & { log: boolean }>,
   document: Document,
   el: HTMLElement,
 ) => {
@@ -110,5 +112,5 @@ export const injectStylesBeforeElement = (
     cssFiles = cssFiles.concat(options.cssFiles)
   }
 
-  return insertLocalCssFiles(cssFiles, document, el)
+  return insertLocalCssFiles(cssFiles, document, el, options.log)
 }

@@ -48,15 +48,17 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
   return cy
     .window({ log: false })
     .then(() => {
-      Cypress.log({
-        name: 'mount',
-        message: [`ReactDOM.render(<${displayname} ... />)`],
-        consoleProps() {
-          return {
-            props: jsx.props,
-          }
-        },
-      })
+      if (options.log !== false) {
+        Cypress.log({
+          name: 'mount',
+          message: [`ReactDOM.render(<${displayname} ... />)`],
+          consoleProps() {
+            return {
+              props: jsx.props,
+            }
+          },
+        })
+      }
     })
     .then(injectStyles(options))
     .then(() => {

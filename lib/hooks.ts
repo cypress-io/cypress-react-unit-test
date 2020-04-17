@@ -1,7 +1,5 @@
 /** Initialize an empty document with root element */
 function renderTestingPlatform() {
-  cy.log('Prepearing to ReactDOM rendering')
-
   const document = cy.state('document') as Document
   if (document.getElementById('cypress-jsdom')) {
     return
