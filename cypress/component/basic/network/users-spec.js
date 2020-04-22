@@ -2,7 +2,6 @@
 /// <reference types="../../lib" />
 import { Users } from './users.jsx'
 import React from 'react'
-import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-test'
 
 /* eslint-env mocha */
@@ -22,9 +21,7 @@ context('Users', () => {
       // preventing race conditions where you wait on untouched routes
     })
 
-    // Cypress v4 is failing on this test
-    // but this test passes in new mount mode
-    it.skip('can inspect real data in XHR', () => {
+    it('can inspect real data in XHR', () => {
       cy.route('/users?_limit=3').as('users')
       mount(<Users />)
       cy.wait('@users')

@@ -37,7 +37,7 @@ Then tell Cypress how your React application is transpiled or bundled (using Web
 }
 ```
 
-## Example
+## Examples
 
 ```js
 import React from 'react'
@@ -52,14 +52,40 @@ describe('HelloWorld component', () => {
 })
 ```
 
-Look at the examples in [cypress/component](cypress/component) folder.
+Look at the examples in [cypress/component](cypress/component) folder. Here is the list in progress
 
-## Large examples
+### Basic examples
+
+<!-- prettier-ignore-start -->
+Spec | Description
+--- | ---
+[alert-spec.js](cypress/component/basic/alert-spec.js) | Component tries to use `window.alert`
+[counter-spec.js](cypress/component/basic/counter-spec.js) | Counter component that uses `this.state`
+[emotion-spec.js](cypress/component/basic/emotion-spec.js) | Confirms the component is using `@emotion/core` and styles are set
+[error-boundary-spec.js](cypress/component/basic/error-boundar-spec.js) | Checks if an error boundary component works
+[pure-component-spec.js](cypress/component/basic/pure-component.spec.js) | Tests stateless component
+[stateless-spec.js](cypress/component/basic/stateless-spec.js) | Passes Cypress stub to the component, confirms the component calls it on click
+[window-spec.js](cypress/component/basic/window-spec.js) | In the component test, the spec `window` and the application's `window` where the component is running should be the same object
+[css](cypress/component/basic/css) | Shows that component with `import './Button.css'` works
+[network](cypress/component/basic/network) | Confirms we can use `cy.route` to stub / spy on component's network calls
+[react-book-by-chris-noring](cypress/component/basic/react-book-by-chris-noring) | Copied test examples from [React Book](https://softchris.github.io/books/react) and adapted for Cypress component tests
+[react-tutorial](cypress/component/basic/react-tutorial) | Tests from official [ReactJS tutorial](https://reactjs.org/tutorial/tutorial.html) copied and adapted for Cypress component tests
+[stub-example](cypress/component/basic/stub-example) | Uses `cy.stub` as component props
+[styles](cypress/component/basic/styles) | Add extra styles to the component during testing using `style`, `cssFile` or `stylesheets` mount options
+[toggle-example](cypress/component/basic/toggle-example) | Testing a toggle component using Cypress DOM commands
+[typescript](cypress/component/basic/typescript) | A spec written in TypeScript
+[unmount](cypress/component/basic/unmount) | Verifies the component's behavior when it is unmounted from the DOM
+
+<!-- prettier-ignore-end -->
+
+plus a few smaller sanity specs in [cypress/component/basic](cypress/component/basic) folder.
+
+### Large examples
 
 This way of component testing has been verified in a number of forked 3rd party projects.
 
 <!-- prettier-ignore-start -->
-Repo | description
+Repo | Description
 --- | ---
 [try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) | Hello world initialized with CRAv3
 [try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript) | Hello world initialized with CRAv3 `--typescript`

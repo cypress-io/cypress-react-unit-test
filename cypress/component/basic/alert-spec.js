@@ -15,7 +15,7 @@ describe('Stateless alert', () => {
     cy.contains('a', 'Say Hi')
   })
 
-  it.only('alerts with name', () => {
+  it('alerts with name', () => {
     cy.contains('Say Hi').click()
     cy.get('@alert')
       .should('have.been.calledOnce')
