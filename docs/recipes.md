@@ -8,6 +8,8 @@
 
 Cypress Test Runner understands plain JSX by default, so for simple React applications it ... might just test components right out of the box!
 
+But usually you want to point Cypress at your application's current Webpack configuration, so the specs can import your components correctly. The next recipes discuss common ways for doing this.
+
 ## React Scripts
 
 If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.

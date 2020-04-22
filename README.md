@@ -6,7 +6,7 @@
 
 - What is this? This package allows you to use [Cypress](https://www.cypress.io/) test runner to unit test your React components with zero effort.
 
-- How is this different from [Enzyme](https://github.com/airbnb/enzyme)? It is similar in functionality BUT runs the component in the real browser with full power of Cypress E2E test runner: [live GUI, full API, screen recording, CI support, cross-platform](https://www.cypress.io/features/).
+- How is this different from [Enzyme](https://github.com/airbnb/enzyme) or [RTL](https://testing-library.com/docs/react-testing-library/intro)? It is similar in functionality BUT runs the component in the real browser with full power of Cypress E2E test runner: [live GUI, full API, screen recording, CI support, cross-platform](https://www.cypress.io/features/). Ohh, and the code coverage is built-in!
 
 ## Known problems
 
@@ -26,9 +26,9 @@ Include this plugin from your project's `cypress/support/index.js`
 require('cypress-react-unit-test/dist/hooks')
 ```
 
-Tell Cypress how your React application is transpiled or bundled (using Webpack), so Cypress can load your components. See [Recipes](./docs/recipes.md)
+Then tell Cypress how your React application is transpiled or bundled (using Webpack), so Cypress can load your components. See [Recipes](./docs/recipes.md)
 
-Then turn the experimental component support on in your `cypress.json`. You can also specify where component spec files are located. For exampled to have them located in `src` folder use:
+⚠️ Turn the experimental component support on in your `cypress.json`. You can also specify where component spec files are located. For exampled to have them located in `src` folder use:
 
 ```json
 {
@@ -52,46 +52,11 @@ describe('HelloWorld component', () => {
 })
 ```
 
-## Options
-
-You can pass additional styles to load, see [docs/styles.md](./docs/styles.md)
-
-## Configuration
-
-If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:
-
-```json
-{
-  "env": {
-    "cypress-react-unit-test": {
-      "react": "node_modules/react/umd/react.development.js",
-      "react-dom": "node_modules/react-dom/umd/react-dom.development.js"
-    }
-  }
-}
-```
-
-## Transpilation
-
-How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js). Also [Recipes](./docs/recipes.md)
-
-## Code coverage
-
-If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the fly using `babel-plugin-istanbul` and generates report using dependency [cypress-io/code-coverage](https://github.com/cypress-io/code-coverage) (included). If you want to disable code coverage instrumentation and reporting, use `--env coverage=false` or `CYPRESS_coverage=false` or set in your `cypress.json` file
-
-```json
-{
-  "env": {
-    "coverage": false
-  }
-}
-```
-
-## Examples
-
 Look at the examples in [cypress/component](cypress/component) folder.
 
 ## Large examples
+
+This way of component testing has been verified in a number of forked 3rd party projects.
 
 <!-- prettier-ignore-start -->
 Repo | description
@@ -111,13 +76,58 @@ Repo | description
 
 To find more examples, see GitHub topic [cypress-react-unit-test-example](https://github.com/topics/cypress-react-unit-test-example)
 
+## Options
+
+You can pass additional styles, css files and external stylesheets to load, see [docs/styles.md](./docs/styles.md) for full list.
+
+```js
+const todo = {
+  id: '123',
+  title: 'Write more tests',
+}
+mount(<Todo todo={todo} />, {
+  stylesheets: [
+    'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css',
+  ],
+})
+```
+
+<details>
+<summary>Additional configuration</summary>
+If your React and React DOM libraries are installed in non-standard paths (think monorepo scenario), you can tell this plugin where to find them. In `cypress.json` specify paths like this:
+
+```json
+{
+  "env": {
+    "cypress-react-unit-test": {
+      "react": "node_modules/react/umd/react.development.js",
+      "react-dom": "node_modules/react-dom/umd/react-dom.development.js"
+    }
+  }
+}
+```
+
+</details>
+
+## Code coverage
+
+If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the fly using `babel-plugin-istanbul` and generates report using dependency [cypress-io/code-coverage](https://github.com/cypress-io/code-coverage) (included). If you want to disable code coverage instrumentation and reporting, use `--env coverage=false` or `CYPRESS_coverage=false` or set in your `cypress.json` file
+
+```json
+{
+  "env": {
+    "coverage": false
+  }
+}
+```
+
+## Visual testing
+
+You can use any [Visual Testing plugin](https://on.cypress.io/plugins#visual-testing) from these component tests. This repo uses [Percy.io](https://percy.io) visual diffing service as a GitHub pull request check.
+
 ## Development
 
 See [docs/development.md](./docs/development.md)
-
-### Visual testing
-
-Uses [Percy.io](https://percy.io) visual diffing service as a GitHub pull request check.
 
 ## Related tools
 
