@@ -75,10 +75,31 @@ Spec | Description
 [toggle-example](cypress/component/basic/toggle-example) | Testing a toggle component using Cypress DOM commands
 [typescript](cypress/component/basic/typescript) | A spec written in TypeScript
 [unmount](cypress/component/basic/unmount) | Verifies the component's behavior when it is unmounted from the DOM
-
 <!-- prettier-ignore-end -->
 
 plus a few smaller sanity specs in [cypress/component/basic](cypress/component/basic) folder.
+
+### Advanced examples
+
+<!-- prettier-ignore-start -->
+Spec | Description
+--- | ---
+[app-action-example](cypress/component/advanced/app-action-example) | App actions against components
+[context](cypress/component/advanced/context) | Confirms components that use React context feature work
+[forward-ref](cypress/component/advanced/forward-ref) | Tests a component that uses a forward ref feature
+[hooks](cypress/component/advanced/hooks) | Tests several components that use React Hooks like `useState`, `useCallback`
+[lazy-loaded](cypress/component/advanced/lazy-loaded) | Confirms components that use `React.lazy` and dynamic imports work
+[material-ui-example](cypress/component/advanced/material-ui-example) | Large components demos from [Material UI](https://material-ui.com/)
+[mock-fetch](cypress/component/advanced/mock-fetch) | Test stubs `window.fetch` used by component in `useEffect` hook
+[mocking-component](cypress/component/advanced/mocking-component) | Replaced a child component with dummy component during test
+[mocking-imports](cypress/component/advanced/mocking-imports) | Stub a named ES6 import using `plugin-transform-modules-commonjs` with `loose: true` when transpiled
+[react-router-v6](cypress/component/advanced/react-router-v6) | Example testing a [React Router v6](https://github.com/ReactTraining/react-router/blob/dev/docs/guides/getting-started.md)
+[renderless](cypress/component/advanced/renderless) | Testing a component that does not need to render itself into the DOM
+[set-timeout-example](cypress/component/advanced/set-timeout-example) | Control the clock with `cy.tick` and test loading components that use `setTimeout`
+[testing-lib-example](cypress/component/advanced/testing-lib-example) | A spec adopted from [RTL intro](https://testing-library.com/docs/react-testing-library/example-intro)
+[timers](cypress/component/advanced/timers) | Testing components that set timers, adopted from [ReactJS Testing recipes](https://reactjs.org/docs/testing-recipes.html#timers)
+[tutorial](cypress/component/advanced/tutorial) | A few tests adopted from [ReactJS Tutorial](https://reactjs.org/tutorial/tutorial.html)
+<!-- prettier-ignore-end -->
 
 ### Large examples
 
