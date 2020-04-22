@@ -20,13 +20,13 @@ Requires [Node](https://nodejs.org/en/) version 8 or above.
 npm install --save-dev cypress cypress-react-unit-test
 ```
 
-## Use
-
 Include this plugin from your project's `cypress/support/index.js`
 
 ```js
 require('cypress-react-unit-test/dist/hooks')
 ```
+
+Tell Cypress how your React application is transpiled or bundled (using Webpack), so Cypress can load your components. See [Recipes](./docs/recipes.md)
 
 Then turn the experimental component support on in your `cypress.json`. You can also specify where component spec files are located. For exampled to have them located in `src` folder use:
 
@@ -52,65 +52,9 @@ describe('HelloWorld component', () => {
 })
 ```
 
-### styles
+## Options
 
-If you component imports its own style, the style should be applied during the Cypress test. But sometimes you need more power.
-
-You can 3 options to load additional styles:
-
-```js
-mount(<Component />, {
-  style: string, // load inline style CSS
-  cssFiles: string | string[], // load a single or a list of local CSS files
-  stylesheets: string | string[] // load external stylesheets
-})
-```
-
-#### Inline styles
-
-You can add individual style to the mounted component by passing its text as an option
-
-```js
-it('can be passed as an option', () => {
-  const style = `
-    .component-button {
-      display: inline-flex;
-      width: 25%;
-      flex: 1 0 auto;
-    }
-
-    .component-button.orange button {
-      background-color: #F5923E;
-      color: white;
-    }
-  `
-  cy.mount(<Button name="Orange" orange />, { style })
-  cy.get('.orange button').should(
-    'have.css',
-    'background-color',
-    'rgb(245, 146, 62)',
-  )
-})
-```
-
-#### Load local CSS file
-
-```js
-const cssFiles = 'cypress/integration/Button.css'
-cy.mount(<Button name="Orange" orange />, { cssFiles })
-```
-
-See [cypress/integration/inject-style-spec.js](cypress/integration/inject-style-spec.js) for more examples.
-
-#### Load external stylesheets
-
-```js
-mount(<Todo todo={todo} />, {
-  stylesheets: [
-    'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css',
-  ],
-})
-```
+You can pass additional styles to load, see [docs/styles.md](./docs/styles.md)
 
 ## Configuration
 
@@ -129,7 +73,7 @@ If your React and React DOM libraries are installed in non-standard paths (think
 
 ## Transpilation
 
-How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js)
+How can we use features that require transpilation? By using [@cypress/webpack-preprocessor](https://github.com/cypress-io/cypress-webpack-preprocessor#readme) - see the plugin configuration in [cypress/plugins/index.js](cypress/plugins/index.js). Also [Recipes](./docs/recipes.md)
 
 ## Code coverage
 
@@ -139,55 +83,6 @@ If you are using [plugins/cra-v3](plugins/cra-v3) it instruments the code on the
 {
   "env": {
     "coverage": false
-  }
-}
-```
-
-### React Scripts App users
-
-If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
-
-```json
-{
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
-  "supportFile": "node_modules/cypress-react-unit-test/support"
-}
-```
-
-See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test), typical full config with specs and source files in `src` folder (before [ejecting the app](https://github.com/bahmutov/cypress-react-unit-test/issues/134)):
-
-```json
-{
-  "fixturesFolder": false,
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
-  "supportFile": "node_modules/cypress-react-unit-test/support",
-  "testFiles": "**/*.spec.js",
-  "experimentalComponentTesting": true,
-  "componentFolder": "src"
-}
-```
-
-If you already have a plugins file, you can use a file preprocessor that points at CRA's webpack
-
-```js
-// your project's Cypress plugin file
-const craFilePreprocessor = require('cypress-react-unit-test/plugins/cra-v3/file-preprocessor')
-module.exports = on => {
-  on('file:preprocessor', craFilePreprocessor())
-}
-```
-
-**Bonus:** re-using the config means if you create your application using `create-react-app --typescript`, then TypeScript transpile just works out of the box. See [bahmutov/try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript).
-
-## Your webpack config
-
-If you have your own webpack config, you can use included plugins file to load it. Here is the configuration using the included plugins file and passing the name of the config file via `env` variable in the `cypress.json` file
-
-```json
-{
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/load-webpack",
-  "env": {
-    "webpackFilename": "demo/config/webpack.dev.js"
   }
 }
 ```
@@ -218,17 +113,7 @@ To find more examples, see GitHub topic [cypress-react-unit-test-example](https:
 
 ## Development
 
-To get started with this repo, compile the plugin's code and the examples code
-
-```shell
-npm run transpile
-npm run build
-npm run cy:open
-```
-
-- run TypeScript compiler in watch mode with `npx tsc -w`
-- run Cypress with `npx cypress open` and select the spec you want to work with
-- edit `lib/index.ts` where all the magic happens
+See [docs/development.md](./docs/development.md)
 
 ### Visual testing
 
