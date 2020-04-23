@@ -75,6 +75,7 @@ Spec | Description
 [toggle-example](cypress/component/basic/toggle-example) | Testing a toggle component using Cypress DOM commands
 [typescript](cypress/component/basic/typescript) | A spec written in TypeScript
 [unmount](cypress/component/basic/unmount) | Verifies the component's behavior when it is unmounted from the DOM
+[use-lodash-fp](cypress/component/basic/use-lodash-fp) | Imports and tests methods from `lodash/fp` dependency
 <!-- prettier-ignore-end -->
 
 plus a few smaller sanity specs in [cypress/component/basic](cypress/component/basic) folder.
