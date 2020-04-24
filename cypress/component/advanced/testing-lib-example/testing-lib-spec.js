@@ -9,7 +9,9 @@ it('loads and displays greeting (testing-lib)', () => {
   const url = '/greeting'
   mount(<Fetch url={url} />)
 
-  cy.queryByText('Load Greeting').click()
+  cy.queryByText('Load Greeting')
+    .wait(1000)
+    .click()
   cy.queryByRole('heading').should('have.text', 'Hello there')
   cy.queryByRole('button').should('be.disabled')
   cy.get('@greet')
