@@ -3,6 +3,7 @@
 - [Do nothing](#do-nothing)
 - [React scripts](#react-scripts)
 - [Your own Webpack config](#your-webpack-config)
+- [Your own Babelrc](#your-babelrc-file)
 
 ## Do nothing
 
