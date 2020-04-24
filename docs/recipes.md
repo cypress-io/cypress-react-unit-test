@@ -17,7 +17,8 @@ If you are using Create-React-App v3 or `react-scripts`, and want to reuse the b
 ```json
 {
   "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
-  "supportFile": "node_modules/cypress-react-unit-test/support"
+  "supportFile": "node_modules/cypress-react-unit-test/support",
+  "experimentalComponentTesting": true
 }
 ```
 
@@ -53,8 +54,43 @@ If you have your own webpack config, you can use included plugins file to load i
 ```json
 {
   "pluginsFile": "node_modules/cypress-react-unit-test/plugins/load-webpack",
+  "experimentalComponentTesting": true,
   "env": {
     "webpackFilename": "demo/config/webpack.dev.js"
   }
 }
 ```
+
+## Your `.babelrc` file
+
+If you are using Babel without Webpack to transpile, you can use the plugin that tells Babel loader to use your configuration file. In `cypress.json` file set:
+
+```json
+{
+  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/babelrc",
+  "supportFile": "node_modules/cypress-react-unit-test/support",
+  "experimentalComponentTesting": true
+}
+```
+
+**Bonus:** in order to enable code instrumentation, add the `babel-plugin-istanbul` (included in this plugin) to your `.babelrc` setup. You can place it under `test` environment to avoid instrumenting production code. Example `.babelrc` config file that you can execute with `BABEL_ENV=test npx cypress open`
+
+```json
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    {
+      "plugins": ["@babel/plugin-proposal-class-properties"]
+    },
+    "@emotion/babel-preset-css-prop"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["babel-plugin-istanbul"]
+    }
+  }
+}
+```
+
+See [bahmutov/react-loading-skeleton](https://github.com/bahmutov/react-loading-skeleton) example
