@@ -63,7 +63,8 @@ Look at the examples in [cypress/component](cypress/component) folder. Here is t
 Spec | Description
 --- | ---
 [alert-spec.js](cypress/component/basic/alert-spec.js) | Component tries to use `window.alert`
-[counter-spec.js](cypress/component/basic/counter-spec.js) | Counter component that uses `this.state`
+[counter-set-state](cypress/component/basic/counter-set-state) | Counter component that uses `this.state`
+[counter-use-hooks](cypress/component/basic/counter-use-hooks) | Counter component that uses `useState` hook
 [emotion-spec.js](cypress/component/basic/emotion-spec.js) | Confirms the component is using `@emotion/core` and styles are set
 [error-boundary-spec.js](cypress/component/basic/error-boundar-spec.js) | Checks if an error boundary component works
 [pure-component-spec.js](cypress/component/basic/pure-component.spec.js) | Tests stateless component

@@ -2,7 +2,6 @@
 /// <reference types="../../lib" />
 import { Transpiled } from './transpiled.jsx'
 import React from 'react'
-import ReactDom from 'react-dom'
 import { mount } from 'cypress-react-unit-test'
 
 /* eslint-env mocha */
