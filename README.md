@@ -4,12 +4,31 @@
 
 ## TLDR
 
-- What is this? This package allows you to use [Cypress](https://www.cypress.io/) test runner to unit test your React components with zero effort.
+- What is this? This package allows you to use [Cypress](https://www.cypress.io/) test runner to unit test your React components with zero effort. Here is a typical component testing, notice there is not external URL shown, since it is mounting the component directly.
 
 ![Example component test](images/dynamic.gif)
 
 - How is this different from [Enzyme](https://github.com/airbnb/enzyme) or [RTL](https://testing-library.com/docs/react-testing-library/intro)? It is similar in functionality BUT runs the component in the real browser with full power of Cypress E2E test runner: [live GUI, full API, screen recording, CI support, cross-platform](https://www.cypress.io/features/), and [visual testing](https://on.cypress.io/visual-testing). Ohh, and the code coverage is built-in!
 - If you like using `@testing-library/react`, you can use `@testing-library/cypress` for the same `findBy`, `queryBy` commands, see one of the examples in the list below
+
+## Comparison
+
+<!-- prettier-ignore-start -->
+Feature | Jest / Enzyme / RTL | Cypress + `cypress-react-unit-test`
+--- | --- | ---
+Test runs in real browser | ❌ | ✅
+Uses full mount | ❌ | ✅
+Test speed | 🏎 | as fast as the app works in the browser
+Test can use additional plugins | maybe | use any [Cypress plugin](https://on.cypress.io/plugins)
+Test can interact with component | synthetic limited API | use any [Cypress command](https://on.cypress.io/api)
+Test can be debugged | via terminal and Node debugger | use browser DevTools
+Built-in time traveling debugger | ❌ | Cypress time traveling debugger
+Re-run tests on file or test change | ✅ | ✅
+Tests can be run in parallel | ✅ | ✅ via [parallelization](https://on.cypress.io/parallelization)
+Test against interface | if using `@testing-library/react` | ✅ and can use `@testing-library/cypress`
+Spying and mocking | Jest mocks | Sinon library
+Code coverage | ✅ | ✅
+<!-- prettier-ignore-end -->
 
 ## Known problems
 
