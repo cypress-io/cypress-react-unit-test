@@ -24,7 +24,7 @@ it('should cleanup on being removed', () => {
     expect(onSelect).to.not.have.been.called
   })
 
-  cy.get('#cypress-jsdom').then($el => {
+  cy.get('#cypress-root').then($el => {
     unmountComponentAtNode($el[0])
   })
 

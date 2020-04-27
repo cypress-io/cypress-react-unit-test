@@ -3,6 +3,8 @@ import ReactDOM, { unmountComponentAtNode } from 'react-dom'
 import getDisplayName from './getDisplayName'
 import { injectStylesBeforeElement } from './utils'
 
+const rootId = 'cypress-root'
+
 function checkMountModeEnabled() {
   // @ts-ignore
   if (Cypress.spec.specType !== 'component') {
@@ -17,7 +19,7 @@ function checkMountModeEnabled() {
  */
 const injectStyles = (options: MountOptions) => () => {
   const document = cy.state('document')
-  const el = document.getElementById('cypress-jsdom')
+  const el = document.getElementById(rootId)
   return injectStylesBeforeElement(options, document, el)
 }
 
@@ -65,7 +67,7 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
       const document = cy.state('document')
       const reactDomToUse = options.ReactDom || ReactDOM
 
-      const el = document.getElementById('cypress-jsdom')
+      const el = document.getElementById(rootId)
 
       const props = {
         // @ts-ignore provide unique key to the the wrapped component to make sure we are rerendering between tests
@@ -90,7 +92,8 @@ export const unmount = () => {
   checkMountModeEnabled()
 
   cy.log('unmounting...')
-  return cy.get('#cypress-jsdom', { log: false }).then($el => {
+  const selector = '#' + rootId
+  return cy.get(selector, { log: false }).then($el => {
     unmountComponentAtNode($el[0])
   })
 }

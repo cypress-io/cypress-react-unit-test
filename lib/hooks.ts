@@ -1,15 +1,19 @@
 /** Initialize an empty document with root element */
 function renderTestingPlatform() {
+  // Let's mount components under a new div with this id
+  const rootId = 'cypress-root'
+
   const document = cy.state('document') as Document
-  if (document.getElementById('cypress-jsdom')) {
+  if (document.getElementById(rootId)) {
     return
   }
 
   const rootNode = document.createElement('div')
-  rootNode.setAttribute('id', 'cypress-jsdom')
+  rootNode.setAttribute('id', rootId)
   document.getElementsByTagName('body')[0].prepend(rootNode)
 
-  return cy.get('#cypress-jsdom', { log: false })
+  const selector = '#' + rootId
+  return cy.get(selector, { log: false })
 }
 
 before(() => {

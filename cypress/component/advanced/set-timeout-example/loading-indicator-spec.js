@@ -69,7 +69,7 @@ describe('LoadingIndicator', () => {
         </LoadingIndicator>,
       )
       cy.tick(2010)
-      cy.get('#cypress-jsdom').then($el => {
+      cy.get('#cypress-root').then($el => {
         unmountComponentAtNode($el[0])
       })
       cy.get('@clearTimeout').should('have.been.calledOnce')
@@ -77,7 +77,7 @@ describe('LoadingIndicator', () => {
   })
 
   afterEach(() => {
-    cy.get('#cypress-jsdom').then($el => {
+    cy.get('#cypress-root').then($el => {
       unmountComponentAtNode($el[0])
     })
   })
