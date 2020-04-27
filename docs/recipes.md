@@ -64,12 +64,23 @@ If you have your own webpack config, you can use included plugins file to load i
 
 ## Your `.babelrc` file
 
-If you are using Babel without Webpack to transpile, you can use the plugin that tells Babel loader to use your configuration file. In `cypress.json` file set:
+If you are using Babel without Webpack to transpile, you can use the plugin that tells Babel loader to use your configuration file.
+
+```js
+// cypress/plugins/index.js
+module.exports = (on, config) => {
+  // tell Cypress to bundle specs and components using project's .babelrc file
+  require('cypress-react-unit-test/plugins/babelrc')(on, config)
+  // IMPORTANT to return the config object
+  // with the any changed environment variables
+  return config
+}
+```
+
+In `cypress.json` file set:
 
 ```json
 {
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/babelrc",
-  "supportFile": "node_modules/cypress-react-unit-test/support",
   "experimentalComponentTesting": true
 }
 ```
