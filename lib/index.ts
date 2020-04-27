@@ -48,7 +48,6 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
   const displayname = getDisplayName(jsx.type, options.alias)
 
   return cy
-    .window({ log: false })
     .then(() => {
       if (options.log !== false) {
         Cypress.log({
@@ -69,9 +68,11 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
 
       const el = document.getElementById(rootId)
 
-      const props = {
+      const key =
         // @ts-ignore provide unique key to the the wrapped component to make sure we are rerendering between tests
-        key: Cypress?.mocha?.getRunner()?.test?.title || Math.random(),
+        (Cypress?.mocha?.getRunner()?.test?.title || '') + Math.random()
+      const props = {
+        key,
       }
 
       const CypressTestComponent = reactDomToUse.render(
