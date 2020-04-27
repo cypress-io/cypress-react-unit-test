@@ -10,9 +10,9 @@ it('renders without crashing', () => {
     .withArgs('http://myapi.com/products')
     .resolves({
       json: cy.stub().resolves({
-        products: [{ id: 1, name: 'nocked data' }],
+        products: [{ id: 1, name: 'Mocked data' }],
       }),
     })
   mount(<ProductsList />)
-  cy.contains('nocked data').should('be.visible')
+  cy.contains('Mocked data').should('be.visible')
 })
