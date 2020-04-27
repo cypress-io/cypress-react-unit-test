@@ -24,6 +24,7 @@ Test can interact with component | synthetic limited API | use any [Cypress comm
 Test can be debugged | via terminal and Node debugger | use browser DevTools
 Built-in time traveling debugger | ❌ | Cypress time traveling debugger
 Re-run tests on file or test change | ✅ | ✅
+Test output on CI | terminal | terminal, screenshots, videos
 Tests can be run in parallel | ✅ | ✅ via [parallelization](https://on.cypress.io/parallelization)
 Test against interface | if using `@testing-library/react` | ✅ and can use `@testing-library/cypress`
 Spying and mocking | Jest mocks | Sinon library
