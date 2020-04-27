@@ -13,48 +13,38 @@ But usually you want to point Cypress at your application's current Webpack conf
 
 ## React Scripts
 
-If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder. From the `cypress.json` point at the shipped plugin in the `node_modules`.
-
-```json
-{
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
-  "supportFile": "node_modules/cypress-react-unit-test/support",
-  "experimentalComponentTesting": true
-}
-```
-
-See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test), typical full config with specs and source files in `src` folder (before [ejecting the app](https://github.com/bahmutov/cypress-react-unit-test/issues/134)):
-
-```json
-{
-  "fixturesFolder": false,
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
-  "supportFile": "node_modules/cypress-react-unit-test/support",
-  "testFiles": "**/*.spec.js",
-  "experimentalComponentTesting": true,
-  "componentFolder": "src"
-}
-```
-
-If you already have a plugins file, you can use a file preprocessor that points at CRA's webpack
+If you are using Create-React-App v3 or `react-scripts`, and want to reuse the built in webpack before ejecting, this module ships with Cypress preprocessor in [plugins](plugins) folder.
 
 ```js
-// your project's Cypress plugin file
-const craFilePreprocessor = require('cypress-react-unit-test/plugins/cra-v3/file-preprocessor')
-module.exports = on => {
-  on('file:preprocessor', craFilePreprocessor())
+// cypress/plugins/index.js
+module.exports = (on, config) => {
+  require('cypress-react-unit-test/plugins/cra-v3')(on, config)
+  // IMPORTANT to return the config object
+  // with the any changed environment variables
+  return config
 }
 ```
 
-**Bonus:** re-using the config means if you create your application using `create-react-app --typescript`, then TypeScript transpile just works out of the box. See [bahmutov/try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript).
+See example repo [bahmutov/try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test)
 
 ## Your webpack config
 
-If you have your own webpack config, you can use included plugins file to load it. Here is the configuration using the included plugins file and passing the name of the config file via `env` variable in the `cypress.json` file
+If you have your own webpack config, you can use included plugins file to load it.
+
+```js
+// cypress/plugins/index.js
+module.exports = (on, config) => {
+  require('cypress-react-unit-test/plugins/load-webpack')(on, config)
+  // IMPORTANT to return the config object
+  // with the any changed environment variables
+  return config
+}
+```
+
+Pass the name of the config file via `env` variable in the `cypress.json` file
 
 ```json
 {
-  "pluginsFile": "node_modules/cypress-react-unit-test/plugins/load-webpack",
   "experimentalComponentTesting": true,
   "env": {
     "webpackFilename": "demo/config/webpack.dev.js"
@@ -74,14 +64,6 @@ module.exports = (on, config) => {
   // IMPORTANT to return the config object
   // with the any changed environment variables
   return config
-}
-```
-
-In `cypress.json` file set:
-
-```json
-{
-  "experimentalComponentTesting": true
 }
 ```
 
