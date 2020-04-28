@@ -83,7 +83,6 @@ export const mount = (jsx: React.ReactElement, options: MountOptions = {}) => {
         logInstance.set('consoleProps', () => logConsoleProps)
 
         if (el.children.length) {
-          console.log('element', el.children.item(0))
           logInstance.set('$el', el.children.item(0))
         }
       }
