@@ -63,7 +63,8 @@ describe('stylesheets', () => {
         .should('have.class', 'green')
         .invoke('css', 'height')
         .should(value => {
-          expect(parseFloat(value), 'height is < 20px').to.be.lessThan(20)
+          // meaning: the style has been reset
+          expect(parseFloat(value), 'height is < 30px').to.be.lessThan(30)
         })
     })
   })
