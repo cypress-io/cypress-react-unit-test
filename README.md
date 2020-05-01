@@ -115,6 +115,7 @@ Spec | Description
 [use-lodash-fp](cypress/component/basic/use-lodash-fp) | Imports and tests methods from `lodash/fp` dependency
 [document-spec](cypress/component/basic/document) | Checks `document` dimensions from the component
 [styled-components](cypress/component/basic/styled-components) | Test components that use [styled-components](https://www.styled-components.com/)
+[avoid-render](cypress/component/basic/avoid-render) | Shows warning if the user spec accidentally imports source file with `ReactDOM.render` call
 <!-- prettier-ignore-end -->
 
 plus a few smaller sanity specs in [cypress/component/basic](cypress/component/basic) folder.

@@ -1,3 +1,34 @@
+// prevent user from importing source file
+// that does ReactDOM.render(<App />, document.getElementById('root'))
+const _getEl = document.getElementById.bind(document)
+
+let warning: string | undefined
+
+document.getElementById = id => {
+  if (id === 'root') {
+    // this is most likely because application source code
+    // includes ReactDOM.render(<App />, document.getElementById('root'))
+    // which specs should NOT DO.
+    const found = _getEl(id)
+    if (found) {
+      return found
+    }
+
+    // So in this case we give a fake element that is not part of the doc
+    // and set a warning to be displayed when the test runs
+    warning = [
+      '[cypress-react-unit-test] ⚠️ Seems spec file imports source file',
+      'that tries to use `ReactDOM.render(...) directly. Please refactor',
+      'the code to not render any components from files reachable from specs',
+      'See https://github.com/bahmutov/cypress-react-unit-test/issues/158',
+    ].join(' ')
+    const hiddenElement = document.createElement('div')
+    return hiddenElement
+  }
+
+  return _getEl(id)
+}
+
 /** Initialize an empty document with root element */
 function renderTestingPlatform() {
   // Let's mount components under a new div with this id
@@ -17,6 +48,11 @@ function renderTestingPlatform() {
 }
 
 before(() => {
+  if (warning) {
+    cy.log(warning)
+    warning = undefined
+  }
+
   renderTestingPlatform()
 })
 
