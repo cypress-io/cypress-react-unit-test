@@ -5,7 +5,7 @@ import { mount } from 'cypress-react-unit-test'
 import { Counter } from './counter.jsx'
 
 /* eslint-env mocha */
-describe('Counter', () => {
+describe('Counter using setState', () => {
   it('counts clicks', () => {
     mount(<Counter />)
     cy.contains('count: 0')
