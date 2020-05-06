@@ -3,3 +3,4 @@ node_modules/
 dist
 cypress/videos
 cypress/screenshots
+out-test
