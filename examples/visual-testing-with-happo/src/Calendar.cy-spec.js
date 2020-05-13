@@ -75,4 +75,47 @@ describe('Calendar heatmap', () => {
       component: 'CalendarHeatmap',
     })
   })
+
+  it('Cypress ❤️ 🦛', () => {
+    const startDate = '2019-11-01'
+    const endDate = '2020-05-01'
+
+    const classForValue = value => {
+      if (!value || !value.count) {
+        return 'color-empty'
+      }
+
+      return `heart`
+    }
+
+    const titleForValue = value => {
+      return value && value.date ? `${value.date}` : ''
+    }
+
+    cy.fixture('cypress-work').then(values => {
+      mount(
+        <>
+          <center>
+            <h1>Cypress ❤️ 🦛</h1>
+          </center>
+          <CalendarHeatmap
+            startDate={startDate}
+            endDate={endDate}
+            values={values}
+            showWeekdayLabels={true}
+            titleForValue={titleForValue}
+            classForValue={classForValue}
+          />
+        </>,
+        {
+          style: `
+            .heart {
+              fill: #ff0000
+            }
+        `,
+        },
+      )
+    })
+    cy.contains('Cypress ❤️ 🦛').should('be.visible')
+  })
 })
