@@ -88,12 +88,14 @@ describe('Calendar heatmap', () => {
         return 'color-empty'
       }
 
-      return `heart`
+      return `heart-${dayOfWeek(value.date)}`
     }
 
     const titleForValue = value => {
       return value && value.date ? `${value.date}` : ''
     }
+
+    const dayOfWeek = date => Cypress.moment(date).weekday()
 
     cy.fixture('cypress-work').then(values => {
       values = values.map(v => {
