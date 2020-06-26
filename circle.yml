@@ -220,7 +220,15 @@ workflows:
             - Install
           # each example installs "cypress-react-unit-test" as a local dependency (symlink)
           install-command: npm install
-          verify-command: echo 'Already verified'
+          # to correctly run this job, we need Applitools token
+          # external pull requests do not have environment variables set
+          # thus the job will always fail. Let's skip this job if the
+          # environment variable is missing
+          verify-command: |
+            if [ -n "$APPLITOOLS_API_KEY_FOO" ]; then
+              echo "Skipping Applitools test job, missing environment variable APPLITOOLS_API_KEY"
+              circleci-agent step halt
+            fi
           no-workspace: true
           working_directory: examples/visual-testing-with-applitools
           command: npm test
