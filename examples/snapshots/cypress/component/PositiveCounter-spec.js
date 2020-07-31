@@ -79,3 +79,23 @@ describe('PositiveCounter', () => {
       .toMatchSnapshot()
   })
 })
+
+// test retries from
+// https://github.com/cypress-io/cypress/pull/3968
+// you can skip the tests if there is no retries feature
+const describeOrSkip = Cypress.getTestRetries ? describe : describe.skip
+describeOrSkip('Retries', () => {
+  it.skip('work with snapshots', { retries: 2 }, () => {
+    mount(<PositiveCounter />)
+    cy.contains('Value: 0')
+
+    // click the button the current number of retries
+    const n = cy.state('test').currentRetry()
+    Cypress._.times(n, () => {
+      cy.get('.increment').click()
+    })
+
+    // make sure the component updates until it reaches counter 2
+    cy.contains('Value:').toMatchHTML()
+  })
+})

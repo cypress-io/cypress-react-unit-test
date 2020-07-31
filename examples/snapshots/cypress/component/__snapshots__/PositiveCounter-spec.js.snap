@@ -22,3 +22,13 @@ exports[`PositiveCounter > starts with zero #0`] =
 {
   "html": "<span>Value: 0<button class=\"decrement\">−</button><button class=\"increment\">+</button></span>"
 };
+
+exports[`Retries > work with snapshots #0`] =
+{
+  "html": "<span>Value: 2<button class=\"decrement\">−</button><button class=\"increment\">+</button></span>"
+};
+
+exports[`Retries > work with snapshots #1`] =
+{
+  "html": "<span>Value: 1<button class=\"decrement\">−</button><button class=\"increment\">+</button></span>"
+};
