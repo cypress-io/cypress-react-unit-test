@@ -144,6 +144,17 @@
     "next": "^9.5.3",
     "unfetch": "4.1.0"
   },
+  "peerDependencies": {
+    "cypress": "*",
+    "next": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
+  },
   "release": {
     "branches": [
       "main",
