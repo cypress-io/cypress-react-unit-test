@@ -91,6 +91,7 @@
     "lint-staged": "9.5.0",
     "lodash": "4.17.15",
     "markdown-link-check": "3.8.1",
+    "next": "^9.5.3",
     "node-sass": "4.14.1",
     "prettier": "1.19.1",
     "pretty": "2.0.0",
@@ -140,7 +141,6 @@
     "debug": "4.1.1",
     "find-webpack": "2.1.0",
     "mime-types": "2.1.26",
-    "next": "^9.5.3",
     "unfetch": "4.1.0",
     "webpack": "4.44.1"
   },
