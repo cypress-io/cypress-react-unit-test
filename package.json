@@ -145,14 +145,14 @@
     "unfetch": "4.1.0"
   },
   "peerDependencies": {
-    "@babel/core": "*",
-    "@babel/preset-env": "*",
-    "babel-loader": "*",
     "cypress": "*",
-    "next": "*",
-    "react": "*",
-    "react-dom": "*",
-    "webpack": "*"
+    "@babel/core": "^=7.x",
+    "@babel/preset-env": "^=7.x",
+    "babel-loader": "^=8.x",
+    "next": "^=8.x",
+    "react": "^=16.x",
+    "react-dom": "^=16.x",
+    "webpack": "^=3.x"
   },
   "peerDependenciesMeta": {
     "@babel/core": {
