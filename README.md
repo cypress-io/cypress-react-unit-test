@@ -63,6 +63,7 @@ If you are coming from Enzyme world, check out the [enzyme](cypress/component/ba
 It is better to see something once than to hear about a thousand times. Watch one of the talks below to see this library in action.
 
 - Webinar "Component Testing with Cypress and Applitools" [video](https://www.youtube.com/watch?v=Bxh_ebMk1aM), [slides](https://cypress.slides.com/cypress-io/component-testing-with-cypress-and-applitools)
+- Conference talk "" [video with Russian narration](https://youtu.be/3Z-doNgoJFI), [slides in English](https://slides.com/bahmutov/qafest-2020)
 - Conference talk "I See What is Going On" from JSNation [video](https://www.youtube.com/watch?v=00BNExlJUU8), [slides](https://slides.com/bahmutov/i-see-what-is-going-on)
 - Conference talk "Fast and Effective ... End-to-end Tests?" from JSVidCon [video](https://youtu.be/CiqVTgEZfiw), [slides](https://slides.com/bahmutov/fast-and-effective-end-to-end-tests)
 
