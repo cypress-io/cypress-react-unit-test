@@ -2,7 +2,7 @@
 
 > A little helper to unit test React components in the open source [Cypress.io](https://www.cypress.io/) E2E test runner **v4.5.0+**
 
-**Jump to:** [Comparison](#comparison), [Blog posts](#blog-posts), [Install](#install), Examples: [basic](#basic-examples), [advanced](#advanced-examples), [full](#full-examples), [external](#external-examples), [Style options](#options), [Code coverage](#code-coverage), [Visual testing](#visual-testing), [Common problems](#common-problems), [Chat](#chat)
+**Jump to:** [Comparison](#comparison), [Blog posts](#blog-posts), [Install](#install), Examples: [basic](#basic-examples), [advanced](#advanced-examples), [full](#full-examples), [external](#external-examples), [Mocking](#mocking), [Style options](#options), [Code coverage](#code-coverage), [Visual testing](#visual-testing), [Common problems](#common-problems), [Chat](#chat)
 
 ## Survey
 
@@ -263,6 +263,15 @@ Repo | Description
 <!-- prettier-ignore-end -->
 
 To find more examples, see GitHub topic [cypress-react-unit-test-example](https://github.com/topics/cypress-react-unit-test-example)
+
+## Mocking
+
+Using Cypress + cypress-react-unit-test your tests can mock everything:
+
+- method calls via [cy.stub](https://on.cypress.io/stub), see example [mock-fetch](cypress/component/advanced/mock-fetch). Works for both your application code and for [browser API methods](https://glebbahmutov.com/blog/stub-navigator-api/)
+- network calls via [cy.route](https://on.cypress.io/route) and [cy.route2](https://on.cypress.io/route2)
+- ES6 imports, see [mocking-imports](cypress/component/advanced/mocking-imports) and [mocking-component](cypress/component/advanced/mocking-component)
+- clock and timers using [cy.clock](https://on.cypress.io/clock), see [set-timeout-example](cypress/component/advanced/set-timeout-example) and [react-query-example](https://github.com/bahmutov/react-query-example)
 
 ## Options
 
