@@ -2,7 +2,7 @@
 
 > A little helper to unit test React components in the open source [Cypress.io](https://www.cypress.io/) E2E test runner **v4.5.0+**
 
-**Jump to:** [Comparison](#comparison), [Blog posts](#blog-posts), [Install](#install), Examples: [basic](#basic-examples), [advanced](#advanced-examples), [full](#full-examples), [external](#external-examples), [Mocking](#mocking), [Style options](#options), [Code coverage](#code-coverage), [Visual testing](#visual-testing), [Common problems](#common-problems), [Chat](#chat)
+**Jump to:** [Comparison](#comparison), [Blog posts](#blog-posts), [Presentations](#presentations), [Install](#install), Examples: [basic](#basic-examples), [advanced](#advanced-examples), [full](#full-examples), [external](#external-examples), [Mocking](#mocking), [Style options](#options), [Code coverage](#code-coverage), [Visual testing](#visual-testing), [Common problems](#common-problems), [Chat](#chat)
 
 ## Survey
 
@@ -57,6 +57,14 @@ If you are coming from Enzyme world, check out the [enzyme](cypress/component/ba
 - [Cypress Unit Testing React Components With TypeScript](https://medium.com/swlh/cypress-unit-testing-react-components-with-typescript-77b38e5043b3)
 - [Test The Interface Not The Implementation](https://glebbahmutov.com/blog/test-the-interface/) compares Jest + React Testing Library to cypress-react-unit-test + Cypress Testing Library
 - [Components People Test](https://glebbahmutov.com/blog/components-people-test/) about testing a component inside a Next.js-powered blog
+
+## Presentations
+
+It is better to see something once than to hear about a thousand times. Watch one of the talks below to see this library in action.
+
+- Webinar "Component Testing with Cypress and Applitools" [video](https://www.youtube.com/watch?v=Bxh_ebMk1aM), [slides](https://cypress.slides.com/cypress-io/component-testing-with-cypress-and-applitools)
+- Conference talk "I See What is Going On" from JSNation [video](https://www.youtube.com/watch?v=00BNExlJUU8), [slides](https://slides.com/bahmutov/i-see-what-is-going-on)
+- Conference talk "Fast and Effective ... End-to-end Tests?" from JSVidCon [video](https://youtu.be/CiqVTgEZfiw), [slides](https://slides.com/bahmutov/fast-and-effective-end-to-end-tests)
 
 ## Known problems
 
