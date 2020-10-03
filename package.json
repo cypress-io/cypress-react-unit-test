@@ -103,7 +103,7 @@
     "cypress-react-selector": "2.0.4",
     "date-fns": "2.13.0",
     "framer-motion": "2.6.13",
-    "happo-cypress": "1.9.1",
+    "happo-cypress": "1.9.2",
     "happo.io": "5.6.1",
     "husky": "3.1.0",
     "i18next": "19.7.0",
