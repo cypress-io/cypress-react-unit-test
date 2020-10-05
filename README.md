@@ -211,6 +211,7 @@ Spec | Description
 [lazy-loaded](cypress/component/advanced/lazy-loaded-suspense) | Uses multiple chunks and async components with `React.lazy` + `React.Suspense`.
 [i18n](cypress/component/advanced/i18n) | Uses[react-i18next](https://react.i18next.com/) for localizaiton.
 [framer-motion](cypress/component/advanced/framer-motion) | Uses [framer motion](https://www.framer.com/motion/) for javascript-based animation.
+[window-env](cypress/component/advanced/window-env) | Set additional properties on the `window` object during test
 <!-- prettier-ignore-end -->
 
 ### Full examples
