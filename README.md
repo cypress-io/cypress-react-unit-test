@@ -457,6 +457,12 @@ Because finding and modifying Webpack settings while running this plugin is done
 DEBUG=cypress-react-unit-test,find-webpack
 ```
 
+Since some objects might be deeply nested, if you see an object that is printed simply `{ module: { rules: [ [Object] ] }` you can increase the max printed depth
+
+```
+DEBUG=cypress-react-unit-test,find-webpack DEBUG_DEPTH=10
+```
+
 ## Migration guide
 
 ### From v3 to v4
