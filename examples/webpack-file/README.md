@@ -29,4 +29,4 @@ npm test
 
 ## Notes
 
-See tests in the [cypress/component](cypress/component) folder.
+See tests in the [cypress/component](cypress/component) folder. We also allow tests to load components using a [webpack alias](webpack.config.js) from `more-components/src` folder using `import Hello from '@components/Hello'`.
