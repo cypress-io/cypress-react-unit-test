@@ -1,0 +1,9 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "componentFolder": "src",
+    "testFiles":"**/*spec.*",
+    "experimentalComponentTesting": true,
+    "viewportWidth": 1200,
+    "viewportHeight": 760,
+    "nodeVersion":"system"
+}
