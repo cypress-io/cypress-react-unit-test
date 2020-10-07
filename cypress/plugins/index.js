@@ -2,12 +2,21 @@ const path = require('path')
 const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const babelConfig = require('../../babel.config.js')
 
-/** @type import("webpack").Configuration */
+/**
+ * Webpack options used by Cypress to transpile specs and components.
+ * Could be built on top of the app's webpack config if needed
+ *
+ * @type import("webpack").Configuration
+ */
 const webpackOptions = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
     alias: {
       react: path.resolve('./node_modules/react'),
+      // exercise path aliases in the specs
+      // https://glebbahmutov.com/blog/using-ts-aliases-in-cypress-tests/
+      '@advanced': path.resolve(__dirname, '..', 'component', 'advanced'),
+      '@basic': path.resolve(__dirname, '..', 'component', 'basic'),
     },
   },
   mode: 'development',
