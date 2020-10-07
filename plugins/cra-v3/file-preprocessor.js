@@ -35,6 +35,7 @@ module.exports = config => {
   debug('component test folder: %s', config.componentFolder)
   debug('fixtures folder', config.fixturesFolder)
   debug('integration test folder: %s', config.integrationFolder)
+  debug('support folder: %s', config.supportFolder)
 
   const additionalFolders = []
   // user can disable folders, so check first
@@ -46,6 +47,9 @@ module.exports = config => {
   }
   if (config.integrationFolder) {
     additionalFolders.push(config.integrationFolder)
+  }
+  if (config.supportFolder) {
+    additionalFolders.push(config.supportFolder)
   }
   debug('additional folders: %o', additionalFolders)
 
