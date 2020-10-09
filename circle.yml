@@ -179,8 +179,7 @@ workflows:
       - cypress/run:
           name: Example Rollup
           requires:
-            - Install
-            # - Component Tests
+            - Component Tests
           # each example installs "cypress-react-unit-test" as a local dependency (symlink)
           executor: cypress/base-12
           install-command: |
