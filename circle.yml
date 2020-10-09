@@ -36,8 +36,7 @@ workflows:
       - cypress/run:
           name: Example A11y
           requires:
-            - Install
-            # - Component Tests
+            - Component Tests
           executor: cypress/base-12
           # each example installs "cypress-react-unit-test" as a local dependency (symlink)
           install-command: |
@@ -83,10 +82,17 @@ workflows:
       - cypress/run:
           name: Example React Scripts
           requires:
-            - Component Tests
+            - Install
+            # - Component Tests
           executor: cypress/base-12
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/react-scripts
@@ -126,9 +132,16 @@ workflows:
           name: Example Component Folder
           executor: cypress/base-12
           requires:
-            - Component Tests
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+            - Install
+            # - Component Tests
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/react-scripts-folder
@@ -145,8 +158,7 @@ workflows:
       - cypress/run:
           name: Example Tailwind
           requires:
-            - Install
-            # - Component Tests
+            - Component Tests
           # each example installs "cypress-react-unit-test" as a local dependency (symlink)
           executor: cypress/base-12
           install-command: |
