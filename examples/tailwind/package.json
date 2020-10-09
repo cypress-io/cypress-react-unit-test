@@ -3,15 +3,22 @@
   "description": "Component testing with Tailwind CSS",
   "private": true,
   "scripts": {
-    "test": "../../node_modules/.bin/cypress run",
-    "cy:open": "../../node_modules/.bin/cypress open",
-    "build:css": "../../node_modules/.bin/tailwindcss build src/styles/tailwind.css -o src/styles/main.generated.css",
+    "test": "cypress-expect run --passing 3",
+    "cy:open": "cypress open",
+    "build:css": "tailwindcss build src/styles/tailwind.css -o src/styles/main.generated.css",
     "pretest": "npm run build:css",
     "precy:open": "npm run build:css",
-    "check-coverage": "../../node_modules/.bin/check-coverage src/App.js",
-    "only-covered": "../../node_modules/.bin/only-covered src/App.js"
+    "check-coverage": "check-coverage src/App.js",
+    "only-covered": "only-covered src/App.js"
   },
   "devDependencies": {
-    "cypress-react-unit-test": "file:../.."
+    "check-code-coverage": "1.10.0",
+    "cypress": "5.3.0",
+    "cypress-expect": "2.1.0",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "tailwindcss": "1.4.6",
+    "react-scripts": "3.4.1"
   }
 }

@@ -3,10 +3,16 @@
   "description": "Testing component accessibility",
   "private": true,
   "scripts": {
-    "test": "../../node_modules/.bin/cypress run",
-    "cy:open": "../../node_modules/.bin/cypress open"
+    "test": "cypress-expect run --passing 2 --pending 1",
+    "cy:open": "cypress open"
   },
   "devDependencies": {
-    "cypress-react-unit-test": "file:../.."
+    "cypress": "5.3.0",
+    "cypress-axe": "0.8.1",
+    "cypress-expect": "2.1.0",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
   }
 }

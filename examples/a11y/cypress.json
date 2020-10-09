@@ -3,5 +3,8 @@
   "testFiles": "**/*spec.js",
   "viewportWidth": 500,
   "viewportHeight": 500,
-  "experimentalComponentTesting": true
+  "experimentalComponentTesting": true,
+  "env": {
+    "coverage": false
+  }
 }
