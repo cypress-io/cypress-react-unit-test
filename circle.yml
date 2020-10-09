@@ -14,7 +14,11 @@ workflows:
       - cypress/install:
           name: Install
           executor: cypress/base-12
-          build: npm run transpile
+          # creates cypress-react-unit-test-0.0.0-development.tgz file
+          # then saves everything in the workspace
+          build: |
+            npm run build
+            npm pack
           post-steps:
             - run:
                 name: Show info 📺
@@ -25,9 +29,6 @@ workflows:
             - run:
                 name: Stop exclusive tests 1️⃣
                 command: npm run stop-only
-            - run:
-                name: Build folder 🏗
-                command: npm run build
             - run:
                 name: Run unit tests 👷
                 command: npm run test:unit
@@ -178,10 +179,18 @@ workflows:
       - cypress/run:
           name: Example Rollup
           requires:
-            - Component Tests
+            - Install
+            # - Component Tests
           # each example installs "cypress-react-unit-test" as a local dependency (symlink)
           executor: cypress/base-12
-          install-command: npm install --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/rollup
@@ -312,7 +321,7 @@ workflows:
       - cypress/run:
           name: Component Tests
           executor: cypress/base-12
-          parallelism: 4
+          parallelism: 2
           requires:
             - Install
           # notice a trick to avoid re-installing dependencies

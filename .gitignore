@@ -10,3 +10,4 @@ coverage
 *.generated.css
 .next
 bin
+*.tgz
