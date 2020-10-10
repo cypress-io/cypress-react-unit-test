@@ -93,6 +93,8 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
+            echo ***React version***
+            npm ls react react-dom
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/react-scripts
