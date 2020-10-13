@@ -10,6 +10,6 @@ Given('component is mounted', () => {
   mount(<App />)
 })
 
-Then('has text', () => {
-  cy.contains('.App', 'Hello from App').should('be.visible')
+Then('has text {string}', string => {
+  cy.contains('.App', string).should('be.visible')
 })
