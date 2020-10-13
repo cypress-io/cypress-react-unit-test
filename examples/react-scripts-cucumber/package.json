@@ -1,0 +1,21 @@
+{
+  "name": "example-react-scripts-cucumber",
+  "description": "Component tests written using Cucumber",
+  "private": true,
+  "scripts": {
+    "test": "cypress-expect run --passing 2",
+    "cy:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "5.3.0",
+    "cypress-expect": "2.1.0",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "cypress-cucumber-preprocessor": "3.0.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}

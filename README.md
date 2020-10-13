@@ -223,17 +223,18 @@ We have several subfolders in [examples](examples) folder that have complete pro
 Folder Name | Description
 --- | ---
 [a11y](examples/a11y) | Testing components' accessibility using [cypress-axe](https://github.com/avanslaars/cypress-axe)
-[react-scripts](examples/react-scripts) | A project using `react-scripts` with component tests in `src` folder, including the `.env` files demo.
+[cucumber](examples/react-scripts-cucumber) | Writing component tests using Cucumber syntax
 [react-scripts-folder](examples/react-scripts-folder) | A project using `react-scripts` with component tests in `cypress/component`
-[tailwind](examples/tailwind) | Testing styles built using [Tailwind CSS](https://tailwindcss.com/)
+[react-scripts](examples/react-scripts) | A project using `react-scripts` with component tests in `src` folder, including the `.env` files demo.
+[rollup](examples/rollup) | Bundle component and specs using [rollup](http://rollupjs.org/guide/en/).
 [sass-and-ts](examples/sass-and-ts) | Example with Webpack, Sass and TypeScript
 [snapshots](examples/snapshots) | Component HTML and JSON snapshots using [cypress-plugin-snapshots](https://github.com/meinaart/cypress-plugin-snapshots)
-[visual-sudoku](examples/visual-sudoku) | [Visual testing](#visual-testing) for components using open source plugin [cypress-image-snapshot](https://github.com/palmerhq/cypress-image-snapshot). For larger example with an hour long list of explanation videos, see [bahmutov/sudoku](https://github.com/bahmutov/sudoku).
-[visual-testing-with-percy](examples/visual-testing-with-percy) | [Visual testing](#visual-testing) for components using 3rd party service [Percy.io](https://percy.io/)
-[visual-testing-with-happo](examples/visual-testing-with-happo) | [Visual testing](#visual-testing) for components using 3rd party service [Happo](https://happo.io/)
-[visual-testing-with-applitools](examples/visual-testing-with-applitools) | [Visual testing](#visual-testing) for components using 3rd party service [Applitools.com](https://applitools.com/)
+[tailwind](examples/tailwind) | Testing styles built using [Tailwind CSS](https://tailwindcss.com/)
 [using-babel](examples/using-babel) | Bundling specs and loaded source files using project's existing `.babelrc` file
-[rollup](examples/rollup) | Bundle component and specs using [rollup](http://rollupjs.org/guide/en/).
+[visual-sudoku](examples/visual-sudoku) | [Visual testing](#visual-testing) for components using open source plugin [cypress-image-snapshot](https://github.com/palmerhq/cypress-image-snapshot). For larger example with an hour long list of explanation videos, see [bahmutov/sudoku](https://github.com/bahmutov/sudoku).
+[visual-testing-with-applitools](examples/visual-testing-with-applitools) | [Visual testing](#visual-testing) for components using 3rd party service [Applitools.com](https://applitools.com/)
+[visual-testing-with-happo](examples/visual-testing-with-happo) | [Visual testing](#visual-testing) for components using 3rd party service [Happo](https://happo.io/)
+[visual-testing-with-percy](examples/visual-testing-with-percy) | [Visual testing](#visual-testing) for components using 3rd party service [Percy.io](https://percy.io/)
 [webpack-file](examples/webpack-file) | Load existing `webpack.config.js` file
 [webpack-options](examples/webpack-options) | Using the default Webpack options from `@cypress/webpack-preprocessor` to transpile JSX specs
 <!-- prettier-ignore-end -->

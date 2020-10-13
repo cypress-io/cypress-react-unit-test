@@ -1,0 +1,11 @@
+{
+  "fixturesFolder": false,
+  "testFiles": "**/*.feature",
+  "viewportWidth": 500,
+  "viewportHeight": 800,
+  "experimentalComponentTesting": true,
+  "componentFolder": "cypress/component",
+  "env": {
+    "coverage": false
+  }
+}
