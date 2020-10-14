@@ -1,0 +1,84 @@
+name: badges
+on:
+  schedule:
+    # update README badges every night
+    # because we have a few badges that are linked
+    # to the external repositories
+    - cron: '0 3 * * *'
+
+jobs:
+  build:
+    name: Badges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
+
+      - name: Install NPM dependencies 📦
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
+
+      # update the version of dependency-version-badge dependency
+      # currently used by bahmutov/cy-rollup and bahmutov/cypress-svelte-unit-test
+      - name: Update version badges from example repos 💎
+        run: |
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/try-cra-with-unit-test
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/try-cra-app-typescript
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/react-todo-with-hooks
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-redux-examples
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-react-hooks-animations
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-mdx-example
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-apollo
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-xstate-react
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-react-router-v5
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-material-ui
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-d3-react-gauge
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/storybook-code-coverage
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/react-loading-skeleton
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-swr
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/emoji-search
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-custom-error-boundary
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/Jscrambler-Webpack-React
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/integration-tests
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/mobx-react-typescript-boilerplate
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/test-react-hook-form
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/react-with-rollup
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/testing-react-example
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/ejected-react-scripts-example
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/react-tic-tac-toe-example
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/react-hooks-file-upload
+          npx update-badge \
+            cypress-react-unit-test --from https://github.com/bahmutov/react-query-example
+
+      # commit any changed files
+      # https://github.com/mikeal/publish-to-github-action
+      - name: Push any changes to repo 📤
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

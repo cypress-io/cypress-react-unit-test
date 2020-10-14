@@ -244,11 +244,11 @@ Folder Name | Description
 This way of component testing has been verified in a number of forked 3rd party projects.
 
 <!-- prettier-ignore-start -->
-Repo | Description
---- | ---
-[try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) | Hello world initialized with CRAv3
-[try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript) | Hello world initialized with CRAv3 `--typescript`
-[react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) | Modern web application using hooks
+Repo | Version | Description
+--- | --- | ---
+[try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) | ![cypress-react-unit-test used in try-cra-with-unit-test version](https://img.shields.io/badge/cypress--react--unit--test-4.1.7-brightgreen) | Hello world initialized with CRAv3
+[try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript) | ![cypress-react-unit-test used in try-cra-app-typescript version](https://img.shields.io/badge/cypress--react--unit--test-4.16.0-brightgreen) | Hello world initialized with CRAv3 `--typescript`
+[react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) | ![cypress-react-unit-test used in react-todo-with-hooks version](https://img.shields.io/badge/cypress--react--unit--test-4.16.0-brightgreen) | Modern web application using hooks
 [test-redux-examples](https://github.com/bahmutov/test-redux-examples) | Example apps copies from official Redux repo and tested as components
 [test-react-hooks-animations](https://github.com/bahmutov/test-react-hooks-animations) | Testing React springs fun blob animation
 [test-mdx-example](https://github.com/bahmutov/test-mdx-example) | Example testing MDX components using Cypress
