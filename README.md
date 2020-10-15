@@ -58,6 +58,8 @@ If you are coming from Enzyme world, check out the [enzyme](cypress/component/ba
 - [Test The Interface Not The Implementation](https://glebbahmutov.com/blog/test-the-interface/) compares Jest + React Testing Library to cypress-react-unit-test + Cypress Testing Library
 - [Components People Test](https://glebbahmutov.com/blog/components-people-test/) about testing a component inside a Next.js-powered blog
 
+Curious how we keep this library well-tested and all its examples up-to-date? Read the [Testing Pyramids](https://glebbahmutov.com/blog/testing-pyramids/) blog post.
+
 ## Presentations
 
 It is better to see something once than to hear about a thousand times. Watch one of the talks below to see this library in action.
