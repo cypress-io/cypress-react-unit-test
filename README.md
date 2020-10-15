@@ -172,7 +172,7 @@ Spec | Description
 [stub-example](cypress/component/basic/stub-example) | Uses `cy.stub` as component props
 [styles](cypress/component/basic/styles) | Add extra styles to the component during testing using `style`, `cssFile` or `stylesheets` mount options
 [toggle-example](cypress/component/basic/toggle-example) | Testing a toggle component using Cypress DOM commands
-[typescript](cypress/component/basic/typescript) | A spec written in TypeScript
+[typescript](cypress/component/basic/typescript) | A spec written in TypeScript, shows how to use import alias
 [unmount](cypress/component/basic/unmount) | Verifies the component's behavior when it is unmounted from the DOM
 [use-lodash-fp](cypress/component/basic/use-lodash-fp) | Imports and tests methods from `lodash/fp` dependency
 [styled-components](cypress/component/basic/styled-components) | Test components that use [styled-components](https://www.styled-components.com/)
