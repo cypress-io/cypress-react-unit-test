@@ -22,59 +22,61 @@ jobs:
       # update the version of dependency-version-badge dependency
       # currently used by bahmutov/cy-rollup and bahmutov/cypress-svelte-unit-test
       - name: Update version badges from example repos 💎
+        # note: will simplify the command when implement
+        # https://github.com/bahmutov/dependency-version-badge/issues/16
         run: |
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/try-cra-with-unit-test --short
+            cypress-react-unit-test --from bahmutov/try-cra-with-unit-test --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/try-cra-app-typescript --short
+            cypress-react-unit-test --from bahmutov/try-cra-app-typescript --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/react-todo-with-hooks --short
+            cypress-react-unit-test --from bahmutov/react-todo-with-hooks --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-redux-examples --short
+            cypress-react-unit-test --from bahmutov/test-redux-examples --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-react-hooks-animations --short
+            cypress-react-unit-test --from bahmutov/test-react-hooks-animations --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-mdx-example --short
+            cypress-react-unit-test --from bahmutov/test-mdx-example --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-apollo --short
+            cypress-react-unit-test --from bahmutov/test-apollo --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-xstate-react --short
+            cypress-react-unit-test --from bahmutov/test-xstate-react --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-react-router-v5 --short
+            cypress-react-unit-test --from bahmutov/test-react-router-v5 --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-material-ui --short
+            cypress-react-unit-test --from bahmutov/test-material-ui --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-d3-react-gauge --short
+            cypress-react-unit-test --from bahmutov/test-d3-react-gauge --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/storybook-code-coverage --short
+            cypress-react-unit-test --from bahmutov/storybook-code-coverage --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/react-loading-skeleton --short
+            cypress-react-unit-test --from bahmutov/react-loading-skeleton --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-swr --short
+            cypress-react-unit-test --from bahmutov/test-swr --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/emoji-search --short
+            cypress-react-unit-test --from bahmutov/emoji-search --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-custom-error-boundary --short
+            cypress-react-unit-test --from bahmutov/test-custom-error-boundary --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/Jscrambler-Webpack-React --short
+            cypress-react-unit-test --from bahmutov/Jscrambler-Webpack-React --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/integration-tests --short
+            cypress-react-unit-test --from bahmutov/integration-tests --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/mobx-react-typescript-boilerplate --short
+            cypress-react-unit-test --from bahmutov/mobx-react-typescript-boilerplate --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/test-react-hook-form --short
+            cypress-react-unit-test --from bahmutov/test-react-hook-form --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/react-with-rollup --short
+            cypress-react-unit-test --from bahmutov/react-with-rollup --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/testing-react-example --short
+            cypress-react-unit-test --from bahmutov/testing-react-example --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/ejected-react-scripts-example --short
+            cypress-react-unit-test --from bahmutov/ejected-react-scripts-example --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/react-tic-tac-toe-example --short
+            cypress-react-unit-test --from bahmutov/react-tic-tac-toe-example --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/react-hooks-file-upload --short
+            cypress-react-unit-test --from bahmutov/react-hooks-file-upload --short --behind
           npx update-badge \
-            cypress-react-unit-test --from bahmutov/react-query-example --short
+            cypress-react-unit-test --from bahmutov/react-query-example --short --behind
 
       # commit any changed files
       # https://github.com/mikeal/publish-to-github-action
