@@ -94,7 +94,7 @@
     "cypress-expect": "2.1.2",
     "cypress-image-snapshot": "3.1.1",
     "cypress-plugin-snapshots": "1.4.4",
-    "cypress-react-selector": "2.1.0",
+    "cypress-react-selector": "2.1.1",
     "date-fns": "2.13.0",
     "dependency-version-badge": "1.7.0",
     "framer-motion": "2.6.13",
