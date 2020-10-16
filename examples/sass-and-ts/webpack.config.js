@@ -1,10 +1,17 @@
 const path = require('path')
+
+// for this example, let's point 'cypress-react-unit-test' at the root
+// on CI we install cypress-react-unit-test as a normal dependency
+// this this is not necessary
+const alias = process.env.CI
+  ? {}
+  : {
+      'cypress-react-unit-test': path.resolve('../..'),
+    }
+
 module.exports = {
   resolve: {
-    // for this example, let's point 'cypress-react-unit-test' at the root
-    alias: {
-      'cypress-react-unit-test': path.resolve('../..'),
-    },
+    alias,
   },
   module: {
     rules: [

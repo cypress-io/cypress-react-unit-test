@@ -3,12 +3,23 @@
   "description": "Testing components written in TypeScript with Sass imports",
   "private": true,
   "scripts": {
-    "test": "../../node_modules/.bin/cypress run",
-    "cy:open": "../../node_modules/.bin/cypress open",
-    "check-coverage": "../../node_modules/.bin/check-coverage src/App.tsx",
-    "only-covered": "../../node_modules/.bin/only-covered src/App.tsx"
+    "test": "cypress-expect run --passing 2",
+    "cy:open": "cypress open",
+    "check-coverage": "check-coverage src/App.tsx",
+    "only-covered": "only-covered src/App.tsx"
   },
   "devDependencies": {
-    "cypress-react-unit-test": "file:../.."
+    "babel-loader": "8.1.0",
+    "check-code-coverage": "1.10.0",
+    "css-loader": "5.0.0",
+    "cypress": "5.3.0",
+    "cypress-expect": "2.1.0",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sass": "1.27.0",
+    "sass-loader": "10.0.3",
+    "style-loader": "2.0.0",
+    "webpack": "4.44.2"
   }
 }

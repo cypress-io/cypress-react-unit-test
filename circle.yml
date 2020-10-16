@@ -272,8 +272,14 @@ workflows:
           # we need the same OS version as in install job
           # because we will use native Sass dependency
           executor: cypress/base-12
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/sass-and-ts
