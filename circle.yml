@@ -58,8 +58,14 @@ workflows:
           requires:
             - Component Tests
           executor: cypress/base-12
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: false
           working_directory: examples/using-babel
@@ -71,8 +77,14 @@ workflows:
           requires:
             - Component Tests
           executor: cypress/base-12
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/using-babel-typescript
@@ -316,21 +328,40 @@ workflows:
           requires:
             - Component Tests
           executor: cypress/base-12
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/snapshots
           command: npm test
           store_artifacts: true
+          post-steps:
+            - run:
+                name: Check coverage 📈
+                command: |
+                  npm run check-coverage
+                  npm run only-covered
+                working_directory: examples/snapshots
 
       - cypress/run:
           name: Visual Sudoku
           executor: cypress/base-12
           requires:
             - Component Tests
-          # each example installs "cypress-react-unit-test" as a local dependency (symlink)
-          install-command: npm install  --no-bin-links
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
           verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/visual-sudoku

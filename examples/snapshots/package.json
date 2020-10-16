@@ -3,12 +3,18 @@
   "description": "Component testing with snapshots",
   "private": true,
   "scripts": {
-    "test": "../../node_modules/.bin/cypress run",
-    "cy:open": "../../node_modules/.bin/cypress open",
-    "check-coverage": "../../node_modules/.bin/check-coverage src/App.js",
-    "only-covered": "../../node_modules/.bin/only-covered src/App.js"
+    "test": "cypress run",
+    "cy:open": "cypress open",
+    "check-coverage": "check-coverage component/PositiveCounter.js",
+    "only-covered": "only-covered component/PositiveCounter.js"
   },
   "devDependencies": {
-    "cypress-react-unit-test": "file:../.."
+    "check-code-coverage": "1.10.0",
+    "cypress": "5.3.0",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "cypress-plugin-snapshots": "1.4.4"
   }
 }

@@ -3,10 +3,19 @@
   "description": "Component testing for projects using Babel config",
   "private": true,
   "scripts": {
-    "test": "../../node_modules/.bin/cypress-expect run --min-passing 17",
-    "cy:open": "../../node_modules/.bin/cypress open"
+    "test": "cypress-expect run --min-passing 17",
+    "cy:open": "cypress open"
   },
   "devDependencies": {
-    "cypress-react-unit-test": "file:../.."
+    "babel-loader": "8.1.0",
+    "cypress": "5.4.0",
+    "cypress-expect": "2.1.2",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "4.44.2"
+  },
+  "dependencies": {
+    "react-loading-skeleton": "2.1.1"
   }
 }
