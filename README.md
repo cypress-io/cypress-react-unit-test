@@ -274,7 +274,7 @@ Repo | Version | Description
 [tic-tac-toe](https://github.com/bahmutov/react-tic-tac-toe-example) | ![cypress-react-unit-test used in react-tic-tac-toe-example short](https://img.shields.io/badge/4.4.2-yellow) | Component and unit tests for Tic-Tac-Toe, read [Tic-Tac-Toe Component Tests](https://glebbahmutov.com/blog/tic-tac-toe-component-tests/)
 [react-hooks-file-upload](https://github.com/bahmutov/react-hooks-file-upload) | ![cypress-react-unit-test used in react-hooks-file-upload short](https://img.shields.io/badge/4.7.0-yellow) | Upload a file from the component while stubbing the server
 [react-query-example](https://github.com/bahmutov/react-query-example) | ![cypress-react-unit-test used in react-query-example short](https://img.shields.io/badge/4.8.0-yellow) | Quick test example for components that use `react-query` with mock clock control
-[react-testing-rails-webpacker](https://github.com/bahmutov/react-testing-rails-webpacker) | | ![cypress-react-unit-test used in react-testing-rails-webpacker short](https://img.shields.io/badge/4.16.0-brightgreen) | Project that uses [@rails/webpacker](https://github.com/rails/webpacker) to bundle files
+[react-testing-rails-webpacker](https://github.com/bahmutov/react-testing-rails-webpacker) | ![cypress-react-unit-test used in react-testing-rails-webpacker short](https://img.shields.io/badge/4.16.0-brightgreen) | Project that uses [@rails/webpacker](https://github.com/rails/webpacker) to bundle files
 <!-- prettier-ignore-end -->
 
 To find more examples, see GitHub topic [cypress-react-unit-test-example](https://github.com/topics/cypress-react-unit-test-example)
