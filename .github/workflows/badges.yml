@@ -30,6 +30,8 @@ jobs:
       - name: Update version badges from example repos 💎
         # note: will simplify the command when implement
         # https://github.com/bahmutov/dependency-version-badge/issues/16
+        env:
+          DEBUG: dependency-version-badge
         run: |
           npx update-badge \
             cypress-react-unit-test --short --behind \
