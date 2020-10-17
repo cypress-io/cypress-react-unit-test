@@ -248,10 +248,10 @@ This way of component testing has been verified in a number of forked 3rd party 
 <!-- prettier-ignore-start -->
 Repo | Version | Description
 --- | --- | ---
-[try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) | ![cypress-react-unit-test used in try-cra-with-unit-test short](https://img.shields.io/badge/4.1.7-yellow) | Hello world initialized with CRAv3
-[try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript) | ![cypress-react-unit-test used in try-cra-app-typescript short](https://img.shields.io/badge/4.16.0-brightgreen) | Hello world initialized with CRAv3 `--typescript`
-[react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) | ![cypress-react-unit-test used in react-todo-with-hooks short](https://img.shields.io/badge/4.16.0-brightgreen) | Modern web application using hooks
-[test-redux-examples](https://github.com/bahmutov/test-redux-examples) | ![cypress-react-unit-test used in test-redux-examples short](https://img.shields.io/badge/4.16.0-brightgreen) | Example apps copies from official Redux repo and tested as components
+[try-cra-with-unit-test](https://github.com/bahmutov/try-cra-with-unit-test) | ![cypress-react-unit-test used in try-cra-with-unit-test short](https://img.shields.io/badge/4.16.2-brightgreen) | Hello world initialized with CRAv3
+[try-cra-app-typescript](https://github.com/bahmutov/try-cra-app-typescript) | ![cypress-react-unit-test used in try-cra-app-typescript short](https://img.shields.io/badge/4.16.2-brightgreen) | Hello world initialized with CRAv3 `--typescript`
+[react-todo-with-hooks](https://github.com/bahmutov/react-todo-with-hooks) | ![cypress-react-unit-test used in react-todo-with-hooks short](https://img.shields.io/badge/4.16.2-brightgreen) | Modern web application using hooks
+[test-redux-examples](https://github.com/bahmutov/test-redux-examples) | ![cypress-react-unit-test used in test-redux-examples short](https://img.shields.io/badge/4.16.2-brightgreen) | Example apps copies from official Redux repo and tested as components
 [test-react-hooks-animations](https://github.com/bahmutov/test-react-hooks-animations) | ![cypress-react-unit-test used in test-react-hooks-animations short](https://img.shields.io/badge/4.16.0-brightgreen) | Testing React springs fun blob animation
 [test-mdx-example](https://github.com/bahmutov/test-mdx-example) | ![cypress-react-unit-test used in test-mdx-example short](https://img.shields.io/badge/4.16.0-brightgreen) | Example testing MDX components using Cypress
 [test-apollo](https://github.com/bahmutov/test-apollo) | ![cypress-react-unit-test used in test-apollo short](https://img.shields.io/badge/4.10.0-yellow) | Component testing an application that uses Apollo GraphQL library
