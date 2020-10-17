@@ -33,8 +33,7 @@ jobs:
         env:
           DEBUG: dependency-version-badge
         run: |
-          npx update-badge \
-            cypress-react-unit-test --short --behind \
+          $(npm bin)/update-badge cypress-react-unit-test --short --behind \
             --from bahmutov/try-cra-with-unit-test \
             --from bahmutov/try-cra-app-typescript \
             --from bahmutov/react-todo-with-hooks \
