@@ -93,7 +93,7 @@
     "css-loader": "2.1.1",
     "cypress": "5.4.0",
     "cypress-expect": "2.1.2",
-    "cypress-react-selector": "2.1.1",
+    "cypress-react-selector": "2.2.0",
     "date-fns": "2.13.0",
     "dependency-version-badge": "1.7.0",
     "framer-motion": "2.6.13",
