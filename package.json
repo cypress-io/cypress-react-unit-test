@@ -38,6 +38,7 @@
     ]
   },
   "files": [
+    "bin",
     "dist",
     "lib",
     "support",
