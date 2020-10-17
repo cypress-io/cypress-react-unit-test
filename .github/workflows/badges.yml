@@ -51,7 +51,7 @@ jobs:
             --from bahmutov/test-d3-react-gauge
 
       - name: Update more badges 💎
-          run: |
+        run: |
           npx update-badge \
             cypress-react-unit-test --short --behind \
             --from bahmutov/storybook-code-coverage \
@@ -62,7 +62,7 @@ jobs:
             --from bahmutov/Jscrambler-Webpack-React
 
       - name: Update more badges 💎
-          run: |
+        run: |
           npx update-badge \
             cypress-react-unit-test --short --behind \
             --from bahmutov/integration-tests \
