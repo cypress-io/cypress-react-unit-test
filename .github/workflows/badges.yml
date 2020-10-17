@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/demo.yml
+      - .github/workflows/badges.yml
   schedule:
     # update README badges every night
     # because we have a few badges that are linked
