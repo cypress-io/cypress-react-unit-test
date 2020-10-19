@@ -57,6 +57,7 @@ If you are coming from Enzyme world, check out the [enzyme](cypress/component/ba
 - [Cypress Unit Testing React Components With TypeScript](https://medium.com/swlh/cypress-unit-testing-react-components-with-typescript-77b38e5043b3)
 - [Test The Interface Not The Implementation](https://glebbahmutov.com/blog/test-the-interface/) compares Jest + React Testing Library to cypress-react-unit-test + Cypress Testing Library
 - [Components People Test](https://glebbahmutov.com/blog/components-people-test/) about testing a component inside a Next.js-powered blog
+- [Effective React Tests](https://glebbahmutov.com/blog/effective-react-tests/) shows how to test a React component, verify Redux store, and test a custom hook
 
 Curious how we keep this library well-tested and all its examples up-to-date? Read the [Testing Pyramids](https://glebbahmutov.com/blog/testing-pyramids/) blog post.
 
@@ -275,6 +276,7 @@ Repo | Version | Description
 [react-hooks-file-upload](https://github.com/bahmutov/react-hooks-file-upload) | ![cypress-react-unit-test used in react-hooks-file-upload short](https://img.shields.io/badge/4.7.0-yellow) | Upload a file from the component while stubbing the server
 [react-query-example](https://github.com/bahmutov/react-query-example) | ![cypress-react-unit-test used in react-query-example short](https://img.shields.io/badge/4.8.0-yellow) | Quick test example for components that use `react-query` with mock clock control
 [react-testing-rails-webpacker](https://github.com/bahmutov/react-testing-rails-webpacker) | ![cypress-react-unit-test used in react-testing-rails-webpacker short](https://img.shields.io/badge/4.16.0-brightgreen) | Project that uses [@rails/webpacker](https://github.com/rails/webpacker) to bundle files
+[effective-react-tests](https://github.com/bahmutov/effective-react-tests) | | Test a component, a Redux store, and a custom React hook
 <!-- prettier-ignore-end -->
 
 To find more examples, see GitHub topic [cypress-react-unit-test-example](https://github.com/topics/cypress-react-unit-test-example)
