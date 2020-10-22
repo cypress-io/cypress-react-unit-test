@@ -162,7 +162,7 @@ Spec | Description
 [fails-correctly](cypress/component/basic/fails-correctly) | Cypress test fails correctly when interacting with disabled elements
 [pure-component-spec.js](cypress/component/basic/pure-component.spec.js) | Tests stateless component
 [stateless-spec.js](cypress/component/basic/stateless-spec.js) | Passes Cypress stub to the component, confirms the component calls it on click
-[window-spec.js](cypress/component/basic/window-spec.js) | In the component test, the spec `window` and the application's `window` where the component is running should be the same object
+[window](cypress/component/basic/window) | In the component test, the spec `window` and the application's `window` where the component is running should be the same object
 [css](cypress/component/basic/css) | Shows that component with `import './Button.css'` works
 [css modules](cypress/component/basic/css-modules) | Shows that component that using css modules styles works
 [network](cypress/component/basic/network) | Confirms we can use `cy.route` to stub / spy on component's network calls
