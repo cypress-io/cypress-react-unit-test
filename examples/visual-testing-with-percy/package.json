@@ -3,11 +3,11 @@
   "description": "Visual diffing for component testing",
   "private": true,
   "scripts": {
-    "test": "cypress-expect run --passing 2",
+    "test": "cypress-expect run --passing 3",
     "cy:open": "cypress open"
   },
   "devDependencies": {
-    "@date-io/date-fns": "2.10.6",
+    "@date-io/date-fns": "1",
     "@material-ui/core": "4.9.5",
     "@material-ui/pickers": "3.2.10",
     "@percy/cypress": "2.3.2",
