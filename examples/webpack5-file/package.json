@@ -1,0 +1,21 @@
+{
+  "name": "example-webpack-options",
+  "description": "Using default Webpack options to transpile simple tests",
+  "private": true,
+  "scripts": {
+    "test": "cypress-expect run --passing 7",
+    "cy:open": "cypress open",
+    "check-coverage": "check-coverage Test.js calc.js ParentComponent.js ChildComponent.js",
+    "only-covered": "only-covered Test.js calc.js ParentComponent.js ChildComponent.js more-components/src/Hello.js"
+  },
+  "devDependencies": {
+    "babel-loader": "8.1.0",
+    "check-code-coverage": "1.10.0",
+    "cypress": "5.3.0",
+    "cypress-expect": "2.1.0",
+    "cypress-react-unit-test": "file:../..",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "5.2.0"
+  }
+}

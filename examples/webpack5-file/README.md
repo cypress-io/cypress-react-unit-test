@@ -1,0 +1,32 @@
+# example: webpack5-file
+
+> Component tests for projects using existing [webpack.config.js](webpack.config.js) file and [Webpack 5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/)
+
+## Usage
+
+1. Make sure the root project has been built .
+
+```bash
+# in the root of the project
+npm install
+npm run build
+```
+
+2. Run `npm install` in this folder to symlink the `cypress-react-unit-test` dependency.
+
+```bash
+# in this folder
+npm install
+```
+
+3. Start Cypress
+
+```bash
+npm run cy:open
+# or just run headless tests
+npm test
+```
+
+## Notes
+
+See tests in the [cypress/component](cypress/component) folder. We also allow tests to load components using a [webpack alias](webpack.config.js) from `more-components/src` folder using `import Hello from '@components/Hello'`.

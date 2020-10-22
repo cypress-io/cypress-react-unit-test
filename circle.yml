@@ -250,6 +250,32 @@ workflows:
                 working_directory: examples/webpack-file
 
       - cypress/run:
+          name: Example Webpack5 file
+          requires:
+            - Component Tests
+          executor: cypress/base-12
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
+          verify-command: echo 'Already verified'
+          no-workspace: true
+          working_directory: examples/webpack5-file
+          command: npm test
+          store_artifacts: true
+          post-steps:
+            - run:
+                name: Check coverage 📈
+                command: |
+                  npm run check-coverage
+                  npm run only-covered
+                working_directory: examples/webpack5-file
+
+      - cypress/run:
           name: Example Rollup
           requires:
             - Component Tests
@@ -484,6 +510,7 @@ workflows:
             - Example Snapshots
             - Example Tailwind
             - Example Webpack file
+            - Example Webpack5 file
             - Example Webpack options
             - Example Rollup
             - Visual Sudoku
