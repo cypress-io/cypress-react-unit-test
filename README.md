@@ -240,6 +240,7 @@ Folder Name | Description
 [visual-testing-with-percy](examples/visual-testing-with-percy) | [Visual testing](#visual-testing) for components using 3rd party service [Percy.io](https://percy.io/)
 [webpack-file](examples/webpack-file) | Load existing `webpack.config.js` file
 [webpack-options](examples/webpack-options) | Using the default Webpack options from `@cypress/webpack-preprocessor` to transpile JSX specs
+[rewired](examples/rewired) | Component tests for apps that use [react-app-rewired](https://github.com/timarney/react-app-rewired)
 <!-- prettier-ignore-end -->
 
 ### External examples

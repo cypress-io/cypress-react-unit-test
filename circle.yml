@@ -141,6 +141,27 @@ workflows:
                 working_directory: examples/react-scripts
 
       - cypress/run:
+          name: Example React App Rewired
+          requires:
+            - Component Tests
+          executor: cypress/base-12
+          install-command: |
+            ls -la ../..
+            echo ***Installing cypress-react-unit-test from root TGZ archive***
+            npm install -D ../../cypress-react-unit-test-0.0.0-development.tgz
+            echo ***Installing other dependencies***
+            npm install
+            echo ***rename root node_modules to avoid accidental dependencies***
+            mv ../../node_modules ../../no_modules
+            echo ***React version***
+            npm ls react react-dom
+          verify-command: echo 'Already verified'
+          no-workspace: true
+          working_directory: examples/rewired
+          command: npm test
+          store_artifacts: true
+
+      - cypress/run:
           name: Example Next.js
           requires:
             - Component Tests
@@ -506,6 +527,7 @@ workflows:
             - Example Component Folder
             - Example Cucumber
             - Example React Scripts
+            - Example React App Rewired
             - Example Sass
             - Example Snapshots
             - Example Tailwind

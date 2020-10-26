@@ -1,0 +1,38 @@
+{
+  "name": "rewired",
+  "version": "1.0.0",
+  "description": "Component testing for apps that use react-app-rewired",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "test": "cypress-expect run --passing 3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "8.1.0",
+    "cypress": "5.4.0",
+    "cypress-expect": "2.1.2",
+    "cypress-react-unit-test": "file:../..",
+    "debug": "4.2.0",
+    "react": "^16.13.1",
+    "react-app-rewired": "2.1.6",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.4",
+    "webpack": "4.44.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
