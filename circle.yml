@@ -47,7 +47,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/a11y
           command: npm test
@@ -66,7 +65,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: false
           working_directory: examples/using-babel
           command: npm test
@@ -85,7 +83,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/using-babel-typescript
           command: npm test
@@ -106,7 +103,6 @@ workflows:
             mv ../../node_modules ../../no_modules
             echo ***React version***
             npm ls react react-dom
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/react-scripts-cucumber
           command: npm test
@@ -127,7 +123,6 @@ workflows:
             mv ../../node_modules ../../no_modules
             echo ***React version***
             npm ls react react-dom
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/react-scripts
           command: npm test
@@ -155,7 +150,6 @@ workflows:
             mv ../../node_modules ../../no_modules
             echo ***React version***
             npm ls react react-dom
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/rewired
           command: npm test
@@ -174,7 +168,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/nextjs
           command: npm test
@@ -202,7 +195,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/react-scripts-folder
           command: npm test
@@ -229,7 +221,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/tailwind
           command: |
@@ -257,7 +248,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/webpack-file
           command: npm test
@@ -283,7 +273,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/webpack5-file
           command: npm test
@@ -310,7 +299,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/rollup
           command: npm test
@@ -329,7 +317,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/webpack-options
           command: npm test
@@ -357,7 +344,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/sass-and-ts
           command: npm test
@@ -383,7 +369,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/snapshots
           command: npm test
@@ -409,7 +394,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/visual-sudoku
           command: npm test
@@ -431,7 +415,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/visual-testing-with-applitools
           # to correctly run this job, we need Applitools token
@@ -459,7 +442,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/visual-testing-with-percy
           # run Percy agent and then run Cypress component tests
@@ -480,7 +462,6 @@ workflows:
             npm install
             echo ***rename root node_modules to avoid accidental dependencies***
             mv ../../node_modules ../../no_modules
-          verify-command: echo 'Already verified'
           no-workspace: true
           working_directory: examples/visual-testing-with-happo
           command: npm run test:happo

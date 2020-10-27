@@ -8,7 +8,8 @@ const Axios = require('axios')
 describe('Mocking Axios', () => {
   it('shows real users', () => {
     mount(<Users />)
-    cy.get('li').should('have.length', 3)
+    // the first Ajax request could be slow
+    cy.get('li', { timeout: 15000 }).should('have.length', 3)
   })
 
   // https://github.com/bahmutov/cypress-react-unit-test/issues/338

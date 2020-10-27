@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path')
+const fs = require('fs')
 const debug = require('debug')('cypress-react-unit-test')
 const loadConfig = require('next/dist/next-server/server/config').default
 const getNextJsBaseWebpackConfig = require('next/dist/build/webpack-config')
@@ -19,14 +20,21 @@ async function getNextWebpackConfig(config) {
 
   const nextConfig = await loadConfig('development', config.projectRoot)
 
+  // determine where the Next.js keeps its pages in this project
+  // https://nextjs.org/docs/advanced-features/src-directory
+  const rootPages = path.join(config.projectRoot, 'pages')
+  const srcPages = path.join(config.projectRoot, 'src', 'pages')
+  const pagesDir = fs.existsSync(rootPages) ? rootPages : srcPages
+  if (!fs.existsSync(pagesDir)) {
+    throw new Error(`Cannot pages folder ${pagesDir}`)
+  }
+
   const configOptions = {
     buildId: `cypress-react-unit-test-${Math.random().toString()}`,
     config: nextConfig,
     dev: false,
     isServer: false,
-    // assuming the Next.js project has the entire pages in "/pages" subfolder
-    // https://github.com/bahmutov/cypress-react-unit-test/pull/517
-    pagesDir: path.join(config.projectRoot, 'pages'),
+    pagesDir,
     entrypoints: {},
     rewrites: [],
   }
