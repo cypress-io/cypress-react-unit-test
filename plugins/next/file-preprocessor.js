@@ -1,4 +1,5 @@
 // @ts-check
+const path = require('path')
 const debug = require('debug')('cypress-react-unit-test')
 const loadConfig = require('next/dist/next-server/server/config').default
 const getNextJsBaseWebpackConfig = require('next/dist/build/webpack-config')
@@ -11,19 +12,29 @@ async function getNextWebpackConfig(config) {
     config && config.env && config.env.coverage === false
 
   debug('coverage is disabled? %o', { coverageIsDisabled })
+  debug('Cypress project %o', {
+    projectRoot: config.projectRoot,
+    componentFolder: config.componentFolder,
+  })
 
   const nextConfig = await loadConfig('development', config.projectRoot)
+
+  const configOptions = {
+    buildId: `cypress-react-unit-test-${Math.random().toString()}`,
+    config: nextConfig,
+    dev: false,
+    isServer: false,
+    // assuming the Next.js project has the entire pages in "/pages" subfolder
+    // https://github.com/bahmutov/cypress-react-unit-test/pull/517
+    pagesDir: path.join(config.projectRoot, 'pages'),
+    entrypoints: {},
+    rewrites: [],
+  }
+  debug('Next config options %o', configOptions)
+
   const nextWebpackConfig = await getNextJsBaseWebpackConfig(
     config.projectRoot,
-    {
-      buildId: `cypress-react-unit-test-${Math.random().toString()}`,
-      config: nextConfig,
-      dev: false,
-      isServer: false,
-      pagesDir: config.projectRoot,
-      entrypoints: {},
-      rewrites: [],
-    },
+    configOptions,
   )
 
   debug('resolved next.js webpack options: %o', nextWebpackConfig)

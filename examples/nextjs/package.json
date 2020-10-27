@@ -7,11 +7,11 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "cypress-expect run --min-passing 10",
+    "test": "cypress-expect run --min-passing 11",
     "cy:open": "cypress open",
     "build:static": "next build && next out",
-    "check-coverage": "check-coverage components/Search.jsx pages/index.js pages/router.js",
-    "only-covered": "only-covered components/Search.jsx pages/index.js pages/router.js"
+    "check-coverage": "check-coverage components/Search.jsx pages/index.js pages/router.js components/UsingHelper.jsx",
+    "only-covered": "only-covered components/Search.jsx components/UsingHelper.jsx components/helpers/hello-world.js components/helpers/index.js pages/index.js pages/router.js"
   },
   "devDependencies": {
     "@mdx-js/loader": "1.6.18",
