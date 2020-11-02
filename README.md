@@ -358,6 +358,13 @@ For a larger Do-It-Yourself example with an hour long list of explanation videos
 
 ## Common problems
 
+<details id="lazy">
+  <summary>React.lazy does not work</summary>
+
+Cypress only servers a single bundle and does not (yet) provide additional bundling. There are several skipped tests in this repo showing the problem. Track [#524](https://github.com/bahmutov/cypress-react-unit-test/issues/524) for future work.
+
+</details>
+
 <details id="node-sass">
   <summary>Node Sass</summary>
 
