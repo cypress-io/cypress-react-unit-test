@@ -126,7 +126,7 @@ See [Recipes](./docs/recipes.md) for more examples.
 - `mount` is the most important function, allows to mount a given React component as a mini web application and interact with it using Cypress commands
 - `createMount` factory function that creates new `mount` function with default options
 - `unmount` removes previously mounted component, mostly useful to test how the component cleans up after itself
-- `mountHook` mounts a given React Hook in a test component for full testing, see `hooks` example
+- `mountHook` mounts a given React Hook in a test component for full testing, see the [`hooks` example](cypress/component/advanced/hooks)
 
 ## Examples
 
@@ -191,7 +191,7 @@ Spec | Description
 [context](cypress/component/advanced/context) | Confirms components that use React context feature work
 [custom-command](cypress/component/advanced/custom-command) | Wraps `mount` in a custom command for convenience
 [forward-ref](cypress/component/advanced/forward-ref) | Tests a component that uses a forward ref feature
-[hooks](cypress/component/advanced/hooks) | Tests several components that use React Hooks like `useState`, `useCallback`
+[hooks](cypress/component/advanced/hooks) | Tests several components that use React Hooks like `useState`, `useCallback` by using `mountHook` function
 [lazy-loaded](cypress/component/advanced/lazy-loaded) | Confirms components that use `React.lazy` and dynamic imports work
 [material-ui-example](cypress/component/advanced/material-ui-example) | Large components demos from [Material UI](https://material-ui.com/)
 [mobx-v6](cypress/component/advanced/mobx-v6) | Test components with MobX v6 observable

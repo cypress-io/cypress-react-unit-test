@@ -60,21 +60,39 @@ function TestHook({ callback, onError, children }: TestHookProps) {
   return null
 }
 
+type MountHookOptions = {
+  wrapper?: React.ReactElement
+}
+
 /**
  * Mounts a React hook function in a test component for testing.
  *
  * @see https://github.com/bahmutov/cypress-react-unit-test#advanced-examples
  */
-export const mountHook = (hookFn: (...args: any[]) => any) => {
+export const mountHook = (
+  hookFn: (...args: any[]) => any,
+  options: MountHookOptions = {},
+) => {
   const { result, setValue, setError } = resultContainer()
 
-  return mount(
-    React.createElement(TestHook, {
-      callback: hookFn,
-      onError: setError,
-      children: setValue,
-    }),
-  ).then(() => {
+  const testElement = React.createElement(TestHook, {
+    callback: hookFn,
+    onError: setError,
+    children: setValue,
+    key: Math.random().toString(),
+  })
+
+  let mountElement: any = testElement
+  if (options.wrapper) {
+    // what's the proper type? I don't even care anymore
+    // because types for React seem to be a mess
+    // @ts-ignore
+    mountElement = React.createElement(options.wrapper, {
+      children: [testElement],
+    })
+  }
+
+  return mount(mountElement).then(() => {
     cy.wrap(result)
   })
 }
