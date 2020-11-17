@@ -157,4 +157,4 @@ commonjs(),
 replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
 ```
 
-See [examples/rollup](examples/rollup) folder for full example.
+See [examples/rollup](../examples/rollup) folder for full example.
