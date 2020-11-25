@@ -67,7 +67,7 @@
     "@material-ui/lab": "4.0.0-alpha.39",
     "@mdx-js/loader": "^1.6.16",
     "@next/mdx": "^9.5.3",
-    "@testing-library/cypress": "7.0.1",
+    "@testing-library/cypress": "7.0.2",
     "@types/chalk": "2.2.0",
     "@types/inquirer": "7.3.1",
     "@types/jest": "26.0.14",
