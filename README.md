@@ -452,7 +452,7 @@ React context provider usage and API described in [./docs/providers-and-composit
 
 ## Chat
 
-We have a chat workspace at [https://component-testing.slack.com/](https://component-testing.slack.com/), you are welcome to [join us](https://join.slack.com/t/component-testing/shared_invite/zt-h93lrgsl-8WzE8yNQlcZuZji_gA_mtg).
+We have a chat workspace at [https://component-testing.slack.com/](https://component-testing.slack.com/), you are welcome to [join us](https://join.slack.com/t/component-testing/shared_invite/zt-jhvuum8m-7UMUhVDAYlND3POGVlhkFg).
 
 ## Development
 
