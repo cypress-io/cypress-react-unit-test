@@ -145,7 +145,7 @@
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "7.12.1",
     "@cypress/code-coverage": "3.8.5",
-    "@cypress/webpack-preprocessor": "5.4.11",
+    "@cypress/webpack-preprocessor": "5.5.0",
     "babel-plugin-istanbul": "6.0.0",
     "chalk": "4.1.0",
     "cli-highlight": "2.1.4",
