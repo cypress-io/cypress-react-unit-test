@@ -86,7 +86,7 @@
     "check-code-coverage": "1.10.0",
     "common-tags": "1.8.0",
     "css-loader": "2.1.1",
-    "cypress": "6.0.0",
+    "cypress": "6.0.1",
     "cypress-expect": "2.2.1",
     "cypress-react-selector": "2.2.1",
     "date-fns": "2.13.0",
