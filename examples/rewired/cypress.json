@@ -1,7 +1,0 @@
-{
-  "testFiles": "*.spec.js",
-  "viewportWidth": 500,
-  "viewportHeight": 800,
-  "experimentalComponentTesting": true,
-  "componentFolder": "src"
-}

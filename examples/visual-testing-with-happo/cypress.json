@@ -1,7 +1,0 @@
-{
-  "testFiles": "**/*cy-spec.js",
-  "viewportWidth": 400,
-  "viewportHeight": 700,
-  "experimentalComponentTesting": true,
-  "componentFolder": "src"
-}
